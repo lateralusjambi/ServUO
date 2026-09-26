@@ -1298,14 +1298,14 @@ namespace Server.Multis
 
         public bool CanAddAddon(Point3D p)
         {
-            if (Addons?.Count >= MaxAddons || Map == null || Map == Map.Internal)
+            if (Addons.Count >= MaxAddons || Map == null || Map == Map.Internal)
                 return false;
 
             IPooledEnumerable eable = Map.GetItemsInRange(p, 0);
 
             foreach (var item in eable.OfType<DeckItem>())
             {
-                if (m_ShipAddonTiles.Any(id => id == item.ItemID) && Addons?.ContainsValue(item) != true)
+                if (m_ShipAddonTiles.Any(id => id == item.ItemID) && !Addons.ContainsValue(item))
                 {
                     eable.Free();
                     return true;

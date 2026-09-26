@@ -1,21 +1,19 @@
+using System;
 using System.Collections.Generic;
 using System.Net;
-
 using Server.Network;
 
 namespace Server.Misc
 {
-    public static class IPLimiter
+    public class IPLimiter
     {
-        public static bool Enabled { get; set; } = true;
+        public static bool Enabled = true;
+        public static bool SocketBlock = true;// true to block at connection, false to block at login request
+        public static int MaxAddresses = 10;
 
-        public static bool SocketBlock { get; set; } = true; // true to block at connection, false to block at login request
-
-        public static int MaxAddresses { get; set; } = 10;
-
-        public static IPAddress[] Exemptions { get; set; } = // For hosting services where there are cases where IPs can be proxied
+        public static IPAddress[] Exemptions = new IPAddress[]	//For hosting services where there are cases where IPs can be proxied
         {
-            IPAddress.Loopback,
+            IPAddress.Parse( "127.0.0.1" ),
         };
 
         public static bool IsExempt(IPAddress ip)
@@ -34,15 +32,15 @@ namespace Server.Misc
             if (!Enabled || IsExempt(ourAddress))
                 return true;
 
-            IList<IPAddress> netStates = NetState.Addresses;
+            IList<NetState> netStates = NetState.Instances;
 
             int count = 0;
 
             for (int i = 0; i < netStates.Count; ++i)
             {
-                IPAddress compState = netStates[i];
+                NetState compState = netStates[i];
 
-                if (ourAddress.Equals(compState))
+                if (ourAddress.Equals(compState.Address))
                 {
                     ++count;
 

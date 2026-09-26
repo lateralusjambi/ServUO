@@ -212,7 +212,7 @@ namespace Server.Mobiles
         {
             base.GetContextMenuEntries(from, list);
 
-            if (IsOwner(from))
+            if (IsOwner(Owner))
             {
                 if (from.Alive && from.InRange(this, 2))
                 {
