@@ -36,9 +36,9 @@ namespace Server.SkillHandlers
         }
 
 		public static void Initialize()
-		{
-			SkillInfo.Table[(int)SkillName.Discordance].Callback = OnUse;
-		}
+{
+    // Disabled temporarily while restoring historical Enticement.
+}
 
 		public static TimeSpan OnUse(Mobile m)
 		{

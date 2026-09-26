@@ -42,7 +42,8 @@ namespace Server
 		Cartography = 12,
 		Cooking = 13,
 		DetectHidden = 14,
-		Discordance = 15,
+		Enticement = 15,
+		Discordance = Enticement,
 		EvalInt = 16,
 		Healing = 17,
 		Fishing = 18,
@@ -608,7 +609,7 @@ namespace Server
 			new SkillInfo(12, "Cartography", 0.0, 7.5, 7.5, "Cartographer", null, 0.0, 0.75, 0.75, 1.0, StatCode.Int, StatCode.Dex),
 			new SkillInfo(13, "Cooking", 0.0, 20.0, 30.0, "Chef", null, 0.0, 2.0, 3.0, 1.0, StatCode.Int, StatCode.Dex),
 			new SkillInfo(14, "Detecting Hidden", 0.0, 0.0, 0.0, "Scout", null, 0.0, 0.4, 0.6, 1.0, StatCode.Int, StatCode.Dex),
-			new SkillInfo(15, "Discordance", 0.0, 2.5, 2.5, "Demoralizer", null, 0.0, 0.25, 0.25, 1.0, StatCode.Dex, StatCode.Int, true ),
+			new SkillInfo(15, "Enticement", 0.0, 2.5, 2.5, "Enticer", null, 0.0, 0.25, 0.25, 1.0, StatCode.Dex, StatCode.Int, true ),
 			new SkillInfo(16, "Evaluating Intelligence", 0.0, 0.0, 0.0, "Scholar", null, 0.0, 0.0, 1.0, 1.0, StatCode.Int, StatCode.Str),
 			new SkillInfo(17, "Healing", 6.0, 6.0, 8.0, "Healer", null, 0.6, 0.6, 0.8, 1.0, StatCode.Int, StatCode.Dex),
 			new SkillInfo(18, "Fishing", 0.0, 0.0, 0.0, "Fisherman", null, 0.5, 0.5, 0.0, 1.0, StatCode.Dex, StatCode.Str),
@@ -711,7 +712,7 @@ namespace Server
 		public Skill DetectHidden { get { return this[SkillName.DetectHidden]; } set { } }
 
 		[CommandProperty(AccessLevel.Counselor)]
-		public Skill Discordance { get { return this[SkillName.Discordance]; } set { } }
+		public Skill Enticement { get { return this[SkillName.Enticement]; } set { } }
 
 		[CommandProperty(AccessLevel.Counselor)]
 		public Skill EvalInt { get { return this[SkillName.EvalInt]; } set { } }
