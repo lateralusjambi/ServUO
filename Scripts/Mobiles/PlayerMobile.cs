@@ -1627,6 +1627,8 @@ namespace Server.Mobiles
             BaseFamiliar.OnLogout(pm);
 
             BaseEscort.DeleteEscort(pm);
+			
+			AutoSave.Save();
         }
 
 		private static void EventSink_Connected(ConnectedEventArgs e)
