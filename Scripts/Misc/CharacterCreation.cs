@@ -1111,7 +1111,7 @@ namespace Server.Misc
 
 					break;
 				}
-				case SkillName.Discordance:
+				case SkillName.Enticement:
 				{
 					PackInstrument();
 					break;

@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Bard()
             : base("the bard")
         {
-            this.SetSkill(SkillName.Discordance, 64.0, 100.0);
+            this.SetSkill(SkillName.Enticement, 64.0, 100.0);
             this.SetSkill(SkillName.Musicianship, 64.0, 100.0);
             this.SetSkill(SkillName.Peacemaking, 65.0, 88.0);
             this.SetSkill(SkillName.Provocation, 60.0, 83.0);

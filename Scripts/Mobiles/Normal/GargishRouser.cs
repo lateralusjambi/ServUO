@@ -111,7 +111,6 @@ namespace Server.Mobiles
 		public override bool AcquireOnApproach{ get { return true; } }
 		public override int AcquireOnApproachRange { get { return 8; } }
 
-        public override bool CanDiscord { get { return true; } }
         public override bool CanPeace { get { return true; } }
         public override bool CanProvoke { get { return true; } }
 

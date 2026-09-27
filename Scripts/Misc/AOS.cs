@@ -639,15 +639,10 @@ namespace Server
                     value += 25;
 
                 int defenseMasteryMalus = 0;
-                int discordanceEffect = 0;
-
+                
                 // Defense Mastery gives a -50%/-80% malus to damage.
                 if (Server.Items.DefenseMastery.GetMalus(m, ref defenseMasteryMalus))
                     value -= defenseMasteryMalus;
-
-                // Discordance gives a -2%/-48% malus to damage.
-                if (SkillHandlers.Discordance.GetEffect(m, ref discordanceEffect))
-                    value -= discordanceEffect * 2;
 
                 if (Block.IsBlocking(m))
                     value -= 30;
@@ -744,12 +739,6 @@ namespace Server
                 if (context != null && context.Spell is ReaperFormSpell)
                     value += ((ReaperFormSpell)context.Spell).SwingSpeedBonus;
 
-                int discordanceEffect = 0;
-
-                // Discordance gives a malus of -0/-28% to swing speed.
-                if (SkillHandlers.Discordance.GetEffect(m, ref discordanceEffect))
-                    value -= discordanceEffect;
-
                 if (EssenceOfWindSpell.IsDebuffed(m))
                     value -= EssenceOfWindSpell.GetSSIMalus(m);
 
@@ -821,17 +810,12 @@ namespace Server
 
                 value -= HitLower.GetDefenseMalus(m);
 
-                int discordanceEffect = 0;
                 int surpriseMalus = 0;
 
                 value += Block.GetBonus(m);
 
                 if (SurpriseAttack.GetMalus(m, ref surpriseMalus))
                     value -= surpriseMalus;
-
-                // Defender loses -0/-28% if under the effect of Discordance.
-                if (SkillHandlers.Discordance.GetEffect(m, ref discordanceEffect))
-                    value -= discordanceEffect;
 
                 #region High Seas
                 if (BaseFishPie.IsUnderEffects(m, FishPieEffect.DefChance))
@@ -2395,11 +2379,7 @@ namespace Server
 
         public void AddTo(Mobile m)
         {
-            if (Discordance.UnderPVPEffects(m))
-            {
-                return;
-            }
-
+        
             Remove();
 
             for (int i = 0; i < 5; ++i)

@@ -437,7 +437,7 @@ namespace Server.Gumps
             }),
             new SkillsGumpGroup("Bardic", new SkillName[]
             {
-                SkillName.Discordance,
+                SkillName.Enticement,
                 SkillName.Musicianship,
                 SkillName.Peacemaking,
                 SkillName.Provocation

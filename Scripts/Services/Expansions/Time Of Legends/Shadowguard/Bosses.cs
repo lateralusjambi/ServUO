@@ -606,7 +606,6 @@ namespace Server.Engines.Shadowguard
 		public override Type[] SummonTypes { get { return _SummonTypes; } }
 		private Type[] _SummonTypes = new Type[] { typeof(SkeletalDragon), typeof(LichLord), typeof(WailingBanshee), typeof(FleshGolem) };
 
-        public override bool CanDiscord { get { return true; } }
         public override bool PlayInstrumentSound { get { return false; } }
 
         private DateTime _NextTeleport;

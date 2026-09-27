@@ -66,7 +66,6 @@ namespace Server.Mobiles
             this.AddLoot(LootPack.MedScrolls);
         }
 
-        public override bool CanDiscord { get { return true; } }
         public override bool CanPeace { get { return true; } }
         public override bool CanProvoke { get { return true; } }
 

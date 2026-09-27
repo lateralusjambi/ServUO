@@ -407,7 +407,7 @@ namespace Server.Mobiles
 			SkillName.Parry, SkillName.Healing, SkillName.Hiding, SkillName.Stealing, SkillName.Alchemy, SkillName.AnimalLore,
 			SkillName.ItemID, SkillName.ArmsLore, SkillName.Begging, SkillName.Blacksmith, SkillName.Fletching,
 			SkillName.Peacemaking, SkillName.Camping, SkillName.Carpentry, SkillName.Cartography, SkillName.Cooking,
-			SkillName.DetectHidden, SkillName.Discordance, //??
+			SkillName.DetectHidden, SkillName.Enticement, //??
 			SkillName.EvalInt, SkillName.Fishing, SkillName.Provocation, SkillName.Lockpicking, SkillName.Magery,
 			SkillName.MagicResist, SkillName.Tactics, SkillName.Snooping, SkillName.RemoveTrap, SkillName.Musicianship,
 			SkillName.Poisoning, SkillName.Archery, SkillName.SpiritSpeak, SkillName.Tailoring, SkillName.AnimalTaming,

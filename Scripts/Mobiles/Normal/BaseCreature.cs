@@ -7042,59 +7042,13 @@ namespace Server.Mobiles
         #endregion
 
         #region Barding Skills
-        private long m_NextDiscord;
         private long m_NextPeace;
         private long m_NextProvoke;
-
-        public virtual bool CanDiscord 
-        { 
-            get 
-            {
-                if (Controlled && AbilityProfile != null)
-                {
-                    return AbilityProfile.HasAbility(MagicalAbility.Discordance);
-                }
-
-                return false; 
-            } 
-        }
 
         public virtual bool CanPeace { get { return false; } }
         public virtual bool CanProvoke { get { return false; } }
 
         public virtual bool PlayInstrumentSound { get { return true; } }
-
-        public virtual bool DoDiscord()
-        {
-            Mobile target = GetBardTarget(Controlled);
-
-            if (target == null || !target.InLOS(this) || !InRange(target.Location, BaseInstrument.GetBardRange(this, SkillName.Discordance)) || CheckInstrument() == null)
-                return false;
-
-            // TODO: get mana
-            if (AbilityProfile != null && AbilityProfile.HasAbility(MagicalAbility.Discordance) && Mana < 25)
-            {
-                return false;
-            }
-            else
-            {
-                Mana -= 25;
-            }
-
-            if (Spell != null)
-                Spell = null;
-
-            if (!UseSkill(SkillName.Discordance))
-                return false;
-
-            if (Target is Discordance.DiscordanceTarget)
-            {
-                Target.Invoke(this, target);
-                return true;
-            }
-
-            return false;
-        }
 
         public virtual bool DoPeace()
         {
@@ -7464,12 +7418,7 @@ namespace Server.Mobiles
 
             Mobile combatant = Combatant as Mobile;
 
-            if (combatant != null && CanDiscord && !Discordance.UnderEffects(combatant) && tc >= m_NextDiscord && 0.33 > Utility.RandomDouble())
-            {
-                DoDiscord();
-                m_NextDiscord = tc + Utility.RandomMinMax(5000, 12500);
-            }
-            else if (combatant != null && CanPeace && !Peacemaking.UnderEffects(combatant) && tc >= m_NextPeace && 0.33 > Utility.RandomDouble())
+            if (combatant != null && CanPeace && !Peacemaking.UnderEffects(combatant) && tc >= m_NextPeace && 0.33 > Utility.RandomDouble())
             {
                 DoPeace();
                 m_NextPeace = tc + Utility.RandomMinMax(5000, 12500);

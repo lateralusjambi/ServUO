@@ -2232,7 +2232,7 @@ namespace Server.Mobiles
 
 		private readonly SkillName[] m_AnimalFormRestrictedSkills = new[]
 		{
-			SkillName.ArmsLore, SkillName.Begging, SkillName.Discordance, SkillName.Forensics, SkillName.Inscribe,
+			SkillName.ArmsLore, SkillName.Begging, SkillName.Enticement, SkillName.Forensics, SkillName.Inscribe,
 			SkillName.ItemID, SkillName.Meditation, SkillName.Peacemaking, SkillName.Provocation, SkillName.RemoveTrap,
 			SkillName.SpiritSpeak, SkillName.Stealing, SkillName.TasteID
 		};

@@ -22,11 +22,9 @@ namespace Server.Mobiles
         private bool m_SpawnedHelpers;
         private Timer m_Timer;
 
-        private bool _CanDiscord;
         private bool _CanPeace;
         private bool _CanProvoke;
 
-        public override bool CanDiscord { get { return _CanDiscord; } }
         public override bool CanPeace { get { return _CanPeace; } }
         public override bool CanProvoke { get { return _CanProvoke; } }
 
@@ -275,11 +273,6 @@ namespace Server.Mobiles
                 SetSpecialAbility(SpecialAbility.Heal);
             }
 
-            if (attacker.Skills[SkillName.Discordance].Base > 50)
-            {
-                _CanDiscord = true;
-            }
-
             if (attacker.Skills[SkillName.Peacemaking].Base > 50)
             {
                 _CanPeace = true;
@@ -314,7 +307,6 @@ namespace Server.Mobiles
             Female = false;
             Title = null;
 
-            _CanDiscord = false;
             _CanPeace = false;
             _CanProvoke = false;
 
