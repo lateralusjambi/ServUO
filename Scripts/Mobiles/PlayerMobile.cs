@@ -1627,8 +1627,15 @@ namespace Server.Mobiles
             BaseFamiliar.OnLogout(pm);
 
             BaseEscort.DeleteEscort(pm);
-			
-			AutoSave.Save();
+
+            // Queue the world save after the logout event has fully unwound.
+            // Calling AutoSave.Save() synchronously from OnLogout can block
+            // the server while the logout path is still executing.
+            Timer.DelayCall(TimeSpan.Zero, delegate
+            {
+                if (!World.Saving)
+                    AutoSave.Save();
+            });
         }
 
 		private static void EventSink_Connected(ConnectedEventArgs e)
