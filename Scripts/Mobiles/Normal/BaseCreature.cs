@@ -7052,24 +7052,16 @@ namespace Server.Mobiles
 
         public virtual bool DoPeace()
         {
-            Mobile target = GetBardTarget();
-
-            if (target == null || !target.InLOS(this) || !InRange(target.Location, BaseInstrument.GetBardRange(this, SkillName.Peacemaking)) || CheckInstrument() == null)
+            if (CheckInstrument() == null)
                 return false;
 
             if (Spell != null)
                 Spell = null;
 
-            if (!UseSkill(SkillName.Peacemaking))
-                return false;
-
-            if (Target is Peacemaking.InternalTarget)
-            {
-                Target.Invoke(this, target);
-                return true;
-            }
-
-            return false;
+            // Pre-Publish 16 Peacemaking is an immediate area skill.
+            // UseSkill executes the handler directly; there is no target
+            // cursor to invoke afterward.
+            return UseSkill(SkillName.Peacemaking);
         }
 
         public virtual bool DoProvoke()
