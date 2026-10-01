@@ -546,7 +546,12 @@ namespace Server.Mobiles
             if (list.Count == 0)
                 return;
 
-            m_Table = new Hashtable();
+            // Build the destination table privately, then publish it only after
+            // it is complete. Parallel save workers can call Find() at the same
+            // time while serializing escortables; publishing the Hashtable
+            // before populating it allowed multiple threads to write to the
+            // same Hashtable concurrently.
+            Hashtable table = new Hashtable();
 
             foreach (Region r in list)
             {
@@ -554,8 +559,10 @@ namespace Server.Mobiles
                     continue;
 
                 if (r is Regions.DungeonRegion || r is Regions.TownRegion)
-                    m_Table[r.Name] = new EscortDestinationInfo(r.Name, r);
+                    table[r.Name] = new EscortDestinationInfo(r.Name, r);
             }
+
+            m_Table = table;
         }
 
         public static EDI Find(string name)
