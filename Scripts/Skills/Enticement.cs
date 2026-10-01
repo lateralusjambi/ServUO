@@ -18,6 +18,8 @@ SkillInfo.Table[(int)SkillName.Enticement].Callback = new SkillUseCallback(OnUse
 
 		BaseInstrument.PickInstrument(m, new InstrumentPickedCallback(OnPickedInstrument));
 
+		// Pre-Publish 16: reuse begins when the skill is invoked. Ten seconds
+		// remains provisional until the exact April 2002 delay is resolved.
 		return TimeSpan.FromSeconds(10.0);
 	}
 
@@ -31,11 +33,13 @@ SkillInfo.Table[(int)SkillName.Enticement].Callback = new SkillUseCallback(OnUse
 
 	private class EnticementTarget : Target
 	{
-		private BaseInstrument m_Instrument;
+		private readonly BaseInstrument m_Instrument;
 		private bool m_SetSkillTime = true;
 
 		public EnticementTarget(Mobile from, BaseInstrument instrument)
-			: base(BaseInstrument.GetBardRange(from, SkillName.Enticement), false, TargetFlags.None)
+			// No Publish 16 skill-scaled bard range. Ordinary targeting/client
+			// visibility constrains selection until the exact late-LBR range is resolved.
+			: base(-1, false, TargetFlags.None)
 		{
 			m_Instrument = instrument;
 		}
@@ -64,7 +68,8 @@ SkillInfo.Table[(int)SkillName.Enticement].Callback = new SkillUseCallback(OnUse
 				Mobile targ = (Mobile)targeted;
 
 				m_SetSkillTime = false;
-				from.NextSkillTime = Core.TickCount + 10000;
+				// Exact April 2002 reuse duration remains unresolved. The timer
+				// begins at skill invocation; do not restart it on target completion.
 
 				if (!BaseInstrument.CheckMusicianship(from))
 				{
@@ -79,7 +84,6 @@ SkillInfo.Table[(int)SkillName.Enticement].Callback = new SkillUseCallback(OnUse
 						"Your music fails to attract them.");
 
 					m_Instrument.PlayInstrumentBadly(from);
-					m_Instrument.ConsumeUse(from);
 				}
 				else if (!from.CheckSkill(SkillName.Enticement, 0.0, 100.0))
 				{
@@ -94,12 +98,10 @@ SkillInfo.Table[(int)SkillName.Enticement].Callback = new SkillUseCallback(OnUse
 						"Your music fails to attract them.");
 
 					m_Instrument.PlayInstrumentBadly(from);
-					m_Instrument.ConsumeUse(from);
 				}
 				else
 				{
 					m_Instrument.PlayInstrumentWell(from);
-					m_Instrument.ConsumeUse(from);
 
 					targ.SayTo(
 						targ,
