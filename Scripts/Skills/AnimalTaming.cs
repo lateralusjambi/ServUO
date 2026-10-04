@@ -120,7 +120,7 @@ namespace Server.SkillHandlers
 			private bool m_SetSkillTime = true;
 
 			public InternalTarget(Mobile m)
-				: base(Core.AOS ? 3 : 2, false, TargetFlags.None)
+				: base(3, false, TargetFlags.None)
 			{
                 BeginTimeout(m, TimeSpan.FromSeconds(30.0));
             }
@@ -167,7 +167,7 @@ namespace Server.SkillHandlers
 						{
 							creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 502801, from.NetState); // You can't tame that!
 						}
-						else if (from.Followers + creature.ControlSlots > from.FollowersMax)
+						else if (false && from.Followers + creature.ControlSlots > from.FollowersMax)
 						{
 							from.SendLocalizedMessage(1049611); // You have too many followers to tame that creature.
 						}
@@ -181,7 +181,7 @@ namespace Server.SkillHandlers
 							creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 1054025, from.NetState);
 								// You must subdue this creature before you can tame it!
 						}
-						else if (DarkWolfFamiliar.CheckMastery(from, creature) || from.Skills[SkillName.AnimalTaming].Value >= creature.CurrentTameSkill)
+						else if (creature.Owners.Contains(from) || DarkWolfFamiliar.CheckMastery(from, creature) || from.Skills[SkillName.AnimalTaming].Value >= creature.CurrentTameSkill)
 						{
 							FactionWarHorse warHorse = creature as FactionWarHorse;
 
@@ -244,7 +244,7 @@ namespace Server.SkillHandlers
 								from.LocalOverheadMessage(MessageType.Emote, 0x59, 1010597); // You start to tame the creature.
 								from.NonlocalOverheadMessage(MessageType.Emote, 0x59, 1010598); // *begins taming a creature.*
 
-								new InternalTimer(from, creature, Utility.Random(3, 2)).Start();
+								new InternalTimer(from, creature, 5).Start();
 							}
 						}
 						else
@@ -275,7 +275,7 @@ namespace Server.SkillHandlers
 				private bool m_Paralyzed;
 
 				public InternalTimer(Mobile tamer, BaseCreature creature, int count)
-					: base(TimeSpan.FromSeconds(3.0), TimeSpan.FromSeconds(3.0), count)
+					: base(TimeSpan.FromSeconds(2.0), TimeSpan.FromSeconds(2.0), count)
 				{
 					m_Tamer = tamer;
 					m_Creature = creature;
@@ -292,7 +292,7 @@ namespace Server.SkillHandlers
 					DamageEntry de = m_Creature.FindMostRecentDamageEntry(false);
 					bool alreadyOwned = m_Creature.Owners.Contains(m_Tamer);
 
-					if (!m_Tamer.InRange(m_Creature, Core.AOS ? 7 : 6))
+					if (!m_Tamer.InRange(m_Creature, 7))
 					{
 						m_BeingTamed.Remove(m_Creature);
 						m_Tamer.NextSkillTime = Core.TickCount;
@@ -308,7 +308,7 @@ namespace Server.SkillHandlers
 							// You are dead, and cannot continue taming.
 						Stop();
 					}
-					else if (!m_Tamer.CanSee(m_Creature) || !m_Tamer.InLOS(m_Creature) || !CanPath())
+					else if (!m_Tamer.CanSee(m_Creature) || !m_Tamer.InLOS(m_Creature))
 					{
                         m_BeingTamed.Remove(m_Creature);
 						m_Tamer.NextSkillTime = Core.TickCount;
@@ -373,7 +373,7 @@ namespace Server.SkillHandlers
 								break;
 						}
 
-						if (!alreadyOwned) // Passively check animal lore for gain
+						if (false && !alreadyOwned) // Disabled: passive Lore checks are not part of classic taming
 						{
 							m_Tamer.CheckTargetSkill(SkillName.AnimalLore, m_Creature, 0.0, 120.0);
 						}
@@ -394,7 +394,7 @@ namespace Server.SkillHandlers
 							m_Paralyzed = true;
 						}
 
-						if (!alreadyOwned) // Passively check animal lore for gain
+						if (false && !alreadyOwned) // Disabled: passive Lore checks are not part of classic taming
 						{
 							m_Tamer.CheckTargetSkill(SkillName.AnimalLore, m_Creature, 0.0, 120.0);
 						}
@@ -412,7 +412,7 @@ namespace Server.SkillHandlers
 						if (necroMastery || alreadyOwned ||
 							m_Tamer.CheckTargetSkill(SkillName.AnimalTaming, m_Creature, minSkill - 25.0, minSkill + 25.0))
 						{
-                            if (m_Creature.Owners.Count == 0) // First tame
+                            if (false && m_Creature.Owners.Count == 0) // Disabled P16+ skill loss
                             {
                                 if (m_Creature is GreaterDragon)
                                 {
@@ -429,7 +429,7 @@ namespace Server.SkillHandlers
                                     ScaleSkills(m_Creature, 0.90, true); // 90% of original skills
                                 }
                             }
-                            else
+                            else if (false)
                             {
                                 ScaleSkills(m_Creature, 0.90, false); // 90% of original skills
                             }
@@ -454,7 +454,7 @@ namespace Server.SkillHandlers
                                 m_Creature.Owners.Add(m_Tamer);
                             }
 
-                            PetTrainingHelper.GetAbilityProfile(m_Creature, true).OnTame();
+                            // Classic taming does not invoke later pet-training hooks.
 
                             EventSink.InvokeTameCreature(new TameCreatureEventArgs(m_Tamer, m_Creature));
 
@@ -467,24 +467,7 @@ namespace Server.SkillHandlers
 					}
 				}
 
-				private bool CanPath()
-				{
-					IPoint3D p = m_Tamer;
-
-					if (p == null)
-					{
-						return false;
-					}
-
-					if (m_Creature.InRange(new Point3D(p), 1))
-					{
-						return true;
-					}
-
-					MovementPath path = new MovementPath(m_Creature, new Point3D(p));
-					return path.Success;
-				}
-			}
+	
 		}
 	}
 }
