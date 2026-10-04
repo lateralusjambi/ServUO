@@ -167,10 +167,7 @@ namespace Server.SkillHandlers
 						{
 							creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 502801, from.NetState); // You can't tame that!
 						}
-						else if (false && from.Followers + creature.ControlSlots > from.FollowersMax)
-						{
-							from.SendLocalizedMessage(1049611); // You have too many followers to tame that creature.
-						}
+						
 						else if (creature.Owners.Count >= BaseCreature.MaxOwners && !creature.Owners.Contains(from))
 						{
 							creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 1005615, from.NetState);
@@ -373,10 +370,7 @@ namespace Server.SkillHandlers
 								break;
 						}
 
-						if (false && !alreadyOwned) // Disabled: passive Lore checks are not part of classic taming
-						{
-							m_Tamer.CheckTargetSkill(SkillName.AnimalLore, m_Creature, 0.0, 120.0);
-						}
+						
 
 						if (m_Creature.Paralyzed)
 						{
@@ -394,10 +388,7 @@ namespace Server.SkillHandlers
 							m_Paralyzed = true;
 						}
 
-						if (false && !alreadyOwned) // Disabled: passive Lore checks are not part of classic taming
-						{
-							m_Tamer.CheckTargetSkill(SkillName.AnimalLore, m_Creature, 0.0, 120.0);
-						}
+						
 
 						double minSkill = m_Creature.CurrentTameSkill + (m_Creature.Owners.Count * 6.0);
                         bool necroMastery = DarkWolfFamiliar.CheckMastery(m_Tamer, m_Creature);
@@ -412,27 +403,8 @@ namespace Server.SkillHandlers
 						if (necroMastery || alreadyOwned ||
 							m_Tamer.CheckTargetSkill(SkillName.AnimalTaming, m_Creature, minSkill - 25.0, minSkill + 25.0))
 						{
-                            if (false && m_Creature.Owners.Count == 0) // Disabled P16+ skill loss
-                            {
-                                if (m_Creature is GreaterDragon)
-                                {
-                                    ScaleSkills(m_Creature, 0.72, 0.90, true); // 72% of original skills trainable to 90%
-                                    m_Creature.Skills[SkillName.Magery].Base = m_Creature.Skills[SkillName.Magery].Cap;
-                                    // Greater dragons have a 90% cap reduction and 90% skill reduction on magery
-                                }
-                                else if (m_Paralyzed)
-                                {
-                                    ScaleSkills(m_Creature, 0.86, true); // 86% of original skills if they were paralyzed during the taming
-                                }
-                                else
-                                {
-                                    ScaleSkills(m_Creature, 0.90, true); // 90% of original skills
-                                }
-                            }
-                            else if (false)
-                            {
-                                ScaleSkills(m_Creature, 0.90, false); // 90% of original skills
-                            }
+                            
+                            
 
 							if (alreadyOwned)
 							{
@@ -467,7 +439,7 @@ namespace Server.SkillHandlers
 					}
 				}
 
-	
+			}
 		}
 	}
 }
