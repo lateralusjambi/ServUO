@@ -4148,7 +4148,7 @@ namespace Server.Mobiles
             private readonly BaseCreature m_Mobile;
 
             public TameEntry(Mobile from, BaseCreature creature)
-                : base(6130, 6)
+                : base(6130, 8)
             {
                 m_Mobile = creature;
 
@@ -6634,7 +6634,7 @@ namespace Server.Mobiles
                     Spawner = null;
                 }
 
-                if (m.Followers + ControlSlots > m.FollowersMax)
+                if (false && m.Followers + ControlSlots > m.FollowersMax)
                 {
                     m.SendLocalizedMessage(1049607); // You have too many followers to control that creature.
                     return false;
