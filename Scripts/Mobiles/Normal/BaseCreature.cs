@@ -6634,11 +6634,7 @@ namespace Server.Mobiles
                     Spawner = null;
                 }
 
-                if (false && m.Followers + ControlSlots > m.FollowersMax)
-                {
-                    m.SendLocalizedMessage(1049607); // You have too many followers to control that creature.
-                    return false;
-                }
+                
 
                 CurrentWayPoint = null; //so tamed animals don't try to go back
 
