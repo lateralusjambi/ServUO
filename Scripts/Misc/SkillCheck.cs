@@ -37,7 +37,11 @@ namespace Server.Misc
 		/// </summary>
 		private const int LocationSize = 4;
 
-		public static bool GGSActive { get { return !Siege.SiegeShard; } }
+		// April 22, 2002 LBR snapshot: GGS was introduced with Publish 16.
+		// Keep the switch explicit so later-era rulesets can still opt in.
+		public static bool PrePublish16Rules { get { return Config.Get("Era.PrePublish16", true); } }
+
+		public static bool GGSActive { get { return !PrePublish16Rules && !Siege.SiegeShard; } }
 
 		static SkillCheck()
 		{
