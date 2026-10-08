@@ -305,6 +305,14 @@ namespace Server.SkillHandlers
 							// You are dead, and cannot continue taming.
 						Stop();
 					}
+					// Temporary GM-only diagnostics: compare visibility and LOS at each tame timer tick.
+					if (m_Tamer.AccessLevel >= AccessLevel.GameMaster)
+					{
+						m_Tamer.SendMessage(0x35, "[Tame LOS] tick={0}/{1} tamer={2} animal={3} map={4} CanSee={5} InLOS={6}",
+							m_Count, m_MaxCount, m_Tamer.Location, m_Creature.Location, m_Tamer.Map,
+							m_Tamer.CanSee(m_Creature), m_Tamer.InLOS(m_Creature));
+					}
+
 					else if (!m_Tamer.CanSee(m_Creature) || !m_Tamer.InLOS(m_Creature))
 					{
                         m_BeingTamed.Remove(m_Creature);
