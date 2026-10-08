@@ -308,6 +308,9 @@ namespace Server.SkillHandlers
 					// Temporary GM-only diagnostics: compare visibility and LOS at each tame timer tick.
 					if (m_Tamer.AccessLevel >= AccessLevel.GameMaster)
 					{
+						Console.WriteLine("[Tame LOS CONSOLE] tick={0}/{1} tamer={2} animal={3} map={4} CanSee={5} InLOS={6}",
+							m_Count, m_MaxCount, m_Tamer.Location, m_Creature.Location, m_Tamer.Map,
+							m_Tamer.CanSee(m_Creature), m_Tamer.InLOS(m_Creature));
 						m_Tamer.SendMessage(0x35, "[Tame LOS] tick={0}/{1} tamer={2} animal={3} map={4} CanSee={5} InLOS={6}",
 							m_Count, m_MaxCount, m_Tamer.Location, m_Creature.Location, m_Tamer.Map,
 							m_Tamer.CanSee(m_Creature), m_Tamer.InLOS(m_Creature));
