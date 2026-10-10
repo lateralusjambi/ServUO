@@ -163,10 +163,6 @@ namespace Server.SkillHandlers
 							creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 1049652, from.NetState);
 								// That creature can only be tamed by females.
 						}
-						else if (creature is CuSidhe && from.Race != Race.Elf)
-						{
-							creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 502801, from.NetState); // You can't tame that!
-						}
 						
 						else if (creature.Owners.Count >= BaseCreature.MaxOwners && !creature.Owners.Contains(from))
 						{
@@ -178,7 +174,7 @@ namespace Server.SkillHandlers
 							creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 1054025, from.NetState);
 								// You must subdue this creature before you can tame it!
 						}
-						else if (creature.Owners.Contains(from) || DarkWolfFamiliar.CheckMastery(from, creature) || from.Skills[SkillName.AnimalTaming].Value >= creature.CurrentTameSkill)
+						else if (creature.Owners.Contains(from) || from.Skills[SkillName.AnimalTaming].Value >= creature.CurrentTameSkill)
 						{
 							FactionWarHorse warHorse = creature as FactionWarHorse;
 
@@ -391,16 +387,10 @@ namespace Server.SkillHandlers
 						
 
 						double minSkill = m_Creature.CurrentTameSkill + (m_Creature.Owners.Count * 6.0);
-                        bool necroMastery = DarkWolfFamiliar.CheckMastery(m_Tamer, m_Creature);
-
-                        if (minSkill > -24.9 && necroMastery)
-						{
-							minSkill = -24.9; // 50% at 0.0?
-						}
 
 						minSkill += 24.9;
 
-						if (necroMastery || alreadyOwned ||
+						if (alreadyOwned ||
 							m_Tamer.CheckTargetSkill(SkillName.AnimalTaming, m_Creature, minSkill - 25.0, minSkill + 25.0))
 						{
                             
