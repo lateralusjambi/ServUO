@@ -394,7 +394,9 @@ namespace Server.SkillHandlers
 
 						
 
-						double minSkill = m_Creature.CurrentTameSkill + (m_Creature.Owners.Count * 6.0);
+						// Keep the legacy RunUO success-roll modifier separate from the historical eligibility threshold.
+						// Do not let post-LBR pet-training changes to CurrentTameSkill affect the roll.
+						double minSkill = m_Creature.MinTameSkill + (m_Creature.Owners.Count * 6.0);
 
 						minSkill += 24.9;
 
