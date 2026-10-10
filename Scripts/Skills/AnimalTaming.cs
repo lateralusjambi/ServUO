@@ -53,6 +53,14 @@ namespace Server.SkillHandlers
 			return TimeSpan.FromSeconds(40.0);
 		}
 
+		// Pre-Publish 16: historical minimum skill increases by 4.8 per squared distinct prior owner.
+		// Use MinTameSkill to avoid post-LBR pet-training adjustments to CurrentTameSkill.
+		public static double GetHistoricalMinimumTamingSkill(BaseCreature creature)
+		{
+			int owners = creature.Owners.Count;
+			return creature.MinTameSkill + (4.8 * owners * owners);
+		}
+
 		public static bool MustBeSubdued(BaseCreature bc)
 		{
 			if (bc.Owners.Count > 0)
@@ -174,7 +182,7 @@ namespace Server.SkillHandlers
 							creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 1054025, from.NetState);
 								// You must subdue this creature before you can tame it!
 						}
-						else if (creature.Owners.Contains(from) || from.Skills[SkillName.AnimalTaming].Value >= creature.CurrentTameSkill)
+						else if (creature.Owners.Contains(from) || from.Skills[SkillName.AnimalTaming].Value >= GetHistoricalMinimumTamingSkill(creature))
 						{
 							FactionWarHorse warHorse = creature as FactionWarHorse;
 
