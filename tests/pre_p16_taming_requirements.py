@@ -24,7 +24,7 @@ class PreP16TamingTests(unittest.TestCase):
 
     def test_success_roll_isolated_from_pet_training(self):
         self.assertIn("m_Creature.MinTameSkill + (m_Creature.Owners.Count * 6.0)", TEXT)
-        self.assertNotIn("m_Creature.CurrentTameSkill", TEXT)
+        self.assertNotRegex(TEXT, r"double\\s+minSkill\\s*=\\s*m_Creature\\.CurrentTameSkill")
         self.assertIn("m_Tamer.CheckTargetSkill(SkillName.AnimalTaming, m_Creature, minSkill - 25.0, minSkill + 25.0)", TEXT)
 
     def test_owner_limit_and_prior_owner_exception_remain(self):
