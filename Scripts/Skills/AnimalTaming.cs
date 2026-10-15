@@ -53,6 +53,14 @@ namespace Server.SkillHandlers
 			return TimeSpan.FromSeconds(40.0);
 		}
 
+		// Reconstructed pre-Publish 16 eligibility penalty for previous owners.
+		// This does not alter the separate success-roll difficulty calculation.
+		public static double GetPrePublish16TameRequirement(BaseCreature creature)
+		{
+			int previousOwners = creature.Owners.Count;
+			return creature.CurrentTameSkill + (4.8 * previousOwners * previousOwners);
+		}
+
 		public static bool MustBeSubdued(BaseCreature bc)
 		{
 			if (bc.Owners.Count > 0)
@@ -174,7 +182,7 @@ namespace Server.SkillHandlers
 							creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 1054025, from.NetState);
 								// You must subdue this creature before you can tame it!
 						}
-						else if (creature.Owners.Contains(from) || from.Skills[SkillName.AnimalTaming].Value >= creature.CurrentTameSkill)
+						else if (creature.Owners.Contains(from) || from.Skills[SkillName.AnimalTaming].Value >= GetPrePublish16TameRequirement(creature))
 						{
 							FactionWarHorse warHorse = creature as FactionWarHorse;
 
