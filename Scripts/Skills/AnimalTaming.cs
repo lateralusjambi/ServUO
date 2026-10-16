@@ -394,7 +394,7 @@ namespace Server.SkillHandlers
 
 						
 
-						double minSkill = m_Creature.CurrentTameSkill + (m_Creature.Owners.Count * 6.0);
+						double minSkill = GetRequiredTamingSkill(m_Creature);
 
 						minSkill += 24.9;
 
