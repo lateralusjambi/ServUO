@@ -43,3 +43,7 @@
 
 !/Data/*
 !/bin/rosyln/*
+
+# Local ServUO world saves and recovery backups
+/Most Recent/
+/Saves-BROKEN-*/
