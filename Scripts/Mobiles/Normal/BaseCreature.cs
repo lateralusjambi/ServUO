@@ -1483,11 +1483,57 @@ namespace Server.Mobiles
             return base.ApplyNameSuffix(suffix);
         }
 
+        private List<Mobile> m_Pre16ControlOwners;
+        private int m_Pre16DistinctOwnerCount;
+        private PrePublish16Orneriness m_Pre16Orneriness = new PrePublish16Orneriness();
+
+        public static bool Pre16ControlEnabled
+        {
+            get { return SkillCheck.PrePublish16Rules && Config.Get("Era.PrePublish16Control", false); }
+        }
+
+        private void EnsurePre16ControlOwners()
+        {
+            if (m_Pre16ControlOwners == null)
+            {
+                m_Pre16ControlOwners = m_Owners == null ? new List<Mobile>() :
+                    new List<Mobile>(m_Owners.Where(owner => owner != null).Distinct());
+                m_Pre16DistinctOwnerCount = m_Pre16ControlOwners.Count;
+            }
+            if (ControlMaster != null && !m_Pre16ControlOwners.Contains(ControlMaster))
+            {
+                m_Pre16ControlOwners.Add(ControlMaster);
+                m_Pre16DistinctOwnerCount++;
+            }
+        }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public int Pre16OrnerinessLevel { get { return m_Pre16Orneriness.Level; } }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public double Pre16ControlDifficulty
+        {
+            get { return PrePublish16ControlModel.Difficulty(MinTameSkill, m_Pre16Orneriness.Level); }
+        }
+
+        public double GetPre16PlayerControlChance(Mobile m, bool useBaseSkill)
+        {
+            if (Summoned || MinTameSkill <= 29.1)
+                return 1.0;
+            double taming = useBaseSkill ? m.Skills[SkillName.AnimalTaming].Base :
+                m.Skills[SkillName.AnimalTaming].Value;
+            double lore = useBaseSkill ? m.Skills[SkillName.AnimalLore].Base :
+                m.Skills[SkillName.AnimalLore].Value;
+            return PrePublish16ControlModel.Chance(taming, lore, Pre16ControlDifficulty,
+                Loyalty, MaxLoyalty);
+        }
+
         public virtual bool CheckControlChance(Mobile m)
         {
             if (GetControlChance(m) > Utility.RandomDouble())
             {
-                Loyalty += 1;
+                if (!Pre16ControlEnabled || (!Summoned && MinTameSkill > 29.1))
+                    Loyalty += 1;
                 return true;
             }
 
@@ -1518,6 +1564,13 @@ namespace Server.Mobiles
 
         public virtual double GetControlChance(Mobile m, bool useBaseSkill)
         {
+            if (Pre16ControlEnabled)
+            {
+                if (m.AccessLevel >= AccessLevel.GameMaster)
+                    return 1.0;
+                return GetPre16PlayerControlChance(m, useBaseSkill);
+            }
+
             if (m_CurrentTameSkill <= 29.1 || m_bSummoned || m.AccessLevel >= AccessLevel.GameMaster)
             {
                 return 1.0;
@@ -2439,7 +2492,12 @@ namespace Server.Mobiles
         {
             base.Serialize(writer);
 
-            writer.Write(29); // version
+            writer.Write(30); // version: independent pre-P16 control history
+            EnsurePre16ControlOwners();
+            writer.Write(m_Pre16Orneriness.Level);
+            writer.Write(m_Pre16Orneriness.PenalizedOwners);
+            writer.Write(m_Pre16ControlOwners, true);
+            writer.Write(m_Pre16DistinctOwnerCount);
 
             writer.Write(IsSoulbound);
 
@@ -2626,6 +2684,13 @@ namespace Server.Mobiles
 
             switch (version)
             {
+                case 30:
+                    int pre16Level = reader.ReadInt();
+                    int pre16PenalizedOwners = reader.ReadInt();
+                    m_Pre16Orneriness = new PrePublish16Orneriness(pre16Level, pre16PenalizedOwners);
+                    m_Pre16ControlOwners = reader.ReadStrongMobileList();
+                    m_Pre16DistinctOwnerCount = Math.Max(m_Pre16ControlOwners.Count, reader.ReadInt());
+                    goto case 29;
                 case 29:
                     IsSoulbound = reader.ReadBool();
                     goto case 28;
@@ -6612,6 +6677,18 @@ namespace Server.Mobiles
 
         public bool SetControlMaster(Mobile m)
         {
+            if (Pre16ControlEnabled && !Summoned)
+            {
+                EnsurePre16ControlOwners();
+                if (m == null && Controlled && ControlMaster != null && Tamable)
+                    m_Pre16Orneriness.Release(m_Pre16DistinctOwnerCount);
+                else if (m != null && !m_Pre16ControlOwners.Contains(m))
+                {
+                    m_Pre16ControlOwners.Add(m);
+                    m_Pre16DistinctOwnerCount++;
+                }
+            }
+
             if (m == null)
             {
                 ControlMaster = null;
@@ -6683,6 +6760,19 @@ namespace Server.Mobiles
 
         public virtual void OnAfterTame(Mobile tamer)
         {
+            if (Pre16ControlEnabled && !Summoned)
+            {
+                Loyalty = MaxLoyalty / 10; // newly tamed pets start at low loyalty
+                // Linear Lore chance is provisional; this is not Peacemaking.
+                if (m_Pre16Orneriness.Level > 0 &&
+                    Utility.RandomDouble() < Math.Max(0.0, Math.Min(1.0,
+                        tamer.Skills[SkillName.AnimalLore].Value / 100.0)))
+                {
+                    m_Pre16Orneriness.Calm();
+                    tamer.SendMessage("You speak gently to the pet and it seems calmer.");
+                }
+            }
+
             if (StatLossAfterTame && (!PetTrainingHelper.Enabled || Owners.Count == 0))
             {
                 AnimalTaming.ScaleStats(this, 0.5);
