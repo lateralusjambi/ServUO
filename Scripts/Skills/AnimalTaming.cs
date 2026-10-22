@@ -394,7 +394,7 @@ namespace Server.SkillHandlers
 
 						
 
-						double minSkill = GetRequiredTamingSkill(m_Creature);
+						double minSkill = GetPrePublish16TameRequirement(m_Creature);
 
 						minSkill += 24.9;
 
