@@ -1,11 +1,12 @@
 # Prioritized boundary defects and historical uncertainties
 
-Assessment against tested code checkpoint `ca907ece`.
+Control runtime baseline: `ca907ece`. Bonding gate is a subsequent code change;
+its client acceptance remains pending. See [bonding boundary](pre-p16-bonding.md).
 Priority is based on gameplay impact and evidence strength, not research age.
 
 | Priority / ID | Classification | Finding and impact | Next bounded action / closure condition |
 |---|---|---|---|
-| P0 PET-BOND | RED boundary defect; reachable code, not observed bonding | BaseCreature.BondingEnabled is true; IsBondable has no pre-P16 gate; accepted feeding can set BondingBegin and eventually IsBonded. Bonding/ghost pets/resurrection are explicitly in the July 23, 2002 P16 changes. Resetting IsBonded only at tame time does not stop later feeding from bonding. | Audit all entry points and serialized existing bonded state, then gate bonding, ghost behavior and resurrection for the April 22 ruleset. Ordinary feeding and ordinary pet death must still work; non-pre-P16 behavior must remain intact. |
+| P0 PET-BOND | Gate implemented; client acceptance pending | BondingEnabled now follows the era switch; feeding and direct assignments cannot start/complete bonding, stored bonded flags cannot select ghost death, and pet resurrection is blocked under pre-P16 rules. Full build and compiled-assembly checks cover both era modes. No existing bonded/ghost pets reported; no migration performed. | Run the short feeding/GM-property/death/restart checks in pre-p16-bonding.md. Preserve the separate feeding-semantics HOLD and later-world-content audit. |
 | P1 PET-LORE | RED boundary defect candidate confirmed at handler level | AnimalLore.cs still contains numeric lore gumps and 100/110 skill-tier access rules. The P16 note describes those displays/restrictions as changes. | Specify the old loyalty/food output and access behavior, then replace the pre-P16 handler path. Test success/failure and modern negative path. |
 | P1 PET-LIMITS | HOLD: boundary audit required | Official P16 introduces five weighted control slots and adds stable slots beyond the earlier 2-5 system. ControlSlots and follower machinery still exist; existence alone does not prove each path is reachable under current settings. | Trace tame, transfer, summon, mount, stable/claim and login auto-stable paths. Record which paths execute before removing/gating P16 limits. |
 | P1 PET-FEED | HOLD: source conflict plus reachable differing implementation | At LBR, BaseCreature.CheckFeed uses a 50% per-item chance to add 10 loyalty; the maximum-loyalty branch is Core.SE. The April 2001 PRC guide describes feeding as restoring maximum loyalty, but the July 2002 P16 notes explicitly promise maximum loyalty for any quantity. The distinction may involve quantity or an earlier change. | Resolve quantity/date semantics with pre-cutoff evidence. Test one accepted item and stacks, low loyalty, maximum clamp and feeding while bonding is disabled. Do not silently import the P16 any-quantity guarantee. |
@@ -18,11 +19,9 @@ Priority is based on gameplay impact and evidence strength, not research age.
 
 ## Recommended next implementation
 
-Start with PET-BOND. It is a concrete post-cutoff feature with a reachable
-entry point and stronger evidence than a new attempt to infer a probability
-curve. Audit feeding and pet-death interactions as dependencies, but keep the
-first patch bounded and regression-test behavior with the era gate both on
-and off. Do not change feeding probability during that patch without first
+Complete PET-BOND client acceptance first. The bounded era gate is implemented
+and automated checks cover both modes. Next, specify the pre-P16 Animal Lore
+output/access path (PET-LORE). Do not change feeding probability without
 resolving PET-FEED.
 
 ## Sources and implementation anchors
@@ -45,4 +44,5 @@ resolving PET-FEED.
   Scripts/Skills/AnimalTaming.cs; Scripts/Mobiles/AI/BaseAI.cs;
   Scripts/Mobiles/NPCs/AnimalTrainer.cs; Scripts/Mobiles/PlayerMobile.cs.
 
-No gameplay fix is included in this documentation checkpoint.
+The bonding gate is the only gameplay change after the recorded control baseline;
+other unresolved rows remain open.

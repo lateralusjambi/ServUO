@@ -12,6 +12,7 @@ Start with:
 
 * [Runtime validation and limits](runtime-validation.md)
 * [Provisional pet-control specification](pre-p16-control.md)
+* [Bonding boundary and pending client checks](pre-p16-bonding.md)
 * [Prioritized open questions and boundary defects](uncertainties.md)
 
 ## Module register
@@ -23,7 +24,8 @@ Start with:
 | Animal Taming completion roll | Wrong helper name corrected; fresh-bull taming succeeded after integration | Success probabilities above eligibility remain provisional; never use the control tables as taming-success evidence. |
 | Pet control probability | Provisional Runesabre-calibrated model; C# acceptance tests pass; runtime diagnostic exercised | Lookup/interpolation and difficulty/loyalty scaling are reconstruction choices, not a recovered OSI algorithm. |
 | Pet ownership / orneriness / calming | Selected first/second-owner transitions and repeat-release behavior passed; nonzero state survived restart | General release/feral semantics and intermediate Lore calming odds remain provisional. |
-| Feeding / bonding / pet death / Animal Lore UI / follower and stable limits | Not reconciled as a complete module | Bonding is still reachable in code. See the prioritized ledger before treating pets as era-complete. |
+| Bonding / bonded death / pet resurrection | Pre-P16 gate implemented; automated checks run against compiled assemblies; client acceptance pending | No existing pet ghosts reported. No save migration; see the bonding boundary record. |
+| Feeding / Animal Lore UI / follower and stable limits | Not reconciled as a complete module | Feeding semantics and remaining post-cutoff paths still require reconciliation. See the prioritized ledger. |
 | Magery, combat, healing, crafting, notoriety, housing and world content | No completion established by this checkpoint | Repository-era inventories are search aids, not proof that gameplay branches are correctly gated. |
 
 ## Evidence and workflow

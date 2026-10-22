@@ -431,7 +431,8 @@ namespace Server.Mobiles
         }
 
         #region Bonding
-        public const bool BondingEnabled = true;
+        // Bonding and pet resurrection were introduced after the April 22, 2002 cutoff.
+        public static bool BondingEnabled { get { return !SkillCheck.PrePublish16Rules; } }
 
         public virtual bool IsBondable { get { return (BondingEnabled && !Summoned && !m_Allured && !IsGolem); } }
         public virtual TimeSpan BondingDelay { get { return TimeSpan.FromDays(7.0); } }
@@ -485,10 +486,10 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public bool IsBonded
         {
-            get { return m_IsBonded; }
+            get { return BondingEnabled && m_IsBonded; }
             set
             {
-                m_IsBonded = value;
+                m_IsBonded = BondingEnabled && value;
                 InvalidateProperties();
             }
         }
@@ -496,7 +497,11 @@ namespace Server.Mobiles
         public bool IsDeadPet { get { return m_IsDeadPet; } set { m_IsDeadPet = value; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public DateTime BondingBegin { get { return m_BondingBegin; } set { m_BondingBegin = value; } }
+        public DateTime BondingBegin
+        {
+            get { return BondingEnabled ? m_BondingBegin : DateTime.MinValue; }
+            set { m_BondingBegin = BondingEnabled ? value : DateTime.MinValue; }
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public DateTime OwnerAbandonTime { get { return m_OwnerAbandonTime; } set { m_OwnerAbandonTime = value; } }
@@ -3306,7 +3311,7 @@ namespace Server.Mobiles
                             Animate(Body.IsAnimal ? 3 : Body.IsHuman ? 34 : 17, 5, 1, true, false, 0);
                         }
 
-                        if (IsBondable && !IsBonded)
+                        if (BondingEnabled && IsBondable && !IsBonded)
                         {
                             Mobile master = m_ControlMaster;
 
@@ -7749,7 +7754,7 @@ namespace Server.Mobiles
 
         public virtual void ResurrectPet()
         {
-            if (!IsDeadPet)
+            if (!BondingEnabled || !IsDeadPet)
             {
                 return;
             }
