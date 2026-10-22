@@ -3,7 +3,7 @@ using System;
 namespace Server.Misc
 {
     // A provisional reconstruction calibrated to the 13 published Runesabre rows.
-    // This is NOT a recovered OSI formula. See docs/pre-p16-control.md.
+    // This is NOT a recovered OSI formula. See ProjectDocs/pre-p16-control.md.
     public static class PrePublish16ControlModel
     {
         private static readonly double[] TamingKnots = { 0, 50, 90, 100 };

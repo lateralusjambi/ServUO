@@ -11,6 +11,10 @@
 
 ServUO is a community driven Ultima Online Server Emulator written in C#.
 
+This fork's pre-Publish 16 reconstruction targets April 22, 2002.
+Start with the [current project baseline](ProjectDocs/README.md) on
+`pre-p16-integration` for validated work and remaining historical uncertainties.
+
 
 ### Website
 
