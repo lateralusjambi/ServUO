@@ -168,7 +168,7 @@ namespace Server.Engines.NewMagincia
             pet.ControlTarget = null;
             pet.ControlOrder = OrderType.Stay;
             pet.Internalize();
-            pet.SetControlMaster(null);
+            pet.ClearControlMasterForStabling();
             pet.SummonMaster = null;
             pet.IsStabled = true;
             pet.Loyalty = BaseCreature.MaxLoyalty;
@@ -184,7 +184,7 @@ namespace Server.Engines.NewMagincia
             pet.ControlOrder = OrderType.Stay;
             pet.Internalize();
 
-            pet.SetControlMaster(null);
+            pet.ClearControlMasterForStabling();
             pet.SummonMaster = null;
 
             pet.IsStabled = true;

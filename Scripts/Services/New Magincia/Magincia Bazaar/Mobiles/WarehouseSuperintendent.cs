@@ -92,7 +92,7 @@ namespace Server.Engines.NewMagincia
                         bc.IsStabled = true;
                         bc.Loyalty = BaseCreature.MaxLoyalty; // Wonderfully happy
                         from.Stabled.Add(bc);
-                        bc.SetControlMaster(null);
+                        bc.ClearControlMasterForStabling();
                         bc.SummonMaster = null;
 
                         entry.RemovePet(bc);

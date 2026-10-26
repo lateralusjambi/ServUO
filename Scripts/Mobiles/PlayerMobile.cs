@@ -6919,7 +6919,7 @@ namespace Server.Mobiles
 					pet.ControlOrder = OrderType.Stay;
 					pet.Internalize();
 
-					pet.SetControlMaster(null);
+					pet.ClearControlMasterForStabling();
 					pet.SummonMaster = null;
 
 					pet.IsStabled = true;

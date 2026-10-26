@@ -192,7 +192,7 @@ namespace Server.Engines.NewMagincia
             m_Pet.ControlOrder = OrderType.Stay;
             m_Pet.Internalize();
 
-            m_Pet.SetControlMaster(null);
+            m_Pet.ClearControlMasterForStabling();
             m_Pet.SummonMaster = null;
 
             m_Pet.IsStabled = true;

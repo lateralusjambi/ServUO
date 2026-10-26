@@ -26,7 +26,7 @@ public static class PetLimitsAudit
   var trainer=new AnimalTrainer((Serial)(serial++));var pet=Pet();pet.ControlSlots=1;
   owner.Followers=5;Console.WriteLine("CanClaim at 5 slots + 1="+trainer.CanClaim(owner,pet));
   owner.Followers=0;pet.SetControlMaster(owner);Console.WriteLine("pre-stable level="+pet.Pre16OrnerinessLevel+" D="+pet.Pre16ControlDifficulty);
-  pet.Internalize();pet.SetControlMaster(null);pet.SummonMaster=null;pet.IsStabled=true;pet.StabledBy=owner;
+  pet.Internalize();pet.ClearControlMasterForStabling();pet.SummonMaster=null;pet.IsStabled=true;pet.StabledBy=owner;
   Console.WriteLine("replayed EndStable ownership sequence: level="+pet.Pre16OrnerinessLevel+" D="+pet.Pre16ControlDifficulty);
   pet.SetControlMaster(owner);pet.IsStabled=false;pet.StabledBy=null;
   Console.WriteLine("replayed claim: level="+pet.Pre16OrnerinessLevel+" D="+pet.Pre16ControlDifficulty);

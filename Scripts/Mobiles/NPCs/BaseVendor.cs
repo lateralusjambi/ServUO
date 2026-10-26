@@ -1495,14 +1495,16 @@ namespace Server.Mobiles
 
 			int slots = bii.ControlSlots * amount;
 
-			if (controlSlots >= slots)
+			// Ordinary goods need no follower budget, even if the buyer is over cap.
+			if (slots != 0)
 			{
+				if (controlSlots < slots)
+				{
+					fullPurchase = false;
+					return;
+				}
+
 				controlSlots -= slots;
-			}
-			else
-			{
-				fullPurchase = false;
-				return;
 			}
 
 			cost = (double)bii.Price * amount;

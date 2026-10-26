@@ -2,7 +2,12 @@
 
 Audited branch: `pre-p16-integration`, checkpoint `9d25577b79a6e15211d59eb58ac01809032343c3`.
 Date: October 25, 2026, America/New_York. This checkpoint adds findings and a
-standalone diagnostic; it makes no gameplay changes.
+standalone diagnostic; that audit commit made no gameplay changes.
+
+Subsequent status: the false stabling-release and ordinary-purchase bugs are
+patched; see [fixes and pending client acceptance](pre-p16-stabling-vendor-fixes.md).
+The findings and output below describe the original pinned baseline. Stable
+capacity and weighted-limit reconciliation remain open.
 
 ## Confirmed era boundary
 

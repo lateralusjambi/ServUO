@@ -6686,12 +6686,23 @@ namespace Server.Mobiles
             return ret;
         }
 
+        // Temporary storage keeps ownership history but is not a release into the wild.
+        public void ClearControlMasterForStabling()
+        {
+            SetControlMaster(null, false);
+        }
+
         public bool SetControlMaster(Mobile m)
+        {
+            return SetControlMaster(m, true);
+        }
+
+        private bool SetControlMaster(Mobile m, bool recordRelease)
         {
             if (Pre16ControlEnabled && !Summoned)
             {
                 EnsurePre16ControlOwners();
-                if (m == null && Controlled && ControlMaster != null && Tamable)
+                if (recordRelease && m == null && Controlled && ControlMaster != null && Tamable)
                     m_Pre16Orneriness.Release(m_Pre16DistinctOwnerCount);
                 else if (m != null && !m_Pre16ControlOwners.Contains(m))
                 {
