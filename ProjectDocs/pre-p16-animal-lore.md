@@ -106,17 +106,33 @@ if ($LASTEXITCODE -eq 0) { .\AnimalLoreTests.exe }
 
 Remove the generated test executable afterward; do not commit it.
 
-## Pending client acceptance
+## Client acceptance: October 25, 2026
 
-1. Use a normal character with effective Animal Lore below 100 on a wild bull.
-   Successful attempts should give two descriptive messages, without a numeric
-   gump or the P16 tamed-only rejection. A failed attempt should reveal no facts.
-2. Lore a tamed bull. Expect two facts plus a loyalty description. Repeating
-   successful attempts should reveal different categories over time.
-3. Lore an eagle repeatedly until resources are reported. Expect its feather
-   description, never a lock message. Check one non-animal target and, if useful,
-   a dead character's attempt for the appropriate rejection.
+Code checkpoint: `45996c09b3a46a7d77dcfe877817c419bc49648b`.
+Chris reported a successful Windows Debug build in 8.1 seconds. The following
+results were inspected in the supplied journal screenshots:
 
-Start with step 1; a few focused client checks are sufficient. Later-era client
-configuration changes are not required for this acceptance. A successful
-runtime check confirms the selected implementation, not the YELLOW formulas.
+| Check | Observed result | Screenshot |
+|---|---|---|
+| Wild bull, client-reported Lore 90.0 | Two facts: never tamed and somewhat combat-trained; no P16 access rejection or numeric lore result shown | image(20261026-015301).png |
+| Same bull after taming | One known master and meat resource descriptions, followed by extremely unhappy loyalty | image(20261026-015426).png |
+| Eagle resource report | Never-tamed fact and correct feather description; no erroneous lock message | image(20261026-015635).png |
+| Non-animal target | Animal rejection message, with no descriptive report | image(20261026-015723).png |
+
+The bounded descriptive-output/access client checks passed. The low loyalty
+message is consistent with the existing post-tame starting loyalty; this is not
+new evidence for the historical loyalty formula. Different categories appeared
+across the reports, but this is not a statistical test of selection weights.
+
+Normal-character testing was requested. The journal screenshots do not display
+AccessLevel, and the eagle screenshot includes an administrative spawn log;
+these images alone do not independently establish the account's privilege level.
+The compiled handler tests use a viewer with the default Player access level.
+No separate client failed-roll, dead-viewer or range/LOS trial was reported in
+this acceptance. Automated checks cover the failed-roll and dead-viewer paths;
+shared targeting validation remains outside their scope.
+
+No additional save/restart was required for this stateless lore change. The
+prior bonding restart result remains a separate checkpoint. All YELLOW mappings
+and probabilities above remain qualified; this closes the bounded UI/handler
+acceptance, not the historical-algorithm research.

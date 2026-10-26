@@ -7,7 +7,7 @@ Priority is based on gameplay impact and evidence strength, not research age.
 | Priority / ID | Classification | Finding and impact | Next bounded action / closure condition |
 |---|---|---|---|
 | P0 PET-BOND | CLOSED for bounded gate; automated and client checks passed | BondingEnabled now follows the era switch; feeding and direct assignments cannot start/complete bonding, stored bonded flags cannot select ghost death, and pet resurrection is blocked under pre-P16 rules. Full build and compiled-assembly checks cover both era modes. No existing bonded/ghost pets reported; no migration performed. | Feeding properties, rejected GM bonded assignment, corpse/no ghost and saved-world reload passed. Preserve the separate feeding-semantics HOLD, existing-ghost migration limit and later-world-content audit; see pre-p16-bonding.md. |
-| P1 PET-LORE | Boundary patched; YELLOW reconstruction details; client acceptance pending | P14 descriptive output and controlled-only loyalty replace numeric gumps and 100/110 access tiers under the era gate. P15 owner/feather corrections accounted for. Full build and 1,758 compiled-assembly assertions passed. Exact skill bands, training aggregation, success odds, trait weights and message transport remain qualified choices. | Run the small client checks in pre-p16-animal-lore.md. Keep formula/history questions open; do not label emulator mappings as recovered OSI algorithms. |
+| P1 PET-LORE | CLOSED for bounded handler/display gate; YELLOW reconstruction details remain | P14 descriptive output and controlled-only loyalty replace numeric gumps and 100/110 access tiers under the era gate. P15 owner/feather corrections accounted for. Full build and 1,758 compiled-assembly assertions passed. Exact skill bands, training aggregation, success odds, trait weights and message transport remain qualified choices. | Wild/tamed bull output, eagle feathers and non-animal rejection passed screenshot review at 45996c09. AccessLevel is not shown; failed-roll/dead-viewer client cases were not separately reported. Keep formula/history questions open; see pre-p16-animal-lore.md. |
 | P1 PET-LIMITS | HOLD: boundary audit required | Official P16 introduces five weighted control slots and adds stable slots beyond the earlier 2-5 system. ControlSlots and follower machinery still exist; existence alone does not prove each path is reachable under current settings. | Trace tame, transfer, summon, mount, stable/claim and login auto-stable paths. Record which paths execute before removing/gating P16 limits. |
 | P1 PET-FEED | HOLD: source conflict plus reachable differing implementation | At LBR, BaseCreature.CheckFeed uses a 50% per-item chance to add 10 loyalty; the maximum-loyalty branch is Core.SE. The April 2001 PRC guide describes feeding as restoring maximum loyalty, but the July 2002 P16 notes explicitly promise maximum loyalty for any quantity. The distinction may involve quantity or an earlier change. | Resolve quantity/date semantics with pre-cutoff evidence. Test one accepted item and stacks, low loyalty, maximum clamp and feeding while bonding is disabled. Do not silently import the P16 any-quantity guarantee. |
 | P1 CONTROL-CURVE | YELLOW / HOLD for original algorithm | The model matches the 13 Runesabre D=100 observations by construction. Reena/PRC provides a conflicting 21-point D=93.9 benchmark. Ratio normalization and interpolation outside measured points are not OSI proof. At GM/GM, the 98% cap can hide an orneriness change. | Seek an independent dated formula or additional points across difficulties. Compare moderate-skill characters at 71.1 / 75.9 / 90.3; distinguish validation of the chosen model from historical confirmation. Never describe table-fitting as algorithm recovery. |
@@ -19,10 +19,10 @@ Priority is based on gameplay impact and evidence strength, not research age.
 
 ## Recommended next implementation
 
-PET-BOND bounded client acceptance is complete. PET-LORE now has a bounded
-implementation with automated coverage; complete its client checks next. Then
-trace follower/control slots, stable capacity and mount/summon paths under
-PET-LIMITS. Do not change feeding probability without resolving PET-FEED.
+PET-BOND and PET-LORE bounded client acceptance is complete. Next, trace
+follower/control slots, stable capacity and mount/summon paths under PET-LIMITS.
+Record reachable paths before choosing a bounded era patch. Do not change
+feeding probability without resolving PET-FEED.
 
 ## Sources and implementation anchors
 

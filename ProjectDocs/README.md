@@ -8,7 +8,8 @@ Working branch: `pre-p16-integration`.
 Control runtime checkpoint: `ca907ece7ece3fee1addc658f1f153288ab24256`
 (October 21, 2026). Bonding runtime checkpoint:
 `d2765ca2f7524ba782851d0014990417a944352c` (October 25, 2026).
-Dates use America/New_York.
+Animal Lore runtime checkpoint: `45996c09b3a46a7d77dcfe877817c419bc49648b`
+(October 25, 2026). Dates use America/New_York.
 
 Start with:
 
@@ -28,7 +29,7 @@ Start with:
 | Pet control probability | Provisional Runesabre-calibrated model; C# acceptance tests pass; runtime diagnostic exercised | Lookup/interpolation and difficulty/loyalty scaling are reconstruction choices, not a recovered OSI algorithm. |
 | Pet ownership / orneriness / calming | Selected first/second-owner transitions and repeat-release behavior passed; nonzero state survived restart | General release/feral semantics and intermediate Lore calming odds remain provisional. |
 | Bonding / bonded death / pet resurrection | Pre-P16 gate implemented; 18 compiled-assembly assertions passed; bounded client acceptance passed October 25 | No existing pet ghosts reported. No save migration; see the bonding boundary record. |
-| Animal Lore | P14 descriptive skill result implemented; compiled tests passed; client acceptance pending | Two random facts plus controlled-pet loyalty. Exact bands/odds/weights remain reconstruction; numeric P16 gump and access tiers gated out. |
+| Animal Lore | P14 descriptive skill result implemented; 1,758 compiled assertions passed; bounded client checks passed October 25 | Two random facts plus controlled-pet loyalty. Exact bands/odds/weights remain reconstruction; numeric P16 gump and access tiers gated out. |
 | Feeding / follower and stable limits | Not reconciled as a complete module | Feeding semantics and remaining post-cutoff paths still require reconciliation. See the prioritized ledger. |
 | Magery, combat, healing, crafting, notoriety, housing and world content | No completion established by this checkpoint | Repository-era inventories are search aids, not proof that gameplay branches are correctly gated. |
 

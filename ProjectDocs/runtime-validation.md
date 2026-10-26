@@ -84,3 +84,23 @@ loaded. These are user-reported results, without a captured startup log.
 See [bonding boundary and validation limits](pre-p16-bonding.md) for the 18
 automated assertions, both-era coverage and the checks not separately repeated
 in the client. The earlier control-model uncertainties remain unchanged.
+
+## Animal Lore acceptance: October 25, 2026
+
+Code checkpoint `45996c09`; Windows Debug build succeeded in 8.1 seconds.
+The four inspected journal screenshots confirm the bounded lore output:
+
+* `image(20261026-015301).png`: wild bull at client-reported Lore 90.0
+  returned never-tamed and combat-training facts, without a P16 access rejection
+  or numeric lore result shown.
+* `image(20261026-015426).png`: tamed bull returned one-master and meat-resource
+  facts, plus extremely unhappy loyalty.
+* `image(20261026-015635).png`: eagle returned the corrected feather message.
+* `image(20261026-015723).png`: non-animal target was rejected without facts.
+
+Client acceptance for this bounded handler/display change passed. AccessLevel
+is not visible in the images; the eagle image includes an administrative spawn
+log. Failed-roll/dead-viewer paths and later-era behavior passed compiled tests
+but were not separately shown in this client session. See
+[Animal Lore evidence and limits](pre-p16-animal-lore.md). Exact bands, odds,
+aggregation, selection weights and original message transport remain YELLOW.
