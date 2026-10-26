@@ -65,16 +65,23 @@ if ($LASTEXITCODE -eq 0) { .\BondingTests.exe }
 Compilation assumes these three build outputs are in the repository root.
 Remove the generated test executable afterward; do not commit it.
 
-Client acceptance remains pending:
+## Client acceptance: October 25, 2026
 
-1. With the existing pre-P16 configuration, feed a freshly tamed disposable
-   bull its accepted food. It should consume it; GM properties should show
-   `IsBonded=false` and `BondingBegin` at its minimum value.
-2. Try setting `IsBonded=true` and an old `BondingBegin` with GM properties.
-   They should remain disabled. Feed again and confirm no bonded message/tag.
-3. Kill that disposable bull. Expect ordinary death/corpse behavior, with no
-   following pet ghost. Save and restart; confirm the world loads normally.
+Code checkpoint: `d2765ca2f7524ba782851d0014990417a944352c`.
+Chris reported a successful Windows Debug build in 8.5 seconds and launched
+with `_windebug.bat`. Admin-character test results:
 
-The automated later-era negative-path tests do not require changing the live
-world's era configuration. In-client feeding/death and a real restart still
-need validation before marking runtime acceptance complete.
+| Check | Reported result |
+|---|---|
+| Fresh disposable bull after feeding | `IsBonded=False`, `BondingBegin=1/1/0001` |
+| GM attempt to assign `IsBonded=True`, then reopen properties | Stayed false |
+| Kill the disposable bull | Corpse remained, no pet ghost |
+| Requested save, normal shutdown and relaunch sequence | World loaded |
+
+The bounded bonding acceptance checks passed. Results are user reports in the
+project conversation, not a captured console log or screenshot review. A direct
+client attempt to assign an old `BondingBegin`, an elapsed-week feeding trial,
+and later-era client behavior were not separately reported; the compiled tests
+cover the blocked timer assignment and both era modes. No existing-ghost
+migration was attempted. Feeding probability/loyalty semantics and unrelated
+post-cutoff world content remain outside this acceptance.

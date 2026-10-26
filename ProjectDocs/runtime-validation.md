@@ -71,3 +71,16 @@ After these checks, Chris committed the five tracked implementation/test files
 and pushed `pre-p16-integration`. The intended lowercase documentation file
 was absent from that commit because `/Docs` was ignored on Windows; these
 ProjectDocs records repair that documentation gap without changing gameplay.
+
+## Bonding acceptance: October 25, 2026
+
+The subsequent bonding gate at `d2765ca2` passed its bounded client checks:
+Windows Debug build succeeded in 8.5 seconds; after feeding, a fresh bull showed
+`IsBonded=False` and `BondingBegin=1/1/0001`; attempting to assign
+`IsBonded=True` left it false; killing the bull left a corpse and no pet ghost.
+After the requested save/shutdown/relaunch sequence, Chris confirmed the world
+loaded. These are user-reported results, without a captured startup log.
+
+See [bonding boundary and validation limits](pre-p16-bonding.md) for the 18
+automated assertions, both-era coverage and the checks not separately repeated
+in the client. The earlier control-model uncertainties remain unchanged.

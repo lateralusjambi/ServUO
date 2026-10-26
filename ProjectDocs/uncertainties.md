@@ -1,12 +1,12 @@
 # Prioritized boundary defects and historical uncertainties
 
-Control runtime baseline: `ca907ece`. Bonding gate is a subsequent code change;
-its client acceptance remains pending. See [bonding boundary](pre-p16-bonding.md).
+Control runtime baseline: `ca907ece`. Bonding checkpoint: `d2765ca2`;
+bounded client acceptance passed October 25, 2026. See [bonding boundary](pre-p16-bonding.md).
 Priority is based on gameplay impact and evidence strength, not research age.
 
 | Priority / ID | Classification | Finding and impact | Next bounded action / closure condition |
 |---|---|---|---|
-| P0 PET-BOND | Gate implemented; client acceptance pending | BondingEnabled now follows the era switch; feeding and direct assignments cannot start/complete bonding, stored bonded flags cannot select ghost death, and pet resurrection is blocked under pre-P16 rules. Full build and compiled-assembly checks cover both era modes. No existing bonded/ghost pets reported; no migration performed. | Run the short feeding/GM-property/death/restart checks in pre-p16-bonding.md. Preserve the separate feeding-semantics HOLD and later-world-content audit. |
+| P0 PET-BOND | CLOSED for bounded gate; automated and client checks passed | BondingEnabled now follows the era switch; feeding and direct assignments cannot start/complete bonding, stored bonded flags cannot select ghost death, and pet resurrection is blocked under pre-P16 rules. Full build and compiled-assembly checks cover both era modes. No existing bonded/ghost pets reported; no migration performed. | Feeding properties, rejected GM bonded assignment, corpse/no ghost and saved-world reload passed. Preserve the separate feeding-semantics HOLD, existing-ghost migration limit and later-world-content audit; see pre-p16-bonding.md. |
 | P1 PET-LORE | RED boundary defect candidate confirmed at handler level | AnimalLore.cs still contains numeric lore gumps and 100/110 skill-tier access rules. The P16 note describes those displays/restrictions as changes. | Specify the old loyalty/food output and access behavior, then replace the pre-P16 handler path. Test success/failure and modern negative path. |
 | P1 PET-LIMITS | HOLD: boundary audit required | Official P16 introduces five weighted control slots and adds stable slots beyond the earlier 2-5 system. ControlSlots and follower machinery still exist; existence alone does not prove each path is reachable under current settings. | Trace tame, transfer, summon, mount, stable/claim and login auto-stable paths. Record which paths execute before removing/gating P16 limits. |
 | P1 PET-FEED | HOLD: source conflict plus reachable differing implementation | At LBR, BaseCreature.CheckFeed uses a 50% per-item chance to add 10 loyalty; the maximum-loyalty branch is Core.SE. The April 2001 PRC guide describes feeding as restoring maximum loyalty, but the July 2002 P16 notes explicitly promise maximum loyalty for any quantity. The distinction may involve quantity or an earlier change. | Resolve quantity/date semantics with pre-cutoff evidence. Test one accepted item and stacks, low loyalty, maximum clamp and feeding while bonding is disabled. Do not silently import the P16 any-quantity guarantee. |
@@ -19,10 +19,9 @@ Priority is based on gameplay impact and evidence strength, not research age.
 
 ## Recommended next implementation
 
-Complete PET-BOND client acceptance first. The bounded era gate is implemented
-and automated checks cover both modes. Next, specify the pre-P16 Animal Lore
-output/access path (PET-LORE). Do not change feeding probability without
-resolving PET-FEED.
+PET-BOND bounded client acceptance is complete. Next, specify the pre-P16
+Animal Lore output/access path (PET-LORE), then implement and test the era
+branch. Do not change feeding probability without resolving PET-FEED.
 
 ## Sources and implementation anchors
 

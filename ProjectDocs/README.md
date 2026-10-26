@@ -5,14 +5,16 @@ client; enforce the historical rules on the server. All parts of Publish 16
 after the cutoff remain excluded, including its July taming changes.
 
 Working branch: `pre-p16-integration`.
-Tested code checkpoint: `ca907ece7ece3fee1addc658f1f153288ab24256`.
-Runtime validation session: October 21, 2026, America/New_York.
+Control runtime checkpoint: `ca907ece7ece3fee1addc658f1f153288ab24256`
+(October 21, 2026). Bonding runtime checkpoint:
+`d2765ca2f7524ba782851d0014990417a944352c` (October 25, 2026).
+Dates use America/New_York.
 
 Start with:
 
 * [Runtime validation and limits](runtime-validation.md)
 * [Provisional pet-control specification](pre-p16-control.md)
-* [Bonding boundary and pending client checks](pre-p16-bonding.md)
+* [Bonding boundary and completed client checks](pre-p16-bonding.md)
 * [Prioritized open questions and boundary defects](uncertainties.md)
 
 ## Module register
@@ -24,7 +26,7 @@ Start with:
 | Animal Taming completion roll | Wrong helper name corrected; fresh-bull taming succeeded after integration | Success probabilities above eligibility remain provisional; never use the control tables as taming-success evidence. |
 | Pet control probability | Provisional Runesabre-calibrated model; C# acceptance tests pass; runtime diagnostic exercised | Lookup/interpolation and difficulty/loyalty scaling are reconstruction choices, not a recovered OSI algorithm. |
 | Pet ownership / orneriness / calming | Selected first/second-owner transitions and repeat-release behavior passed; nonzero state survived restart | General release/feral semantics and intermediate Lore calming odds remain provisional. |
-| Bonding / bonded death / pet resurrection | Pre-P16 gate implemented; automated checks run against compiled assemblies; client acceptance pending | No existing pet ghosts reported. No save migration; see the bonding boundary record. |
+| Bonding / bonded death / pet resurrection | Pre-P16 gate implemented; 18 compiled-assembly assertions passed; bounded client acceptance passed October 25 | No existing pet ghosts reported. No save migration; see the bonding boundary record. |
 | Feeding / Animal Lore UI / follower and stable limits | Not reconciled as a complete module | Feeding semantics and remaining post-cutoff paths still require reconciliation. See the prioritized ledger. |
 | Magery, combat, healing, crafting, notoriety, housing and world content | No completion established by this checkpoint | Repository-era inventories are search aids, not proof that gameplay branches are correctly gated. |
 
