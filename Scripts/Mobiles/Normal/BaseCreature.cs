@@ -1512,6 +1512,12 @@ namespace Server.Mobiles
             }
         }
 
+        // Includes known transfers without changing taming's separate Owners list.
+        public int Pre16DistinctOwnerCount
+        {
+            get { EnsurePre16ControlOwners(); return m_Pre16DistinctOwnerCount; }
+        }
+
         [CommandProperty(AccessLevel.GameMaster)]
         public int Pre16OrnerinessLevel { get { return m_Pre16Orneriness.Level; } }
 

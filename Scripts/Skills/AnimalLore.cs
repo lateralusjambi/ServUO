@@ -1,6 +1,7 @@
 using System;
 using Server.Gumps;
 using Server.Mobiles;
+using Server.Misc;
 using Server.Targeting;
 
 namespace Server.SkillHandlers
@@ -14,7 +15,7 @@ namespace Server.SkillHandlers
 
         public static TimeSpan OnUse(Mobile m)
         {
-            if (PetTrainingHelper.Enabled && m.HasGump(typeof(NewAnimalLoreGump)))
+            if (!SkillCheck.PrePublish16Rules && PetTrainingHelper.Enabled && m.HasGump(typeof(NewAnimalLoreGump)))
             {
                 m.SendLocalizedMessage(500118); // You must wait a few moments to use another skill.
             }
@@ -74,6 +75,20 @@ namespace Server.SkillHandlers
                     {
                         if (c.Body.IsAnimal || c.Body.IsMonster || c.Body.IsSea)
                         {
+                            if (SkillCheck.PrePublish16Rules)
+                            {
+                                if (from.CheckTargetSkill(SkillName.AnimalLore, c, 0.0, 100.0))
+                                {
+                                    foreach (int message in PrePublish16AnimalLore.CreateReport(c))
+                                        from.SendLocalizedMessage(message);
+                                }
+                                else
+                                {
+                                    from.SendLocalizedMessage(500334);
+                                }
+                                return;
+                            }
+
 							double skill = from.Skills[SkillName.AnimalLore].Value;
 							if(skill < 100.0)
                             {
