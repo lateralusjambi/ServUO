@@ -17,6 +17,7 @@ Start with:
 * [Provisional pet-control specification](pre-p16-control.md)
 * [Bonding boundary and completed client checks](pre-p16-bonding.md)
 * [Animal Lore boundary and reconstruction limits](pre-p16-animal-lore.md)
+* [Pet-limit and stabling audit](pre-p16-pet-limits-audit.md)
 * [Prioritized open questions and boundary defects](uncertainties.md)
 
 ## Module register
@@ -30,7 +31,8 @@ Start with:
 | Pet ownership / orneriness / calming | Selected first/second-owner transitions and repeat-release behavior passed; nonzero state survived restart | General release/feral semantics and intermediate Lore calming odds remain provisional. |
 | Bonding / bonded death / pet resurrection | Pre-P16 gate implemented; 18 compiled-assembly assertions passed; bounded client acceptance passed October 25 | No existing pet ghosts reported. No save migration; see the bonding boundary record. |
 | Animal Lore | P14 descriptive skill result implemented; 1,758 compiled assertions passed; bounded client checks passed October 25 | Two random facts plus controlled-pet loyalty. Exact bands/odds/weights remain reconstruction; numeric P16 gump and access tiers gated out. |
-| Feeding / follower and stable limits | Not reconciled as a complete module | Feeding semantics and remaining post-cutoff paths still require reconciliation. See the prioritized ledger. |
+| Follower and stable limits | Audited at 9d25577b; active weighted checks and GM stable bonuses remain; no fix yet | False stabling-release penalty and negative vendor-budget rejection reproduced; see pet-limit audit. Original summon/hireling limits remain unresolved. |
+| Feeding | Historical semantics unresolved | Existing quantity/loyalty behavior remains on HOLD; no feeding rule change included. |
 | Magery, combat, healing, crafting, notoriety, housing and world content | No completion established by this checkpoint | Repository-era inventories are search aids, not proof that gameplay branches are correctly gated. |
 
 ## Evidence and workflow
