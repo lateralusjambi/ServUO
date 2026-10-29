@@ -19,6 +19,7 @@ Start with:
 * [Animal Lore boundary and reconstruction limits](pre-p16-animal-lore.md)
 * [Pet-limit and stabling audit](pre-p16-pet-limits-audit.md)
 * [Stabling-history and ordinary-purchase fixes](pre-p16-stabling-vendor-fixes.md)
+* [Pre-P16 stable capacity](pre-p16-stable-capacity.md)
 * [Prioritized open questions and boundary defects](uncertainties.md)
 
 ## Module register
@@ -32,7 +33,7 @@ Start with:
 | Pet ownership / orneriness / calming | Selected first/second-owner transitions and repeat-release behavior passed; nonzero state survived restart | General release/feral semantics and intermediate Lore calming odds remain provisional. |
 | Bonding / bonded death / pet resurrection | Pre-P16 gate implemented; 18 compiled-assembly assertions passed; bounded client acceptance passed October 25 | No existing pet ghosts reported. No save migration; see the bonding boundary record. |
 | Animal Lore | P14 descriptive skill result implemented; 1,758 compiled assertions passed; bounded client checks passed October 25 | Two random facts plus controlled-pet loyalty. Exact bands/odds/weights remain reconstruction; numeric P16 gump and access tiers gated out. |
-| Follower and stable limits | Audited at 9d25577b; active weighted checks and GM stable bonuses remain; limits not reconciled | False stabling-release and ordinary-purchase defects patched with 96 assertions; bounded client acceptance passed October 28, 2026. Stable capacity and weighted limits remain open; see the audit and fix record. |
+| Follower and stable limits | Pre-P16 stable capacity restored to 2–5; weighted checks remain unreconciled | False stabling-release and ordinary-purchase defects patched with 96 assertions; bounded client acceptance passed October 28, 2026. Stable capacity passed 187 assertions; client acceptance pending. Broader weighted limits remain open. |
 | Feeding | Historical semantics unresolved | Existing quantity/loyalty behavior remains on HOLD; no feeding rule change included. |
 | Magery, combat, healing, crafting, notoriety, housing and world content | No completion established by this checkpoint | Repository-era inventories are search aids, not proof that gameplay branches are correctly gated. |
 

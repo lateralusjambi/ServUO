@@ -150,7 +150,7 @@ namespace Server.Mobiles
 			var vetern = from.Skills[SkillName.Veterinary].Value;
 			var sklsum = taming + anlore + vetern;
 
-            int max = from is PlayerMobile ? ((PlayerMobile)from).RewardStableSlots : 0;
+            int max = 0;
 
 			if (sklsum >= 240.0)
 			{
@@ -169,6 +169,15 @@ namespace Server.Mobiles
 				max += 2;
 			}
 			
+            // Pre-P16 admission uses only the original 2-5 skill-sum tiers.
+            // Do not include later rewards, expansion, GM-skill or mastery bonuses.
+            if (Server.Misc.SkillCheck.PrePublish16Rules)
+            {
+                return max;
+            }
+
+            max += from is PlayerMobile ? ((PlayerMobile)from).RewardStableSlots : 0;
+
 			// bonus SA stable slots
 			if (Core.SA) 
  			{ 

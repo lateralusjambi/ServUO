@@ -5,9 +5,11 @@ Date: October 25, 2026, America/New_York. This checkpoint adds findings and a
 standalone diagnostic; that audit commit made no gameplay changes.
 
 Subsequent status: the false stabling-release and ordinary-purchase bugs are
-patched; see [fixes and pending client acceptance](pre-p16-stabling-vendor-fixes.md).
+patched; see [fixes and completed bounded client acceptance](pre-p16-stabling-vendor-fixes.md).
 The findings and output below describe the original pinned baseline. Stable
-capacity and weighted-limit reconciliation remain open.
+capacity is now patched separately with automated checks; see
+[stable capacity](pre-p16-stable-capacity.md). Its client acceptance and the
+broader weighted-limit reconciliation remain open.
 
 ## Confirmed era boundary
 
