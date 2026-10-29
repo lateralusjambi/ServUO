@@ -118,3 +118,15 @@ privilege/follower properties and payment amount were not separately captured.
 Positive-slot purchase rejection has compiled-test coverage but was not
 separately reported in the client. No stabled-pet save/restart was performed
 for this patch. See [implementation and validation limits](pre-p16-stabling-vendor-fixes.md).
+
+## Stable capacity acceptance: October 28, 2026
+
+Gameplay checkpoint `2b1b5032`. Chris reported the updated server up and followed
+the normal-player test instructions with Taming, Animal Lore and Veterinary
+each at 100.0. After five bulls were stabled, the trainer refused a sixth,
+charged no gold, and left that bull controlled. Bounded client acceptance passed.
+Skill/access properties and gold amounts were not separately captured.
+
+Lower tiers, later-mode bonuses and individual recovery of eight existing pets
+under the five-pet capacity passed the 187-assertion compiled suite; they were
+not separately client-tested. See [stable capacity and limits](pre-p16-stable-capacity.md).

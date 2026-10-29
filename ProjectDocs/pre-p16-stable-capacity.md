@@ -1,8 +1,7 @@
 # Pre-P16 stable capacity
 
 Implemented October 28, 2026, following client acceptance of the stabling-history
-and ordinary-vendor fixes. Windows client acceptance for this capacity change
-is pending.
+and ordinary-vendor fixes. Bounded Windows client acceptance passed October 28, 2026.
 
 ## Rule and evidence
 
@@ -67,12 +66,17 @@ without a shard save/load, network client, bank-funded payment or every separate
 storage UI. Recovery above capacity was tested using the individual claim path;
 other claim paths were source-checked.
 
-## Pending client acceptance
+## Client acceptance: October 28, 2026
 
-After a successful Windows Debug build, use a normal Player-access character
-with Animal Taming, Animal Lore and Veterinary each at 100.0 and sufficient gold.
-With five pets stabled, attempting to stable a sixth should be refused with no
-fee, leaving that pet controlled. Existing weighted claim restrictions still
-apply. Do not raise FollowersMax to perform this check.
+Gameplay checkpoint `2b1b5032`. Chris reported the server up after updating,
+then followed the normal Player-access, 100.0 Taming/Lore/Veterinary test
+instructions. With five bulls stabled, the trainer refused the sixth, charged
+no gold, and left the bull under the character's control. The bounded admission
+check passed.
 
-No client result is recorded for this patch yet.
+These are user-reported results; skill/access properties and gold amounts were
+not separately captured. The lower tiers, later-mode behavior, and recovery of
+already-stabled pets above capacity have compiled-test coverage but were not
+separately repeated in this client session. No additional save/restart check
+was performed for this capacity patch. Weighted follower restrictions remain
+an open reconciliation task.

@@ -4,7 +4,7 @@ This bounded patch fixes the two implementation defects reproduced in the
 [pet-limit audit](pre-p16-pet-limits-audit.md). It does not change stable
 capacity, weighted transfer/claim/pet-purchase limits, summons, loyalty or the
 provisional control formula. The subsequent [2-5 stable-capacity correction](pre-p16-stable-capacity.md)
-has passed automated checks; its client acceptance is pending.
+has passed automated checks and bounded client acceptance.
 
 ## Temporary storage versus release
 
@@ -125,5 +125,5 @@ Client acceptance for the two bounded fixes passed. Positive-slot animal
 rejection remains covered by compiled tests and was not separately reported
 in this client session. Save/restart persistence of an actually stabled pet
 and the separate later-content storage interfaces were not client-tested.
-Stable capacity is patched separately with client acceptance pending; the broader
+Stable capacity is patched separately with bounded client acceptance passed; the broader
 weighted-limit reconciliation remains open.
