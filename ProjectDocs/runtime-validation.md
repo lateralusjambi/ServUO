@@ -104,3 +104,17 @@ log. Failed-roll/dead-viewer paths and later-era behavior passed compiled tests
 but were not separately shown in this client session. See
 [Animal Lore evidence and limits](pre-p16-animal-lore.md). Exact bands, odds,
 aggregation, selection weights and original message transport remain YELLOW.
+
+## Stabling and ordinary vendor purchases: October 28, 2026
+
+Gameplay checkpoint `778bc69a`; Chris reported a Windows Debug build succeeding
+in 8.3 seconds. A fresh bull remained at orneriness 0 / difficulty 71.1 across
+paid NPC stable/claim, then reached 1 / 75.9 on genuine release. Following the
+normal-player test instructions with six one-slot bulls and FollowersMax 5,
+an ordinary vendor purchase delivered the item and deducted gold.
+
+Both bounded client checks passed. These are user-reported results; character
+privilege/follower properties and payment amount were not separately captured.
+Positive-slot purchase rejection has compiled-test coverage but was not
+separately reported in the client. No stabled-pet save/restart was performed
+for this patch. See [implementation and validation limits](pre-p16-stabling-vendor-fixes.md).

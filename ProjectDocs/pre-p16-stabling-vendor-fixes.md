@@ -105,21 +105,23 @@ if ($LASTEXITCODE -eq 0) { .\StablingVendorTests.exe }
 
 Remove the generated test executable afterward; do not commit it.
 
-## Pending client acceptance
+## Client acceptance: October 28, 2026
 
-1. Fresh tamed bull: record its `Pre16OrnerinessLevel` and
-   `Pre16ControlDifficulty`; pay an NPC trainer to stable it, then claim it.
-   Both values should remain unchanged. Claim restrictions still apply, so
-   have sufficient current follower slots for this first check.
-2. Release that bull normally. Its first genuine release should still increase
-   the level from 0 to 1 and difficulty from 71.1 to 75.9. Do not expect a GM/GM
-   98% control result to reveal the difficulty change; inspect the actual fields.
-3. On a normal test character above five weighted follower slots, buy an ordinary
-   item. Confirm gold is charged and the item arrives. A positive-slot animal
-   purchase without sufficient slots should still fail. Do not raise FollowersMax
-   to hide the original condition.
+Gameplay checkpoint `778bc69a`; Chris reported a successful Windows Debug build
+in 8.3 seconds, followed by these bounded checks:
 
-Start with the fresh-bull stable/claim check after a successful Windows build.
-Save/restart persistence of an actually stabled pet is an additional useful check
-but has not been performed by these automated fixtures. This record must not be
-marked client-complete until the relevant results are reported.
+* Fresh bull before and after paid NPC stable/claim: orneriness 0 and control
+  difficulty 71.1. Temporary storage preserved both values.
+* Genuine release afterward: orneriness 1 and difficulty 75.9. The first real
+  release milestone was still available and applied normally.
+* Following the normal-player test instructions with six one-slot bulls and
+  FollowersMax left at 5, an ordinary vendor purchase delivered the item and
+  deducted gold. This verifies the full client transaction above the cap.
+
+These are user-reported results. AccessLevel, follower properties and payment
+amount were not independently captured in a screenshot or transaction log.
+Client acceptance for the two bounded fixes passed. Positive-slot animal
+rejection remains covered by compiled tests and was not separately reported
+in this client session. Save/restart persistence of an actually stabled pet
+and the separate later-content storage interfaces were not client-tested.
+Stable capacity and the broader weighted-limit reconciliation remain open.
