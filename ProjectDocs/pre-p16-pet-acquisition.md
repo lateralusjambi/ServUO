@@ -1,7 +1,7 @@
 # Pre-P16 ordinary pet acquisition
 
 Implemented October 28, 2026, after stable-capacity client acceptance at
-`2b29d568`. Full build and compiled tests passed; client acceptance is pending.
+`2b29d568`. Full build, compiled tests and bounded client acceptance passed.
 
 ## Historical boundary and scope
 
@@ -86,12 +86,22 @@ later-era mode for its expected weighted claim rejection. Its history and
 payment checks remain intact. The audit diagnostic reports CanClaim=True at
 five followers plus an ordinary one-slot pet.
 
-## Pending client acceptance
+## Client acceptance: October 28, 2026
 
-After a successful Windows build, use a normal Player-access character with
-FollowersMax left at 5. Keep the sixth bull already controlled from the stable
-capacity test and claim the five stabled bulls. All five should return, leaving
-six controlled bulls and no stabled bulls. That is the first client check.
-Then check an ordinary vendor-animal purchase above five followers (gold charged
-and animal delivered) and an ordinary pet transfer to an already-over-cap player.
-Report each result separately. No client results are recorded for this patch.
+Gameplay checkpoint `c0e45c71`. Chris reported the updated server running and
+followed the normal Player-access instructions with FollowersMax left at 5:
+
+* With the sixth bull still controlled, saying claim returned all five stabled
+  bulls, leaving six controlled bulls.
+* Buying one horse from the trainer delivered the horse to that character and
+  deducted gold. Both delivery and payment were explicitly confirmed.
+* A second character transferred a bull to the already-over-cap character;
+  Chris confirmed the bull became the recipient's pet after accepting the trade.
+
+All three bounded client checks passed. These are user-reported results;
+AccessLevel, exact follower totals after later purchases/transfers and gold
+amounts were not independently captured in screenshots or a transaction log.
+Named/individual claims, three-slot pets, later-mode behavior, rejection cases
+and release-history regressions retain compiled-test coverage; they were not
+all repeated through the client. No save/restart check was performed for this
+patch. Summon/hireling/golem/ethereal and other special paths remain open.

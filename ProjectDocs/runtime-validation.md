@@ -130,3 +130,19 @@ Skill/access properties and gold amounts were not separately captured.
 Lower tiers, later-mode bonuses and individual recovery of eight existing pets
 under the five-pet capacity passed the 187-assertion compiled suite; they were
 not separately client-tested. See [stable capacity and limits](pre-p16-stable-capacity.md).
+
+## Ordinary pet acquisition acceptance: October 28, 2026
+
+Gameplay checkpoint `c0e45c71`. Following the normal-player instructions with
+FollowersMax left at 5, Chris confirmed that claiming returned all five stabled
+bulls while a sixth remained controlled. The same character then bought a
+horse from the trainer; ownership and gold deduction were explicitly confirmed.
+A second character transferred a bull to the already-over-cap recipient, and
+Chris confirmed the recipient acquired it.
+
+All three bounded client checks passed. These are user-reported results;
+access/follower properties and exact payment amounts were not independently
+captured. Other claim entry points, three-slot pets, later-mode restrictions,
+rejection cases and release-history checks have compiled-test coverage but
+were not all repeated in the client. No save/restart check was performed.
+See [ordinary pet acquisition and remaining scope](pre-p16-pet-acquisition.md).
