@@ -6,6 +6,11 @@ capacity, weighted transfer/claim/pet-purchase limits, summons, loyalty or the
 provisional control formula. The subsequent [2-5 stable-capacity correction](pre-p16-stable-capacity.md)
 has passed automated checks and bounded client acceptance.
 
+Subsequent change: [ordinary pet acquisition](pre-p16-pet-acquisition.md) now
+bypasses weighted trainer claims and AnimalBuyInfo purchases under pre-P16 rules.
+The positive-slot restrictions described below record this earlier patch's
+baseline; other positive-slot vendor categories remain checked.
+
 ## Temporary storage versus release
 
 `BaseCreature.ClearControlMasterForStabling()` clears the current control

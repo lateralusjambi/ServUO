@@ -454,7 +454,8 @@ namespace Server.Mobiles
 
 		public bool CanClaim(Mobile from, BaseCreature pet)
 		{
-			return ((from.Followers + pet.ControlSlots) <= from.FollowersMax);
+			return Server.Misc.PrePublish16PetLimits.IgnoresFollowerCap(pet) ||
+                ((from.Followers + pet.ControlSlots) <= from.FollowersMax);
 		}
 
 		private void DoClaim(Mobile from, BaseCreature pet)

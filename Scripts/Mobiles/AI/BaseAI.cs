@@ -2007,7 +2007,8 @@ namespace Server.Mobiles
 					to.SendLocalizedMessage(1043251, args);
 					// The pet will not accept you as a master because it does not trust ~2_NAME~.~3_BLANK~
 				}
-				else if (accepted && (to.Followers + m_Creature.ControlSlots) > to.FollowersMax)
+				else if (accepted && !Server.Misc.PrePublish16PetLimits.IgnoresFollowerCap(m_Creature) &&
+                    (to.Followers + m_Creature.ControlSlots) > to.FollowersMax)
 				{
 					to.SendLocalizedMessage(1049607); // You have too many followers to control that creature.
 

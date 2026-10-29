@@ -31,6 +31,10 @@ The existing Skill.Value calculation is retained. Whether historical OSI used
 base or modified skills remains unresolved; this patch establishes the tiers
 and excludes later bonuses without claiming to resolve that distinction.
 
+Subsequent change: ordinary nonsummoned pet claims now bypass the weighted
+budget under pre-P16 rules; see [pet acquisition](pre-p16-pet-acquisition.md).
+The claim restrictions described below record the capacity patch's baseline.
+
 ## Existing pets and limits
 
 Only the capacity calculation changes. No save layout or stored pet list is

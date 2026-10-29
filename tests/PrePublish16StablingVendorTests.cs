@@ -98,9 +98,11 @@ public static class PrePublish16StablingVendorTests
         var owner = Owner(120); var pet = Pet(owner);
         Assert(pet.Pre16OrnerinessLevel == 0 && pet.Pre16ControlDifficulty == 71.1, "fresh bull baseline");
         Stable(trainer, owner, pet);
+        Config.Set("Era.PrePublish16", false);
         owner.Followers = owner.FollowersMax;
         trainer.EndClaimList(owner, pet);
         Assert(pet.IsStabled && owner.Stabled.Contains(pet) && !pet.Controlled, "existing weighted claim restriction preserved");
+        Config.Set("Era.PrePublish16", true);
         owner.Followers = 0; Claim(trainer, owner, pet);
         Stable(trainer, owner, pet); Claim(trainer, owner, pet);
         Assert(pet.Owners.Count == 1 && pet.Owners[0] == owner, "paid cycles do not change taming eligibility history");

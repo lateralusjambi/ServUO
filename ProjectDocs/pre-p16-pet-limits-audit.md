@@ -9,7 +9,9 @@ patched; see [fixes and completed bounded client acceptance](pre-p16-stabling-ve
 The findings and output below describe the original pinned baseline. Stable
 capacity is now patched separately with automated and bounded client checks
 passed; see [stable capacity](pre-p16-stable-capacity.md). The broader
-weighted-limit reconciliation remains open.
+weighted-limit reconciliation remains open. Ordinary pet transfer, trainer
+claim and vendor-animal gates are now patched separately; see
+[pet acquisition and pending client checks](pre-p16-pet-acquisition.md).
 
 ## Confirmed era boundary
 

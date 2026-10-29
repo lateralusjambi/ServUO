@@ -1496,7 +1496,9 @@ namespace Server.Mobiles
 			int slots = bii.ControlSlots * amount;
 
 			// Ordinary goods need no follower budget, even if the buyer is over cap.
-			if (slots != 0)
+            // AnimalBuyInfo catalogs sell ordinary pets, outside the pre-P16 slot budget.
+            bool uncappedAnimal = Server.Misc.SkillCheck.PrePublish16Rules && bii is AnimalBuyInfo;
+			if (slots != 0 && !uncappedAnimal)
 			{
 				if (controlSlots < slots)
 				{
