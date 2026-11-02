@@ -83,10 +83,15 @@ In the newer core:
 * SetControlMaster independently enforces the same owner budget unless
   explicitly forced. BaseAI's accepted secure-transfer validation also
   checks recipient FollowerCount + ControlSlots against FollowersMax.
-* Mobile's normal default maximum is five. Thus, with standard unchanged
-  limits and slot modifiers, two ordinary four-slot golems cannot coexist;
-  even two Siege II three-slot golems exceed five. This is a static-code
-  deduction, not an observed client test or a live-shard guarantee.
+* Mobile's constructor chooses FollowersMax by ruleset: non-Siege-style
+  uses 5; Siege-style with Siege II uses 8; other Siege-style uses 16.
+  Therefore, with the matching standard configuration and no slot modifiers:
+  Angel Island proper permits one four-slot golem within five slots;
+  Siege II permits two three-slot golems within eight slots; other
+  Siege-style configurations permit four four-slot golems within sixteen.
+  These are static-code deductions for new normal characters, not observed
+  client tests or guarantees about saved/overridden limits or live shards.
+  Core.RuleSets.SiegeStyleRules() includes Siege and Mortalis configurations.
 * The assembly handler contains no daily-production timer/quota. This is
   bounded to the inspected creation path, not proof against all external
   overrides or deployment customizations.
