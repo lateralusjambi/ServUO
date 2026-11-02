@@ -31,12 +31,16 @@ This shard also deliberately customizes follower rules: its July 2012
 beta patch records increasing the follower limit from five to eight. Its
 choice is a shard implementation, not a primary statement of 2001 OSI rules.
 
-A separate Renaissance-style shard, UO Forever, has an explicit May 31,
-2017 response by halygon in a proposed Tinker Golems thread: ordinary
-golems were not then implemented apart from a few event creations.
-https://www.uoforum.com/threads/tinker-golems.48197/
-This supplies no missing historical concurrency limit. The thread contains
-later-era recollections and proposed custom requirements, not a 2001 report.
+Correction, November 2, 2026 UTC: the earlier UO Forever conclusion stopped
+at a statement that is retracted on the next page. In the May 31, 2017
+discussion, post 22 reports actually constructing, transferring and stabling
+a three-slot golem; in post 24 halygon corrects his previous claim and
+confirms craftability. Read both pages:
+https://www.uoforum.com/threads/tinker-golems.48197/page-2
+This is evidence of that later shard's implementation, not a 2001 OSI rule.
+The expanded [source and documentation audit](other-renaissance-shards-golem-audit.md)
+covers Forever, Defiance, Divinity, Rebirth, Hybrid, Lost Lands, Phoenix,
+New Renaissance, Revealed and the current UO Renaissance wiki/forum.
 
 ## Khaos combat source recovery
 
