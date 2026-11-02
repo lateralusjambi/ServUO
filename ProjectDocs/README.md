@@ -22,6 +22,7 @@ Start with:
 * [Pre-P16 stable capacity](pre-p16-stable-capacity.md)
 * [Pre-P16 ordinary pet acquisition](pre-p16-pet-acquisition.md)
 * [Prioritized open questions and boundary defects](uncertainties.md)
+* [Renaissance shard golem source and documentation audit](other-renaissance-shards-golem-audit.md)
 
 ## Module register
 
