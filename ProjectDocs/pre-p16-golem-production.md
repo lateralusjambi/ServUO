@@ -21,12 +21,19 @@ across restarts are explicit reconstruction choices, not recovered OSI code.
 
 ## Player behavior
 
-An exhausted character receives this custom message:
+An exhausted character receives the wording preserved in the later Sphere script:
 
-> You cannot construct another golem yet. You may construct up to five golems in a 24-hour period.
+> You are too drained to make another golem. You must wait approximately one day to construct another.
 
-This is project wording. Later Sphere message 1071942 has not been verified
-in unpatched LBR and is not used. The refusal occurs before consuming any
+This wording is taken from the March 27, 2016 Sphere script comment for
+message 1071942, selected as a sourced reconstruction rather than newly
+written dialogue. It has not been verified in unpatched LBR. The server sends
+the literal text rather than the cliloc ID, preserving the selected wording
+when using a modern client. Source:
+https://forum.spherecommunity.net/Thread-tGolemAssembly?pid=23443
+
+The approximately-one-day phrase describes the production window; a refusal
+does not start a fresh day-long penalty. The refusal occurs before consuming any
 ingredients or deleting the assembly. Missing ingredients, insufficient
 skill and an assembly outside the backpack do not start or increment a window.
 The current creation path has no random craft-failure roll; this patch adds none.

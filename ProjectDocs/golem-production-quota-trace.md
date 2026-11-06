@@ -164,3 +164,13 @@ Use character scope as an explicit project choice unless account scope
 is independently established. Refusal should explain the quota rather
 than report a random crafting failure. This is a proposed contract only;
 this documentation update adds no timer or message to gameplay.
+
+## Selected refusal wording: November 6, 2026
+
+The project now uses the literal wording preserved in the 2016 Sphere
+script comment for 1071942, as a sourced reconstruction selected by Chris.
+It supersedes the initial custom quota explanation. This does not promote
+that later script into proof of the LBR message or quota algorithm.
+The numeric cliloc ID is not sent, since a modern client may resolve it to
+different text. Five successful creations and the existing first-success
+24-hour reset are unchanged; refusal does not extend the deadline.

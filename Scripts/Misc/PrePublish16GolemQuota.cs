@@ -7,7 +7,9 @@ namespace Server.Misc
     public sealed class PrePublish16GolemQuota
     {
         public const int Limit = 5;
-        public const string RefusalMessage = "You cannot construct another golem yet. You may construct up to five golems in a 24-hour period.";
+        // Wording preserved in a 2016 Sphere script (1071942), not verified in LBR.
+        // Send literal text so the modern client cannot substitute revised cliloc wording.
+        public const string RefusalMessage = "You are too drained to make another golem. You must wait approximately one day to construct another.";
 
         private int m_Creations;
         private DateTime m_ResetAt;
