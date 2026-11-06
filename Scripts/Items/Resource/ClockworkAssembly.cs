@@ -42,6 +42,15 @@ namespace Server.Items
                 return;
             }            
 
+            PlayerMobile player = from as PlayerMobile;
+            bool useQuota = Server.Misc.SkillCheck.PrePublish16Rules && player != null;
+
+            if (useQuota && !player.GolemProductionQuota.CanCreate(DateTime.UtcNow))
+            {
+                from.SendMessage(Server.Misc.PrePublish16GolemQuota.RefusalMessage);
+                return;
+            }
+
             Container pack = from.Backpack;
 
             if (pack == null)
@@ -80,6 +89,8 @@ namespace Server.Items
                             this.Delete();
 
                             g.MoveToWorld(from.Location, from.Map);
+                            if (useQuota)
+                                player.GolemProductionQuota.RecordCreation(DateTime.UtcNow);
                             from.PlaySound(0x241);
                         }
 

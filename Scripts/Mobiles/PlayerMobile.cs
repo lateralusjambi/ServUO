@@ -4511,6 +4511,9 @@ namespace Server.Mobiles
 
 			switch (version)
 			{
+                case 41: // Persist the reconstructed pre-P16 golem production quota.
+                    m_GolemProductionQuota = new Server.Misc.PrePublish16GolemQuota(reader);
+                    goto case 40;
                 case 40: // Version 40, moved gauntlet points, virtua artys and TOT turn ins to PointsSystem
                 case 39: // Version 39, removed ML quest save/load
                 case 38:
@@ -4977,7 +4980,8 @@ namespace Server.Mobiles
 
 			base.Serialize(writer);
 
-			writer.Write(40); // version
+			writer.Write(41); // version
+            m_GolemProductionQuota.Serialize(writer);
 
             writer.Write((DateTime)NextGemOfSalvationUse);
 

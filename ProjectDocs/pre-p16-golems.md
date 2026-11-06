@@ -45,11 +45,10 @@ With pre-P16 off, the existing four-slot assembly check and three-slot
 golem transfer/claim checks remain intact, including their pre-existing
 mismatch. The provisional control-model switch does not choose this rule.
 
-The historical daily production quota is **not implemented by this patch**.
-It requires a separate decision about character/account scope and persisted
-timer behavior. Removing the follower restriction makes repeat creation
-possible without that quota; this interim behavior is explicit rather than
-an assertion that OSI had no production restriction.
+The production quota was added separately on November 6, 2026. See
+[quota behavior, reconstruction choices and save compatibility](pre-p16-golem-production.md).
+The validation below records the original follower-budget patch; the quota
+follow-up has its own expanded tests and pending client check.
 
 ## Validation
 

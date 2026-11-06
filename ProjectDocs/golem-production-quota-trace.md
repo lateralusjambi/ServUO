@@ -1,6 +1,8 @@
 # Golem production quota: launch to Publish 16
 
-Focused check: November 6, 2026 (UTC). Research only; no gameplay changes.
+Focused check: November 6, 2026 (UTC). This file records research.
+Subsequent implementation: [quota behavior, save compatibility and client check](pre-p16-golem-production.md).
+Earlier pending-implementation statements below describe the research checkpoint.
 Project cutoff remains the end of April 22, 2002.
 
 ## Finding
