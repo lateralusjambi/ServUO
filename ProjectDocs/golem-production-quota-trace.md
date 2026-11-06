@@ -130,3 +130,35 @@ we implement the reconstruction.
 The current code deliberately has no production quota; that interim
 state is documented in pre-p16-golems.md. This research commit does not
 change it.
+
+## Refusal-message follow-up: November 6, 2026
+
+A later Sphere script supplies a specific candidate message, 1071942,
+whose comment describes exhaustion and an approximately one-day wait
+before making another golem. The same script separately uses 1071941
+for an unsuccessful construction. Source:
+https://forum.spherecommunity.net/Thread-tGolemAssembly?pid=23443
+The post is dated March 27, 2016, and the author's replica claim is not
+proof of OSI behavior or LBR provenance.
+
+The published source also exists in:
+https://github.com/Kaylala/SphereBaseScripts/blob/7a398faf884059d5526844d6ab90ca88267337da/Core/TypeDefs/TypeDefs.scp
+
+Do not adopt that script's one-success-then-lock timer: it is not the
+five-creation allowance described in the November 2001 statement.
+The current ServUO assembly has no quota refusal and no random craft-failure
+branch; neither later handler establishes which message OSI sent in 2002.
+
+The unpatched LBR localization bytes were not available for reinspection
+during this follow-up. Therefore 1071942 remains a candidate, not a
+verified LBR message ID. A current client's displayed text must also be
+checked before relying on this ID, since the current official Mechanical
+Pets guide describes a shorter rest and differently worded refusal.
+
+Suggested implementation contract, if proceeding with reconstruction:
+five successful creations in a persisted 24-hour window starting at the
+first success, checked before consuming ingredients or the assembly.
+Use character scope as an explicit project choice unless account scope
+is independently established. Refusal should explain the quota rather
+than report a random crafting failure. This is a proposed contract only;
+this documentation update adds no timer or message to gameplay.
