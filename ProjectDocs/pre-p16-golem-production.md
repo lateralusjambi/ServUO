@@ -1,6 +1,7 @@
 # Pre-P16 golem production quota
 
-Implemented November 6, 2026. Bounded client acceptance pending.
+Implemented November 6, 2026. Bounded client checks passed November 8, 2026;
+live 24-hour expiration observation remains pending.
 
 ## Rule and evidence
 
@@ -75,8 +76,8 @@ and the later-era negative path. The save fixture checks full byte consumption.
 Related suites passed: pet acquisition 221, stable capacity 187, bonding 18,
 and paid stabling/vendor behavior 96. Total across these suites: 719 assertions.
 No live shard was launched and no user Saves were read or written. The tests
-use an in-memory world without client tiledata. Windows SDK build, live
-refusal display and actual shard save/restart remain bounded client checks.
+use an in-memory world without client tiledata. Subsequent client results
+are recorded below; a separate Windows build log was not supplied.
 
 ## Bounded client check
 
@@ -97,3 +98,32 @@ separate from production allowance; do not try to stable all five golems.
 The compiled boundary tests cover expiration without waiting a real day.
 The initial client check need not modify clocks or save properties. A later
 normal login after the recorded deadline can independently check expiration.
+
+## Reported client acceptance: November 8, 2026
+
+Checkpoint: d8fb686987b171e4be1ab77f57adeae041666501 (quota)
+plus f1fc292984cb622a679ab70ed41126e8f31d12e2 (Sphere wording).
+Chris pulled the changes and performed the guided checks on his Windows
+server using the instructed normal-Player/GM-Tinkering setup. Results are
+user reports and supplied journal screenshots, not direct access to the shard.
+
+| Check | Observation | Evidence |
+|---|---|---|
+| Initial allowance | Five creations succeeded on the same character. | Chris: “5 succeeded.” |
+| Sixth creation | Refused with the selected exhaustion/approximately-one-day wording. | image(20261109-005811).png |
+| Save and server restart | The same character still received the quota refusal after the requested server restart. | image(20261109-010124).png, supplied in the restart-check sequence |
+| Transfer away | Journal confirms transfer to Bull Test, followed by another quota refusal on the original maker. | image(20261109-010429).png |
+| Independent character | Creation succeeded on the second character. | Chris's final confirmation |
+| Resource preservation | Refused attempts did not use resources on the exhausted character. | Chris's final confirmation |
+
+Screenshot filenames use November 9 timestamps; the session date above is
+November 8 in America/New_York. Screenshots and world-save bytes are not
+embedded in the repository.
+
+These checks establish the bounded runtime behavior of our reconstruction.
+They do not establish historical account-versus-character scope or authenticate
+the Sphere wording as an LBR message. The reset deadline was not read before
+and after refusal, so unchanged-deadline behavior remains compiled-test coverage.
+The assembly's separate continued presence was not explicitly confirmed in
+the final resource report; assembly preservation is covered by the compiled tests.
+Live expiration and first creation after a real 24-hour wait remain unobserved.
