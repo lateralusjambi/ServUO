@@ -1,0 +1,360 @@
+{
+  "review_date": "2026-11-08 America/New_York",
+  "guide_and_hoc": [
+    {
+      "requested": "https://web.archive.org/web/20000303120505id_/http://guide.uo.com/magic.html",
+      "url": "https://web.archive.org/web/20000303120505id_/http://guide.uo.com/magic.html",
+      "file": "9bb3e3d7724254b1",
+      "sha256": "9e0cc2bf102c543d777caca156bc1a3e788f762f6dc35d58c5d06d005fbc0b6f",
+      "bytes": 4323
+    },
+    {
+      "requested": "https://web.archive.org/web/20000303133758id_/http://guide.uo.com/magic_0.html",
+      "url": "https://web.archive.org/web/20000303133758id_/http://guide.uo.com/magic_0.html",
+      "file": "cca2c29764dd61f7",
+      "sha256": "55f0e884041f73f404e774b78f242cd9da4bb45f19bfda14665cbed236735e32",
+      "bytes": 7436
+    },
+    {
+      "requested": "https://web.archive.org/web/20000305170311id_/http://guide.uo.com/magic_1.html",
+      "url": "https://web.archive.org/web/20000305170311id_/http://guide.uo.com/magic_1.html",
+      "file": "b075c4b3d6c5ca97",
+      "sha256": "8dc943dd972dcf04b986d2f0666e6f89ba1b65c17849061acb1ed206253cfe11",
+      "bytes": 6820
+    },
+    {
+      "requested": "https://web.archive.org/web/20000304161819id_/http://guide.uo.com/magic_10.html",
+      "url": "https://web.archive.org/web/20000304161819id_/http://guide.uo.com/magic_10.html",
+      "file": "9d3dc3dbf8682b8d",
+      "sha256": "2559d78da99886ca519d189566a0608939a08de5395da6e93b1780849fb1ff6b",
+      "bytes": 6217
+    },
+    {
+      "requested": "https://web.archive.org/web/20000304173024id_/http://guide.uo.com/magic_11.html",
+      "url": "https://web.archive.org/web/20000304173024id_/http://guide.uo.com/magic_11.html",
+      "file": "540a80919f8f66d8",
+      "sha256": "8c862d10763ebf77af37f40d89c5c3dc187c40745179f30bb9e5242be8635cb9",
+      "bytes": 4174
+    },
+    {
+      "requested": "https://web.archive.org/web/20000303155704id_/http://guide.uo.com/magic_12.html",
+      "url": "https://web.archive.org/web/20000303155704id_/http://guide.uo.com/magic_12.html",
+      "file": "e8e8c2e00204ce05",
+      "sha256": "b0fba4d7e654acb9ed197a8cd5dcffcaf684b89630b3b33f82e0198b4a3b6f98",
+      "bytes": 5392
+    },
+    {
+      "requested": "https://web.archive.org/web/20020405213641id_/http://guide.uo.com/magic_15.html",
+      "url": "https://web.archive.org/web/20020405213641id_/http://guide.uo.com/magic_15.html",
+      "file": "f4fff6a242d2f4d8",
+      "sha256": "0855055dd2cecdb123396e87ead5852a6755d491623cbf478ca8f6ea114b5f4c",
+      "bytes": 4868
+    },
+    {
+      "requested": "https://web.archive.org/web/20010501040340id_/http://guide.uo.com/magic_16.html",
+      "url": "https://web.archive.org/web/20010501040340id_/http://guide.uo.com/magic_16.html",
+      "file": "b666ac727adddb58",
+      "sha256": "f734d3df0e2e5e4d58aa1b2ceb6d04e072115fba21f681f282af285f0fbcbff4",
+      "bytes": 5895
+    },
+    {
+      "requested": "https://web.archive.org/web/20010721132250id_/http://guide.uo.com/magic_17.html",
+      "url": "https://web.archive.org/web/20010721132250id_/http://guide.uo.com/magic_17.html",
+      "file": "75b9be1527a18dd4",
+      "sha256": "60894526193bdd71b06498e2a296e382ebb2fe9ed83a83e1ac3d2fbb1180101c",
+      "bytes": 5840
+    },
+    {
+      "requested": "https://web.archive.org/web/20000305193038id_/http://guide.uo.com/magic_2.html",
+      "url": "https://web.archive.org/web/20000305193038id_/http://guide.uo.com/magic_2.html",
+      "file": "24b091ab36563e0f",
+      "sha256": "b556114b4ad4c45d0e984d7c6517a589c4d113eb3783585da3a67c8562cdf4e3",
+      "bytes": 6699
+    },
+    {
+      "requested": "https://web.archive.org/web/20000305220444id_/http://guide.uo.com/magic_3.html",
+      "url": "https://web.archive.org/web/20000305220444id_/http://guide.uo.com/magic_3.html",
+      "file": "f9aba45bdb27c801",
+      "sha256": "b7bc19399b66d732eb8c752af72781d7c77936684662e8b0fe8da6e1668693da",
+      "bytes": 7499
+    },
+    {
+      "requested": "https://web.archive.org/web/20000229035413id_/http://guide.uo.com/magic_4.html",
+      "url": "https://web.archive.org/web/20000229035413id_/http://guide.uo.com/magic_4.html",
+      "file": "5e50dd81a98b0a57",
+      "sha256": "a33d170f186226b4b7ad56b3379c826609d963e9874d9fb9490e4492e0253245",
+      "bytes": 7280
+    },
+    {
+      "requested": "https://web.archive.org/web/20000229072252id_/http://guide.uo.com/magic_5.html",
+      "url": "https://web.archive.org/web/20000229072252id_/http://guide.uo.com/magic_5.html",
+      "file": "87c959292c832e90",
+      "sha256": "ebf02101c813b19769d5e0e23c7694127f3be797367f41218970dac5b95937da",
+      "bytes": 6706
+    },
+    {
+      "requested": "https://web.archive.org/web/20000229084024id_/http://guide.uo.com/magic_6.html",
+      "url": "https://web.archive.org/web/20000229084024id_/http://guide.uo.com/magic_6.html",
+      "file": "a845daa973f6c22b",
+      "sha256": "c3995852daff19504e897dd908a21bc8c340782cf796ed51f2510c645979ea35",
+      "bytes": 7154
+    },
+    {
+      "requested": "https://web.archive.org/web/20000229112100id_/http://guide.uo.com/magic_7.html",
+      "url": "https://web.archive.org/web/20000229112100id_/http://guide.uo.com/magic_7.html",
+      "file": "242842dc06d941a8",
+      "sha256": "7ee4fb30de445039dc879ac17e057dd27d850c0263acc618450516a0777166a7",
+      "bytes": 7245
+    },
+    {
+      "requested": "https://web.archive.org/web/20000229123644id_/http://guide.uo.com/magic_8.html",
+      "url": "https://web.archive.org/web/20000229123644id_/http://guide.uo.com/magic_8.html",
+      "file": "57af37b223b7ecec",
+      "sha256": "89c7225fe928da0575c293dd1368756493d051a17914736bfbd5106c6bccb0aa",
+      "bytes": 8275
+    },
+    {
+      "requested": "https://web.archive.org/web/20000229140937id_/http://guide.uo.com/magic_9.html",
+      "url": "https://web.archive.org/web/20000229140937id_/http://guide.uo.com/magic_9.html",
+      "file": "0c63d146eaed64e6",
+      "sha256": "2f153eca1cb5ecead9705338ebc34fe7e7e718e0e878346d2f140b8b11fbcc93",
+      "bytes": 2860
+    },
+    {
+      "requested": "https://web.archive.org/web/20010303213633id_/http://uohoc.stratics.com/logs/pub010104.htm",
+      "url": "https://web.archive.org/web/20010303213633id_/http://uohoc.stratics.com/logs/pub010104.htm",
+      "file": "928b21ef7d1fdd97",
+      "sha256": "bf9778aacd1bf259c2e3589f5ffbcf56eed74a40f28ee845cea95c9dd9f044dc",
+      "bytes": 18518
+    },
+    {
+      "requested": "https://web.archive.org/web/20010409231920id_/http://uohoc.stratics.com/logs/pub010104.shtml",
+      "url": "https://web.archive.org/web/20010409231920id_/http://uohoc.stratics.com/logs/pub010104.shtml",
+      "file": "5f8b8faa8fdcc68d",
+      "sha256": "3bc852eb4b4a0a3b532c7852b07c5abf9869dcbf8501a1d25faa7bf9faae8a0d",
+      "bytes": 18390
+    },
+    {
+      "requested": "https://web.archive.org/web/20010303214810id_/http://uohoc.stratics.com/logs/pub010201.htm",
+      "url": "https://web.archive.org/web/20010303214810id_/http://uohoc.stratics.com/logs/pub010201.htm",
+      "file": "4715102c7afffcf7",
+      "sha256": "6c88f31ca341a30f542803ab78fd4177bf3eb814c7c586bee6134c03208499c1",
+      "bytes": 16975
+    },
+    {
+      "requested": "https://web.archive.org/web/20010409233339id_/http://uohoc.stratics.com/logs/pub010201.shtml",
+      "url": "https://web.archive.org/web/20010409233339id_/http://uohoc.stratics.com/logs/pub010201.shtml",
+      "file": "2de5e429872df99f",
+      "sha256": "d1b1e1dd80b5bff60604b1cbadf34f14975c5f92bed1b77b4bc8aa268fed842c",
+      "bytes": 17016
+    },
+    {
+      "requested": "https://web.archive.org/web/20010716000657id_/http://uohoc.stratics.com/logs/pub010308.shtml",
+      "url": "https://web.archive.org/web/20010716000657id_/http://uohoc.stratics.com/logs/pub010308.shtml",
+      "file": "23773326418970ad",
+      "sha256": "647e117f466072de56cd241313dfc3968fd492121c29bc9c2b81276be318fa81",
+      "bytes": 15547
+    },
+    {
+      "requested": "https://web.archive.org/web/20010529122822id_/http://uohoc.stratics.com/logs/pub010412.shtml",
+      "url": "https://web.archive.org/web/20010529122822id_/http://uohoc.stratics.com/logs/pub010412.shtml",
+      "file": "047f281c410ecd31",
+      "sha256": "ecc7f982fce1e3c1b2c4f3771aade5b878f9573b95ca9c4c02c74432d5f8f555",
+      "bytes": 20727
+    },
+    {
+      "requested": "https://web.archive.org/web/20010717055142id_/http://uohoc.stratics.com/logs/pub010503.shtml",
+      "url": "https://web.archive.org/web/20010717055142id_/http://uohoc.stratics.com/logs/pub010503.shtml",
+      "file": "abbb60e2f58def46",
+      "sha256": "e7e9db2304e2f93142734e61f8b42d27715a321db3b5d81e8ee9f31c55780e97",
+      "bytes": 20652
+    },
+    {
+      "requested": "https://web.archive.org/web/20011025021034id_/http://uohoc.stratics.com/logs/pub010607.shtml",
+      "url": "https://web.archive.org/web/20011025021034id_/http://uohoc.stratics.com/logs/pub010607.shtml",
+      "file": "c8c37421d2ef530c",
+      "sha256": "526948b6459188fe665ff15953a8a461c1910d7113591f21580d496d15f39e48",
+      "bytes": 21496
+    },
+    {
+      "requested": "https://web.archive.org/web/20010803104717id_/http://uohoc.stratics.com/logs/pub010705.shtml",
+      "url": "https://web.archive.org/web/20010803104717id_/http://uohoc.stratics.com/logs/pub010705.shtml",
+      "file": "dffe8f4af94680cc",
+      "sha256": "f9a30c99c8d3a254854118382a3a508fe4a99ff3358d46a4bd2c7a661abb3daa",
+      "bytes": 23249
+    },
+    {
+      "requested": "https://web.archive.org/web/20020219180421id_/http://uohoc.stratics.com/logs/pub010802.shtml",
+      "url": "https://web.archive.org/web/20020219180421id_/http://uohoc.stratics.com/logs/pub010802.shtml",
+      "file": "efed27309695fbe8",
+      "sha256": "5898b8348766626c1dd6ba39902baeec3572aa27be1d4bb5836d242ad0fed1ea",
+      "bytes": 22719
+    },
+    {
+      "requested": "https://web.archive.org/web/20020219182922id_/http://uohoc.stratics.com/logs/pub010906.shtml",
+      "url": "https://web.archive.org/web/20020219182922id_/http://uohoc.stratics.com/logs/pub010906.shtml",
+      "file": "2c42bb28e8e82e27",
+      "sha256": "b033f744bc010d0e148748cf5b4e178b922463c475f556324d1aa731c8ff5c10",
+      "bytes": 18705
+    },
+    {
+      "requested": "https://web.archive.org/web/20011123071949id_/http://uohoc.stratics.com/logs/pub011004.shtml",
+      "url": "https://web.archive.org/web/20011123071949id_/http://uohoc.stratics.com/logs/pub011004.shtml",
+      "file": "654a2af174148506",
+      "sha256": "5956fbf38f70af26522f509aa349928b62ac1d9b0ea3b6f09eb61d15cf1bb057",
+      "bytes": 20404
+    },
+    {
+      "requested": "https://web.archive.org/web/20011225225538id_/http://uohoc.stratics.com/logs/pub011102.shtml",
+      "url": "https://web.archive.org/web/20011225225538id_/http://uohoc.stratics.com/logs/pub011102.shtml",
+      "file": "8a69be94eee0be6b",
+      "sha256": "bdf6e2f75ee98c76bdc62c7b525531e70be398334d47a8e804e63729a6382b02",
+      "bytes": 18959
+    }
+  ],
+  "stratics_retry": [
+    {
+      "capture": "20011225230413",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2539619&page=0&view=collapsed&sb=5&o=7&part=",
+      "url": "https://web.archive.org/web/20011225230413id_/http://boards.stratics.com/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2539619&page=0&view=collapsed&sb=5&o=7&part=",
+      "file": "8f1a01bb4ead25a5.html",
+      "bytes": 68646,
+      "sha256": "2fe9a7297f734d4f274a48fde5fc6ee023ce135b9159862c87914b9c4b124a42"
+    },
+    {
+      "capture": "20011225231254",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2555845&page=0&view=collapsed&sb=5&o=7&part=",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "capture": "20010714105219",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=%26Board=uomage%26Number=1231982%26page=0%26view=collapsed%26sb=5%26o=7%26part=",
+      "url": "https://web.archive.org/web/20010714105219id_/http://boards.stratics.com/php-bin/uo/showflat.php?Cat=%26Board=uomage%26Number=1231982%26page=0%26view=collapsed%26sb=5%26o=7%26part=",
+      "file": "d7227caabbe37d96.html",
+      "bytes": 10548,
+      "sha256": "5b9dddcc8693b45a238484176e5462d3e2609e61d3f113f9111da7e0043397e0"
+    },
+    {
+      "capture": "20011225223156",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2520253&page=0&view=collapsed&sb=5&o=7&part=",
+      "url": "https://web.archive.org/web/20011225223156id_/http://boards.stratics.com/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2520253&page=0&view=collapsed&sb=5&o=7&part=",
+      "file": "7ec9da206cff069f.html",
+      "bytes": 72231,
+      "sha256": "0cedc162470d74273d284b4fc296defc497e4492ad1d4d0601b483aa6c798c92"
+    },
+    {
+      "capture": "20011225222833",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2520253&page=0&view=collapsed&sb=5&o=7&part=1",
+      "url": "https://web.archive.org/web/20011225222833id_/http://boards.stratics.com/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2520253&page=0&view=collapsed&sb=5&o=7&part=1",
+      "file": "91cd378a315da615.html",
+      "bytes": 72231,
+      "sha256": "ed68ac3fe7b290981990c6a6a2a44e656533e55de3065d3f88510c7f6165fc5c"
+    },
+    {
+      "capture": "20011225225801",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2544243&page=0&view=collapsed&sb=5&o=7&part=",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "capture": "20011225215920",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2566933&page=0&view=collapsed&sb=5&o=7&part=",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "capture": "20011225213630",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2568619&page=0&view=collapsed&sb=5&o=7&part=",
+      "url": "https://web.archive.org/web/20011225213630id_/http://boards.stratics.com/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2568619&page=0&view=collapsed&sb=5&o=7&part=",
+      "file": "b5d7653f8c8b1bce.html",
+      "bytes": 19408,
+      "sha256": "8c54ded33d2f63286fd42776532075bf888d4d50306f9a9cee2ebf66d0d846a5"
+    },
+    {
+      "capture": "20011225220521",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2568762&page=0&view=collapsed&sb=5&o=7&part=",
+      "url": "https://web.archive.org/web/20011225220521id_/http://boards.stratics.com/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2568762&page=0&view=collapsed&sb=5&o=7&part=",
+      "file": "96c58dbc3c5d111c.html",
+      "bytes": 35679,
+      "sha256": "dab7e33a3b416cff2832bd381ea4d94d826ccb96840118218c0bfe9029b95a89"
+    },
+    {
+      "capture": "20011225222455",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2569142&page=0&view=collapsed&sb=5&o=7&part=",
+      "url": "https://web.archive.org/web/20011225222455id_/http://boards.stratics.com/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2569142&page=0&view=collapsed&sb=5&o=7&part=",
+      "file": "7ff77707552f1f05.html",
+      "bytes": 24278,
+      "sha256": "d5acda44bb46cba53ac79c51903d3f656af323aa3eceb2c23995f6164791bc98"
+    },
+    {
+      "capture": "20011225215439",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2573162&page=0&view=collapsed&sb=5&o=7&part=",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "capture": "20011225212926",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=&Board=uomage&Number=2576211&page=0&view=collapsed&sb=5&o=7&part=",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "capture": "20010901131126",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=1899984&page=0&view=collapsed&sb=5&o=7&part=2",
+      "url": "https://web.archive.org/web/20010901131126id_/http://boards.stratics.com/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=1899984&page=0&view=collapsed&sb=5&o=7&part=2",
+      "file": "720ab152253c5e1c.html",
+      "bytes": 72258,
+      "sha256": "07bb1bbfd62b2a33bc0e13c566c7ef49855eb7d26b6b338f0a68905375b6a11a"
+    },
+    {
+      "capture": "20010901133938",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2067429&page=0&view=collapsed&sb=5&o=7&part=",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "capture": "20010901140042",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2140960&page=0&view=collapsed&sb=5&o=7&part=",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "capture": "20010901143850",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2159313&page=0&view=collapsed&sb=5&o=7&part=",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "capture": "20010901144031",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2160275&page=0&view=collapsed&sb=5&o=7&part=",
+      "url": "https://web.archive.org/web/20010901144031id_/http://boards.stratics.com/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2160275&page=0&view=collapsed&sb=5&o=7&part=",
+      "file": "5351b03fffd16767.html",
+      "bytes": 39177,
+      "sha256": "d5124ac42f6cc0d04811fb4be40d75d4aa2647c51723d1562f2c1acfe1983527"
+    },
+    {
+      "capture": "20010901132634",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2164015&page=0&view=collapsed&sb=5&o=7&part=",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "capture": "20010901132944",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2171934&page=0&view=collapsed&sb=5&o=7&part=",
+      "url": "https://web.archive.org/web/20010901132944id_/http://boards.stratics.com/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2171934&page=0&view=collapsed&sb=5&o=7&part=",
+      "file": "cfa15e28246b2e71.html",
+      "bytes": 20558,
+      "sha256": "ff7982836483dbc0d220ad56f25efd44984cae8e96192cde635190ef605c75e7"
+    },
+    {
+      "capture": "20010901134805",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2172732&page=0&view=collapsed&sb=5&o=7&part=",
+      "url": "https://web.archive.org/web/20010901134805id_/http://boards.stratics.com/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2172732&page=0&view=collapsed&sb=5&o=7&part=",
+      "file": "424f92a1afa458c5.html",
+      "bytes": 15765,
+      "sha256": "eca0e10efc1294bb9fa96f080c855113b9e67074d6922d9d41b2b032a8c3bb59"
+    },
+    {
+      "capture": "20010901140401",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2173085&page=0&view=collapsed&sb=5&o=7&part=",
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "capture": "20010901141302",
+      "original": "http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2173120&page=0&view=collapsed&sb=5&o=7&part=",
+      "error": "HTTP Error 429: Too Many Requests"
+    }
+  ]
+}

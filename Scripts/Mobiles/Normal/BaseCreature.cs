@@ -6835,9 +6835,10 @@ namespace Server.Mobiles
         }
 
         public static bool Summon(
-            BaseCreature creature, bool controlled, Mobile caster, Point3D p, int sound, TimeSpan duration)
+            BaseCreature creature, bool controlled, Mobile caster, Point3D p, int sound, TimeSpan duration,
+            bool magerySummon = false)
         {
-            if (caster.Followers + creature.ControlSlots > caster.FollowersMax)
+            if (!PrePublish16Summoning.CanSummon(caster, creature.ControlSlots, magerySummon))
             {
                 caster.SendLocalizedMessage(1049645); // You have too many followers to summon that creature.
                 creature.Delete();

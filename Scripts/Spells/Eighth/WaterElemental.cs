@@ -1,5 +1,6 @@
 using System;
 using Server.Mobiles;
+using Server.Misc;
 
 namespace Server.Spells.Eighth
 {
@@ -30,7 +31,7 @@ namespace Server.Spells.Eighth
             if (!base.CheckCast())
                 return false;
 
-            if ((this.Caster.Followers + 3) > this.Caster.FollowersMax)
+            if (!PrePublish16Summoning.CanSummon(Caster, 3, magerySummon: true))
             {
                 this.Caster.SendLocalizedMessage(1049645); // You have too many followers to summon that creature.
                 return false;
@@ -46,9 +47,9 @@ namespace Server.Spells.Eighth
                 TimeSpan duration = TimeSpan.FromSeconds((2 * this.Caster.Skills.Magery.Fixed) / 5);
 
                 if (Core.AOS)
-                    SpellHelper.Summon(new SummonedWaterElemental(), this.Caster, 0x217, duration, false, false);
+                    SpellHelper.Summon(new SummonedWaterElemental(), this.Caster, 0x217, duration, false, false, magerySummon: true);
                 else
-                    SpellHelper.Summon(new WaterElemental(), this.Caster, 0x217, duration, false, false);
+                    SpellHelper.Summon(new WaterElemental(), this.Caster, 0x217, duration, false, false, magerySummon: true);
             }
 
             this.FinishSequence();

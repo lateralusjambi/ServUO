@@ -1,5 +1,6 @@
 using System;
 using Server.Mobiles;
+using Server.Misc;
 
 namespace Server.Spells.Fifth
 {
@@ -51,7 +52,7 @@ namespace Server.Spells.Fifth
             if (!base.CheckCast())
                 return false;
 
-            if ((this.Caster.Followers + 2) > this.Caster.FollowersMax)
+            if (!PrePublish16Summoning.CanSummon(Caster, 2, magerySummon: true))
             {
                 this.Caster.SendLocalizedMessage(1049645); // You have too many followers to summon that creature.
                 return false;
@@ -77,7 +78,7 @@ namespace Server.Spells.Fifth
                     else
                         duration = TimeSpan.FromSeconds(4.0 * this.Caster.Skills[SkillName.Magery].Value);
 
-                    SpellHelper.Summon(creature, this.Caster, 0x215, duration, false, false);
+                    SpellHelper.Summon(creature, this.Caster, 0x215, duration, false, false, magerySummon: true);
                 }
                 catch
                 {

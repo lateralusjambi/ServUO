@@ -1,5 +1,6 @@
 using System;
 using Server.Mobiles;
+using Server.Misc;
 using Server.Targeting;
 
 namespace Server.Spells.Eighth
@@ -32,7 +33,7 @@ namespace Server.Spells.Eighth
             if (!base.CheckCast())
                 return false;
 
-            if ((this.Caster.Followers + (Core.SE ? 2 : 1)) > this.Caster.FollowersMax)
+            if (!PrePublish16Summoning.CanSummon(Caster, (Core.SE ? 2 : 1), magerySummon: true))
             {
                 this.Caster.SendLocalizedMessage(1049645); // You have too many followers to summon that creature.
                 return false;
@@ -65,7 +66,7 @@ namespace Server.Spells.Eighth
                 else
                     duration = TimeSpan.FromSeconds(Utility.Random(80, 40));
 
-                BaseCreature.Summon(new EnergyVortex(true), false, this.Caster, new Point3D(p), 0x212, duration);
+                BaseCreature.Summon(new EnergyVortex(true), false, this.Caster, new Point3D(p), 0x212, duration, magerySummon: true);
             }
 
             this.FinishSequence();

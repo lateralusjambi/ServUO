@@ -1,5 +1,6 @@
 using System;
 using Server.Mobiles;
+using Server.Misc;
 
 namespace Server.Spells.Eighth
 {
@@ -31,7 +32,7 @@ namespace Server.Spells.Eighth
             if (!base.CheckCast())
                 return false;
 
-            if ((this.Caster.Followers + (Core.SE ? 4 : 5)) > this.Caster.FollowersMax)
+            if (!PrePublish16Summoning.CanSummon(Caster, (Core.SE ? 4 : 5), magerySummon: true))
             {
                 this.Caster.SendLocalizedMessage(1049645); // You have too many followers to summon that creature.
                 return false;
@@ -49,11 +50,11 @@ namespace Server.Spells.Eighth
                 if (Core.AOS)  /* Why two diff daemons? TODO: solve this */
                 {
                     BaseCreature m_Daemon = new SummonedDaemon();
-                    SpellHelper.Summon(m_Daemon, this.Caster, 0x216, duration, false, false);
+                    SpellHelper.Summon(m_Daemon, this.Caster, 0x216, duration, false, false, magerySummon: true);
                     m_Daemon.FixedParticles(0x3728, 8, 20, 5042, EffectLayer.Head);
                 }
                 else
-                    SpellHelper.Summon(new Daemon(), this.Caster, 0x216, duration, false, false);
+                    SpellHelper.Summon(new Daemon(), this.Caster, 0x216, duration, false, false, magerySummon: true);
             }
 
             this.FinishSequence();

@@ -2,7 +2,9 @@
 
 Focused audit: November 8, 2026, America/New_York.
 Gameplay baseline: quota implementation d8fb686 plus wording f1fc292.
-Research/code trace only; no summon behavior changed.
+Original sections below record the research/code trace before implementation.
+Current status: the documented no-explicit-cap reconstruction is implemented;
+see [implementation and pending live checks](pre-p16-summoning-implementation.md).
 
 ## Concrete defect to reconcile
 

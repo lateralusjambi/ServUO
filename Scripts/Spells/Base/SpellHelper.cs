@@ -679,7 +679,7 @@ namespace Server.Spells
             1, 1
         };
 
-        public static void Summon(BaseCreature creature, Mobile caster, int sound, TimeSpan duration, bool scaleDuration, bool scaleStats, bool summoned = true, SkillName useSkill = SkillName.Magery)
+        public static void Summon(BaseCreature creature, Mobile caster, int sound, TimeSpan duration, bool scaleDuration, bool scaleStats, bool summoned = true, SkillName useSkill = SkillName.Magery, bool magerySummon = false)
         {
             Map map = caster.Map;
 
@@ -707,7 +707,7 @@ namespace Server.Spells
 
             if (SpellHelper.FindValidSpawnLocation(map, ref p, true))
             {
-                BaseCreature.Summon(creature, summoned, caster, p, sound, duration);
+                BaseCreature.Summon(creature, summoned, caster, p, sound, duration, magerySummon);
                 return;
             }
 

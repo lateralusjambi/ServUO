@@ -417,3 +417,60 @@ demo trace, older emulator routines, January 2002 BS advice and explicit
 P16 introduction of weighted summon costs, this strengthens the
 no-explicit-cap reconstruction without converting it to a fully proved
 April 2002 production-server rule.
+
+
+## Final focused recovery pass, November 8, 2026
+
+All 22 previously rate-limited Mage capture requests were retried: eleven
+HTML payloads retrieved, eleven still returned HTTP 429. One retrieved
+payload is a Stratics "We cannot proceed" error, not a recovered thread;
+ten are discussion captures (including two parts of the same thread).
+No numeric per-caster ceiling was recovered. The promising monster-loot
+thread discusses hunting wild daemons, not summoning counts.
+
+A useful new period account is **how to use summon Deamon scrolls for
+Resist?**, posts August 14–16, 2001, replay September 1, 2001. Ciggy's advice
+sets up one mage on land and a training character on a boat; the mage
+repeatedly uses daemon scrolls while the trainee attacks the resulting
+creatures. Later replies discuss several mages. This corroborates repeated
+summoning in a one-mage setup but provides neither an exact simultaneous
+count nor a maximum. Do not equate a stack of scrolls with unlimited active
+summons.
+
+https://web.archive.org/web/20010901144031/http://boards.stratics.com/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=2160275&page=0&view=collapsed&sb=5&o=7&part=
+
+Payload SHA-256:
+`d5124ac42f6cc0d04811fb4be40d75d4aa2647c51723d1562f2c1acfe1983527`.
+
+Retrieved all 17 indexed official guide magic pages in this inventory,
+including fifth- and eighth-circle spell descriptions. They describe
+summoned creatures fighting for their caster and skill-dependent duration,
+and describe autonomous BS/EV targeting. No numeric summon ceiling appears.
+Their descriptive silence does not prove that no ceiling existed. These
+are early guide snapshots, not proof of unchanged April 2002 behavior.
+
+https://web.archive.org/web/20000229035413/http://guide.uo.com/magic_4.html
+https://web.archive.org/web/20000229112100/http://guide.uo.com/magic_7.html
+
+Retrieved all thirteen indexed 2001 House of Commons transcript URLs
+covering eleven dated chats, January through November (January and February
+have both .htm and .shtml payloads). No explicit summon-count limit was
+found. The July 5 discussion acknowledges balance concerns about taming,
+provocation and Blade Spirits, but supplies no count or concrete replacement
+rule. The recovered October 4 chat supplies no cap answer. The March 7,
+2002 transcript had already been reviewed in the earlier pass; the inventory
+returned no other pre-cutoff 2002 transcript URLs in that prefix.
+
+https://web.archive.org/web/20010803104717/http://uohoc.stratics.com/logs/pub010705.shtml
+https://web.archive.org/web/20011123071949/http://uohoc.stratics.com/logs/pub011004.shtml
+
+[Retrieval manifest](pre-p16-summon-final-pass-manifest.json) records requested
+and resolved replay URLs, payload hashes and remaining errors. HTML HTTP
+success is distinguished from meaningful recovered content. It is an
+inventory of this pass, not an exhaustive Stratics backup claim.
+
+The final pass strengthens the contemporary multiple-summon context but
+leaves the upper ceiling and April 2002 continuity unresolved. Proceed with
+[the no-explicit-cap implementation](pre-p16-summoning-implementation.md)
+as a documented YELLOW reconstruction. Future contrary period evidence
+should revise this admission policy, rather than be forced to fit it.
