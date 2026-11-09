@@ -231,3 +231,88 @@ cutoff. We have enough to make a documented reconstruction decision; we
 do not have enough to label unlimited summons an incontrovertible fact.
 
 See [the initial code and native-demo audit](pre-p16-summon-reconciliation.md).
+
+
+## Wayback and preserved Stratics follow-up
+
+Checked November 8, 2026, America/New_York. No gameplay changes.
+
+### Recovered period Mage forum FAQ
+
+The December 5, 2001 Mage board index exposes two pinned threads:
+https://web.archive.org/web/20011205101944/http://boards.stratics.com:80/php-bin/uo/postlist.php?Cat=&Board=uomage
+
+CDX lookup found successful September 1, 2001 captures for both. Retrieved
+the HTML directly through Wayback's id_ replay; the ordinary web retrieval
+service failed to open the normalized forum URL, but direct HTTP succeeded.
+
+The substantive Mage FAQ is posted by moderator Kaltes Feuer with displayed
+post date July 9, 2001, 10:44 PM; the inspected capture is September 1, 2001:
+https://web.archive.org/web/20010901132450/http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=1994176&page=0&view=collapsed&sb=5&o=7&part=
+
+Raw retrieved HTML SHA-256:
+1836587486600def29cb10fa0804e935c63c18f904d221235be181d901827e05
+Retrieved size: 73,091 bytes. Extracted text: 53,751 characters.
+
+Its resistance-training essay is credited to MasterCraft. At skill 65–70,
+it describes two GM mage friends summoning daemons while two warrior
+friends heal the trainee, discussing approximately two or three daemons.
+At skill 85–93, it discusses needing eight or more daemons simultaneously,
+says the author tried the approach, and recommends wisps instead.
+
+This is positive pre-cutoff player-guide evidence that groups of summoned
+daemons were used/contemplated for training. It is stronger than an
+undated modern shard guide. It is not an explicit unlimited-summon rule.
+The text does not unambiguously assign every daemon to one caster or
+specify how many mages participated in the larger setup. The trainee is
+also advised earlier in the essay to have high Magery. Do not assume the
+two listed mage friends were necessarily the only possible casters, or
+claim the passage proves eight daemons per caster.
+
+The FAQ's full text was searched for summon, daemon, limit, maximum and
+control-slot language. No explicit per-caster maximum was found.
+It also contains BS/EV target-selection material worth a separate future
+audit; no targeting changes are made from it here.
+
+The other captured pinned post is a June 12, 2001 moderator notice
+directing users to read the FAQ; it provides no summon allowance:
+https://web.archive.org/web/20010901142757/http://boards.stratics.com:80/php-bin/uo/showflat.php?Cat=2&Board=uomage&Number=1862174&page=0&view=collapsed&sb=5&o=7&part=
+
+### Other recovered pages and archive scope
+
+* April 5, 2002 Mage profession guide: direct retrieval succeeded.
+  No explicit cap found. Some town-casting advice may reflect older
+  contributed text, illustrating why capture date does not authenticate
+  every statement as current for that day.
+  https://web.archive.org/web/20020405164639/http://uo.stratics.com/content/professions/mage.shtml
+* April 8, 2002 spell table: direct retrieval succeeded; no count rule found.
+  https://web.archive.org/web/20020408154007/http://uo.stratics.com/content/basics/spellsn.shtml
+* UO House of Commons developer chats for November 2, 2001 and March 7,
+  2002 were retrieved. The inspected text supplied no summon-cap answer.
+  https://web.archive.org/web/20011225225538/http://uohoc.stratics.com:80/logs/pub011102.shtml
+  https://web.archive.org/web/20020317121319/http://uohoc.stratics.com:80/logs/pub020307.shtml
+* October 2001 HoC and February 2002 pet-reputation replay attempts
+  returned HTTP 429. Those are retrieval gaps, not negative content findings.
+* The Mage board CDX query returned 14 capture records before the cutoff;
+  not every listed board page or linked discussion was fetched in this pass.
+* The HoC CDX query returned 100 rows at the requested limit, including
+  assets and duplicate .htm/.shtml paths. That result is not a complete
+  inventory of all HoC transcripts.
+
+A genuine selected Stratics article mirror exists at:
+https://uorenn.com/stratics/
+Its navigation covers weapons/armor/combat, resist/Eval, animal tables and
+buildings. The weapons page labels collection date October 13, 1999;
+the resist/Eval page labels March 6, 2000. These are mirror provenance
+claims, not independently authenticated capture timestamps. This is not
+a recovered complete Stratics forum database or a complete Magery archive.
+https://uorenn.com/stratics/resist_eval.html
+
+Internet Archive catalog search for stratics returned eight items. The
+similarly titled cached-website items resolve to 2019 DocumentCloud PDF
+records, not a downloadable UO Stratics site/forum backup established by
+this pass. Do not promote their titles into a backup discovery.
+
+Updated assessment: we now have an actual pre-P16 Stratics Mage forum FAQ
+with simultaneous-daemon discussion. The outstanding per-caster attribution
+gap remains. A full Stratics forum backup has not been located.
