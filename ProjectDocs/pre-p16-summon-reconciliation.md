@@ -262,3 +262,47 @@ dispel and expiration behavior. Do not extend this finding automatically
 to controlled elementals, daemons, golems or other summoned creatures.
 
 Research documentation only. No gameplay code changed in this pass.
+
+
+## Controlled-summon extension: Daemon and Summon Creature
+
+Follow-up checked November 8, 2026. These spells require their own policy
+decision rather than automatically inheriting the BS/EV conclusion.
+
+At the same pinned demo revision, sumdaem.m calls Q4MG in sumdaembase.m;
+summoncr.m calls Q4MF in summoncrbase.m. Both run the shared spell guards,
+find a nearby location, call createGlobalNPCAt, attach destcrea and schedule
+expiration. Daemon uses template 0x0255; Summon Creature chooses a random
+animal template from its list.
+
+Both then call Q558(creature, user, 100, 1), defined in spelskil.m.
+This helper sets myBoss to a list containing the caster, myLoyalty to 100,
+isPet to 1, configures movement/behaviors and attaches pet. It returns 1.
+No existing-summon count, weighted follower total or admission comparison
+appears in these inspected creation or ownership helpers.
+
+The inspected pet.m creation trigger initializes pet sound state and
+behaviors and, when myBoss exists, notoriety. It contains no summon count
+admission test. This does not constitute an exhaustive audit of every
+inherited pet/guard function or native script-attachment behavior.
+
+Current ServUO spell prechecks:
+* SummonDaemon.CheckCast: Followers + (Core.SE ? 4 : 5) > FollowersMax.
+  Under LBR the added cost is five.
+* SummonCreature.CheckCast: Followers + 2 > FollowersMax.
+Both invoke SpellHelper.Summon, unlike the two BS/EV spell callers.
+Their full completion/control-assignment admission paths still require
+a separate implementation trace before editing.
+
+The official P16 eighth-circle table gives Daemon five follower slots and
+states that the spells were modified to work with the new system. It is
+positive evidence that the current weighted model belongs to the later
+system; it does not specify the exact former count allowance.
+https://uo.com/wiki/ultima-online-wiki/technical/previous-publishes/2002-2/publish-16-part-2-4-23rd-july/
+
+Working assessment: the inspected demo evidence also favors no explicit
+count cap for these controlled summons. The 1998-to-April-2002 temporal
+gap remains. Do not infer either a one-daemon restriction or a five-summon
+allowance from modern costs. Extend the reconciliation to controlled
+Magery summons, including elementals, while preserving their ownership,
+commands, attribution and expiration. No gameplay code changed.
