@@ -102,3 +102,56 @@ BS/EV mixtures, controlled-summon interaction, expiration/deletion freeing
 capacity, admission changing between cast and completion, and the later-era
 negative path. Scope duration, targeting, damage and criminality as separate
 questions unless evidence requires them for the admission fix.
+
+## Demo follow-up and confirmation standard
+
+Checked November 8, 2026. Public decompiled demo mirror:
+https://github.com/draxinar/uodemo
+Pinned revision reported by the repository API: 77ca798a101a0eaa00ffe6703cae0a32a35907d3
+
+Inspected scripts:
+* rundir/scripts.wombat/bldsprts.m and bldsprtsbase.m
+* rundir/scripts.wombat/nrgyvrtx.m and nrgyvrtxbase.m
+* rundir/scripts.wombat/spelskil.m and sndfx.m
+* summoncr.m and summoncrbase.m for a controlled-summon comparison
+* vortexai.m as an additional inspected AI path
+
+BS and EV target handlers perform visibility/map and shared spell checks,
+then invoke their creation helpers. The shared Q5YC path checks reagents;
+Q4LT/Q4LU handle casting requirements, skill and mana. Q5UL is a criminality/
+guard helper, not a summon-cap test. In the inspected creation helpers,
+createGlobalNPCAt creates the creature, copyControllerInfo records
+responsibility, the AI and destcrea scripts are attached, and callbacks
+schedule expiration (120 seconds for BS, 90 for EV in these demo helpers).
+No per-caster count or follower-budget check was found in these inspected
+script paths. This is a source-trace finding, not a demo runtime test or
+proof that native creation has no internal limit.
+
+The demo spell-cost switch uses 14 mana for circle five and 50 for circle
+eight. Thus a 100-mana pool permits seven BS attempts before regeneration,
+but only two EV attempts. That offers a practical explanation for the
+reported BS count without establishing either spell's maximum. Failure,
+regeneration, casting time and expiration further separate practical count
+from a hard cap.
+
+The demo dates to mid-1998, not the LBR cutoff. Reference:
+https://uodemo.uo98.org/index.php?title=Main_Page
+
+Confirmation should distinguish these tests:
+1. Trace the native createGlobalNPCAt path and any relevant controller
+   bookkeeping, or observe unmodified demo behavior above five active
+   summons. Admin-only bypasses and changes to count checks invalidate
+   that experiment; replenish mana separately if needed and record it.
+2. Establish that the original summons remain active while one caster
+   creates additional BS/EV. Success beyond five disproves a five-cap,
+   but does not by itself prove there was no higher cap.
+3. Trace original patch/publish announcements between the demo and April
+   22, 2002 for any introduction or revision of summon limits.
+4. Corroborate with pre-cutoff player/developer material, prioritizing
+   explicit rule statements or one-caster reports beyond five. A group
+   screenshot without caster attribution cannot establish a per-caster cap.
+
+Working assessment: no hard cap is a credible hypothesis supported by
+the inspected script structure and the January 2002 player lead. Neither
+an arbitrary replacement cap nor unconditional historical certainty is
+justified yet. No gameplay patch is included in this follow-up.
