@@ -316,3 +316,104 @@ this pass. Do not promote their titles into a backup discovery.
 Updated assessment: we now have an actual pre-P16 Stratics Mage forum FAQ
 with simultaneous-daemon discussion. The outstanding per-caster attribution
 gap remains. A full Stratics forum backup has not been located.
+
+
+## Focused Mage-thread pass and one-caster daemon evidence
+
+Checked November 8, 2026, America/New_York. No gameplay changes.
+
+### Batlin's essay: original dated capture recovered
+
+A preserved Stratics parrying essay by Batlin/Devlin of BaH, Napa Valley,
+describes reaching GM Parry by fighting summoned daemons in a tower.
+The author identifies one female guildmate training Magery as the person
+summoning, and says he usually fought two daemons at once. The surrounding
+text repeatedly discusses simultaneous two-daemon combat and a summoning
+friend healing the trainee.
+
+Mirror:
+https://uorenn.com/stratics/parry_essay.html
+
+The mirror labels its material March 6, 2000, but this pass independently
+recovered the original Stratics document from Wayback:
+https://web.archive.org/web/20000129115406/http://uo.stratics.com/parryessay.htm
+
+This establishes that the account existed by January 29, 2000, rather
+than relying solely on the modern mirror's collection-date label.
+The original publication date has not been established.
+
+Provenance cross-check:
+* The request for March 6, 2000 with the no-port original URL redirected
+  to the January 29, 2000 id_ replay above.
+* The returned HTML was 33,030 bytes.
+* SHA-256: 123785bcceea1117678e216972362551eb94c2172ad4ae883e8ec4bc1fab6852
+* Its base32 SHA-1 is DABDRMMWHUDET2FBHMY2SKESOOBG74OY.
+* That exactly matches CDX's payload digest for the January 29 capture.
+  The content is therefore matched to that capture, not merely assigned
+  the date requested in the first replay URL.
+* Initial attempts using the :80 URL returned HTTP 429; their failures
+  did not establish that the article was unavailable.
+* The separate ordinary web retrieval service could not open this replay;
+  direct HTTP retrieved the content and supplied the actual redirect URL.
+
+Interpretation: strong contemporary player-account evidence for one mage
+supplying at least two simultaneously active summoned daemons. It supports
+rejecting the later one-daemon result of charging five slots per daemon
+as a universal rule for that earlier period. The narrative is not an
+ownership-property dump or controlled experiment, and does not explicitly
+test a third daemon, a sixth summon, a higher ceiling, or April 2002
+continuity. Do not turn a two-daemon report into proof of unlimited summons.
+It also supports summoning ordinary creatures inside a house at that time,
+but does not establish BS/EV house-placement rules.
+
+### Forum recovery coverage
+
+The CDX query for boards.stratics.com/php-bin/uo/showflat.php* with Mage
+board URLs, successful responses, and dates through April 22, 2002 returned
+61 digest-collapsed records. The analogous showthreaded query returned no
+records. These are results within those URL/query families, not proof that
+every possible alias, archive collection or migrated thread was searched.
+
+Excluded the two already read FAQ records and ten records of the large
+babble thread. Attempted the remaining 49 records:
+* 27 HTML captures retrieved, covering 25 distinct thread IDs.
+* 22 attempts returned HTTP 429; these remain unread retrieval gaps.
+* Searched retrieved text for summon, daemon, vortex and blade-spirit
+  language, then inspected the matching contexts.
+* No explicit per-caster ceiling or unambiguous one-caster count above
+  five was recovered from those retrieved discussions.
+* Repeated forum signatures mentioning daemons were excluded as evidence.
+
+A December 2001 training discussion recommends moving around while
+summoning different elementals and daemons, but gives no simultaneous
+count. It supplies no cap conclusion:
+https://web.archive.org/web/20011225224123/http://boards.stratics.com:80/php-bin/uo/showflat.php?Board=uomage&Cat=&Number=2570490&o=7&page=0&part=&sb=5&view=collapsed
+
+Also followed five more Mage board index captures. August 7, October 30,
+December 25, 2001 and January 23, 2002 were retrieved; June 30, 2001 returned
+429. Relevant titles exposed by the successful indexes included:
+* How do pure mages hunt? — Number 2126647
+* BS's and EV's, Liches and Lich Lords — Number 2122413
+* Need info on pvm. — Number 2113866
+* Lord Edrick attempts to answer all Forum questions in one shot! — Number 2470841
+* I was out working on resist..... — Number 2619774
+* Questions Re: Resist — Number 2608594
+* Mage PvP FAQ — Number 2675936
+
+A targeted CDX query for these and two additional candidate thread IDs,
+extending capture dates through 2003, returned no records. The titles are
+leads from archived indexes, not recovered thread bodies or testimony.
+
+Useful successful index replays:
+https://web.archive.org/web/20010807123702/http://boards.stratics.com:80/php-bin/uo/postlist.php?Cat=&Board=uomage
+https://web.archive.org/web/20011030035720/http://boards.stratics.com:80/php-bin/uo/postlist.php?Cat=&Board=uomage
+https://web.archive.org/web/20020123054232/http://boards.stratics.com:80/php-bin/uo/postlist.php?Cat=&Board=uomage&page=0&view=collapsed&sb=5&o=7
+
+### Updated conclusion
+
+The one-caster/multiple-daemon question now has a dated affirmative player
+account. The exact upper-limit question remains open. Combined with the
+demo trace, older emulator routines, January 2002 BS advice and explicit
+P16 introduction of weighted summon costs, this strengthens the
+no-explicit-cap reconstruction without converting it to a fully proved
+April 2002 production-server rule.
