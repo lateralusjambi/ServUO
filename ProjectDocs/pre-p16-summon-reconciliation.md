@@ -306,3 +306,15 @@ gap remains. Do not infer either a one-daemon restriction or a five-summon
 allowance from modern costs. Extend the reconciliation to controlled
 Magery summons, including elementals, while preserving their ownership,
 commands, attribution and expiration. No gameplay code changed.
+
+
+## Intervening-history reconciliation completed
+
+The [patch-history and emulator comparison](pre-p16-summon-history.md)
+records the subsequent 60-page official archive pass, supplied UOX/Wolfpack
+and RunUO archive inspection, older Sphere ownership trace, and pinned
+freeshard comparison. It strengthens the no-explicit-cap reconstruction
+without claiming an incontrovertible April 2002 allowance. Preserve the
+positively documented February 1999 summon obedience exemption from Taming
+and May 1999 prohibition on transferring summons when implementing policy.
+No gameplay change was included in the research pass.
