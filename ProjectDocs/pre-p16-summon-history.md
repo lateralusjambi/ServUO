@@ -158,7 +158,7 @@ ControlSlots and shared completion/control-assignment checks.
 
 | Pinned implementation | BS / EV spell precheck | Daemon precheck | Summon Creature precheck | Interpretation |
 |---|---|---|---|---|
-| Defiance pre-1.10 | +1 / +1 | +5 | No separately reported spell precheck; shared BaseCreature limit exists | Retains later RunUO weighted model |
+| Defiance pre-1.10 | +1 / +1 | +5 | No spell-level follower precheck; shared BaseCreature limit exists | Retains later RunUO weighted model |
 | Defiance 1.10 | +1 or +2 under SE | +5 or +4 under SE | +2; creature slots explicitly set to 2 | Later-era branches preserved |
 | Defiance ModernUO port | Era-dependent checks | +5 or +4 under SE | +2 | Later port, not independent historical testimony |
 | Forever archive | +1 or +2 by caster era | +4 | +2 | Customized later model |
