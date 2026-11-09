@@ -155,3 +155,110 @@ Working assessment: no hard cap is a credible hypothesis supported by
 the inspected script structure and the January 2002 player lead. Neither
 an arbitrary replacement cap nor unconditional historical certainty is
 justified yet. No gameplay patch is included in this follow-up.
+
+
+## Native demo follow-up: creation and controller bookkeeping
+
+Static binary audit completed November 8, 2026, America/New_York.
+This strengthens the no-hard-cap hypothesis; it is not a live demo
+experiment or proof of the April 2002 production-server rule.
+
+### Reproducible inputs and method
+
+Public mirror, pinned commit:
+https://github.com/draxinar/uodemo/tree/77ca798a101a0eaa00ffe6703cae0a32a35907d3
+
+* Binary: uodemo/UoDemo.exe, 2,959,360 bytes.
+* Binary SHA-256: bb691a1c80394657dd9c55395523869676b172859ce1bb3ef0527138e506f6c3
+* PE32 x86 image base: 0x00400000.
+* PE header timestamp: 1998-09-02 21:27:44 UTC. A header timestamp is
+  metadata, not independent authentication of the mirror or production build.
+* Template input: rundir/bank/templatestable.dat.
+* Template SHA-256: f987c21f068049e36e39db63d7ebd6934682a1b4f964847f19df4479cdd5a7d1
+
+Decoded the PE with pefile and disassembled x86 instructions with Capstone.
+Located native entry points through the script dispatch table's name and
+function pointers, then followed direct calls and conditional branches.
+Manually resolved jump tables at 0x004af8d3 (4 entries), 0x004be1d8
+(31 entries), 0x004ce9d8 and 0x004ce9ec (5 entries each).
+Do not mistake stopping at an indirect switch jump for a complete function.
+
+All addresses below are preferred-image virtual addresses. Function labels
+other than the dispatch names describe this audit's interpretation, not
+recovered original debug symbols. No binary was modified or executed.
+
+### Findings
+
+| Path | Native address | Observation |
+|---|---|---|
+| createGlobalNPCAt dispatch entry | 0x00609970 | Points to 0x0041e416; name pointer 0x0060d2bc |
+| createGlobalNPCAt wrapper | 0x0041e416 | Copies location, checks map bounds, searches placement, invokes shared factory; no caster argument or per-caster count comparison |
+| createGlobalNPCAtSpecificLoc wrapper | 0x0041e3c2 | Same shared factory, without the nearby-location search |
+| Map-bounds helper | 0x0042f43f | XY bounds checks |
+| Placement search | 0x004af695 | Tile/collision and position search, including direction switch; no caster argument |
+| Shared template factory | 0x004bf8b5 | Bounds, template construction, placement and object initialization; no per-caster threshold in the inspected function |
+| Template application | 0x004bd7c6 | Loads/applies template fields; allocation delegated to 0x004bd165 |
+| Object allocation by template kind | 0x004bd165 | NORMAL selects constructor 0x00481127 |
+| copyControllerInfo dispatch entry | 0x00609260 | Points to 0x0041f838; name pointer 0x0060c8f8 |
+| copyControllerInfo wrapper | 0x0041f838 | Records controller identity/name and guild metadata; removes defensive objvar; no count/admission branch |
+| Objvar setter wrapper | 0x004cdeea | Lazily creates the objvar store and invokes generic insertion 0x004ce6c7 |
+
+The factory receives the template, location and creation options. On the
+inspected createGlobalNPCAt route, it is called with options 0, 2, 0.
+The script supplies the caster separately, after creation, through
+copyControllerInfo. This data flow is stronger evidence than merely
+failing to find a familiar refusal string.
+
+The native controller wrapper writes controller, controllerName,
+controllerGuild and controllerGuildType from the supplied controller and
+its guildstoneId/guildType variables. It contains no summon-count increment,
+list of that controller's summons, threshold test or deletion-on-limit path.
+Its name getter is the virtual call at offset 0x34; this is not a hidden
+admission callback in the wrapper.
+
+Template 573 (0x023d, EV) and 574 (0x023e, BS) both select NORMAL.
+Their template definitions contain creature properties rather than a
+caster-count policy. NORMAL construction selects vtable 0x005ef1f8.
+Resolving the factory's type-predicate calls against this table matters:
+offsets 0xd0 and 0xe4 return true, while 0xe8 returns false. Therefore the
+factory's special initialization/refusal block reached through 0xe8
+(0x004bfb1e onward) is not the NORMAL BS/EV route. Its presence must not
+be reported as a hidden summon cap.
+
+The factory increments two global counters at 0x006e7674 and 0x006e7678.
+Neither is compared against a limit there; the former increment is specific
+to template 12, not BS/EV. A search for their literal absolute addresses in
+the binary found only those increment reads/writes. They provide no
+evidence of a per-caster maximum.
+
+### Scope and conclusion
+
+No hard per-caster cap was found in the inspected spell scripts, native
+creation wrappers, factory bodies or controller-assignment wrapper.
+The inspected mechanics are consistent with creating successive BS/EV
+until practical casting costs, expiration and placement intervene.
+
+This is a bounded static trace. Generic construction, world registration,
+movement, notification, memory-management and scripting infrastructure
+have further callees and virtual dispatch. They were not exhaustively
+decompiled or exercised. Absence of a caster argument alone does not rule
+out implicit script context or unrelated global mechanisms. Accordingly,
+this audit does not claim mathematical proof that every possible demo
+execution lacks a cap. No sixth-cast runtime result is being asserted.
+
+The larger unresolved boundary is temporal: the demo executable predates
+our LBR cutoff by years. This pass does not establish that no intervening
+production-server change occurred. The January 2002 one-mage player lead
+is compatible with this implementation, but is still not an explicit
+unlimited-summon rule statement.
+
+Recommendation: prefer no explicit per-caster BS/EV cap over inventing a
+five-summon replacement. Treat that as an evidence-backed reconstruction.
+For an implementation, exempt these two uncontrolled summons from both
+pre-P16 admission blockers and assess their effect on other follower
+admission checks; merely bypassing their own prechecks can leave an
+indirect mixed-pet restriction. Retain SummonMaster, criminal attribution,
+dispel and expiration behavior. Do not extend this finding automatically
+to controlled elementals, daemons, golems or other summoned creatures.
+
+Research documentation only. No gameplay code changed in this pass.
