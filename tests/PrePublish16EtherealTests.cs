@@ -99,6 +99,50 @@ public static class PrePublish16EtherealTests
         }
     }
 
+    private static void VerifyCatalog(bool pre16)
+    {
+        var account = new Account("catalog-test-" + serial++, "fixture");
+        var player = Player(0);
+        player.Account = account;
+        var entries = RewardSystem.Categories.SelectMany(c => c.Entries).ToArray();
+
+        // Independent tier inventory from the Publish 12 reward list.
+        int[][] tiers =
+        {
+            new[] { 1006008, 1006009, 1006010, 1006011, 1006012, 1006013,
+                1006024, 1006025, 1006026, 1006027, 1006028, 1006029, 1006030,
+                1006031, 1006032, 1006033, 1006034, 1006035, 1006036, 1006037, 1006047 },
+            new[] { 1006014, 1006015, 1006016, 1006017, 1006048, 1006049, 1006052 },
+            new[] { 1006019, 1006020, 1006021, 1006022, 1006023, 1006038, 1006039,
+                1006040, 1006050, 1006051 }
+        };
+
+        if (pre16)
+        {
+            foreach (int age in new[] { 29, 30, 59, 60, 89, 90, 750 })
+            {
+                account.Created = DateTime.UtcNow.AddDays(-age);
+                var expected = tiers.Take(age / 30).SelectMany(t => t).OrderBy(x => x);
+                var available = entries.Where(e => RewardSystem.HasAccess(player, e))
+                    .Select(e => e.Name).OrderBy(x => x);
+                Assert(expected.SequenceEqual(available), "exact Publish 12 catalog at day " + age);
+            }
+        }
+
+        account.Created = DateTime.UtcNow.AddDays(-750);
+        foreach (int label in new[] { 1155746, 1155747, 1155748, 1049746, 1049740, 1049748, 1113954 })
+        {
+            var entry = entries.Single(e => e.Name == label);
+            Assert(RewardSystem.HasAccess(player, entry) == !pre16, "later ungated item " + label + " follows era switch");
+        }
+
+        var redSoulstone = entries.Single(e => e.Name == 1076155);
+        Assert(!RewardSystem.HasAccess(player, redSoulstone), "LBR expansion gating still applies");
+        var olderMount = new EtherealKirin(ItemSerial()) { IsRewardItem = true };
+        Assert(RewardSystem.CheckIsUsableBy(player, olderMount, null),
+            "claim filter does not change use of previously issued items");
+    }
+
     public static void Main()
     {
         const BindingFlags worldField = BindingFlags.Static | BindingFlags.NonPublic;
@@ -118,6 +162,7 @@ public static class PrePublish16EtherealTests
         {
             Config.Set("Era.PrePublish16", pre16);
             VerifyRewardTiers(pre16);
+            VerifyCatalog(pre16);
             foreach (int followers in new[] { 4, 5, 9 })
             {
                 foreach (var mount in OriginalMounts())

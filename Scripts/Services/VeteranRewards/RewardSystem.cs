@@ -67,8 +67,21 @@ namespace Server.Engines.VeteranRewards
                 return false;
             }
 
+            if (SkillCheck.PrePublish16Rules && !IsPublish12Reward(entry))
+                return false;
+
             TimeSpan ts;
             return HasAccess(mob, entry.List, out ts);
+        }
+
+        private static bool IsPublish12Reward(RewardEntry entry)
+        {
+            // The original catalog uses these reward-choice clilocs. Later
+            // additions can lack an expansion requirement even in tier one.
+            int name = entry.Name;
+            return entry.RequiredExpansion == Expansion.None &&
+                ((name >= 1006008 && name <= 1006040 && name != 1006018) ||
+                 (name >= 1006047 && name <= 1006052));
         }
 
         public static bool HasAccess(Mobile mob, RewardList list, out TimeSpan ts)

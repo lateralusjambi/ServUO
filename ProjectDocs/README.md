@@ -24,6 +24,7 @@ Start with:
 * [Prioritized open questions and boundary defects](uncertainties.md)
 * [Magery summon implementation and live validation](pre-p16-summoning-implementation.md)
 * [Summon historical evidence and remaining uncertainty](pre-p16-summon-history.md)
+* [Pre-P16 veteran reward catalog and evidence](pre-p16-veteran-catalog.md)
 * [Ethereal mounting and reward tiers](pre-p16-ethereal-mounts.md)
 * [Paid hireling admission and historical evidence](pre-p16-hirelings.md)
 * [Golem production quota and client check](pre-p16-golem-production.md)
