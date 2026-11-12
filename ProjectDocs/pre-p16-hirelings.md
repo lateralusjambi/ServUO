@@ -40,6 +40,18 @@ and timer start, intact rejected gold, underpayment, and the refusal to
 rehire an NPC already employed by someone else. The escort handler is tested
 for first acceptance and rejection of a second escort in each era mode.
 
-Live acceptance pending: on a normal character with at least four weighted
-followers, pay two different fighters the wages they quote. Confirm both
-accept and respond to follow commands. No save changes are required.
+## Live acceptance: November 11, 2026
+
+Chris reported that his normal character paid two different fighters while
+controlling a tamed horse (one slot) and a golem (three slots). Both accepted
+payment, and both fighters, the horse, and the golem followed together.
+
+The normal character could not get a wage quote at the Jhelom pit. A GM
+obtained the quotes without paying, and the normal character paid. This
+isolated paid admission from speech delivery. On the current LBR
+configuration, the context menu packet path is disabled with object property
+lists. For an unhired NPC, ordinary player speech delivery through the
+creature AI requires a human NPC in a guarded region within three tiles;
+GM speech bypasses that restriction. The pit spawner center is at Z -21
+and the Jhelom guarded region starts at Z -20, a likely cause that still
+needs an in-game location check. Normal player wage quotes remain open.
