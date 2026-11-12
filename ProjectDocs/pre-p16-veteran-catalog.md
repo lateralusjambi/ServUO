@@ -41,7 +41,7 @@ Item behavior is separate from catalog availability.
 The compiled test checks the exact choices at 29, 30, 59, 60, 89, 90 and
 750 days, later-era access to excluded entries, existing expansion
 requirements, and unchanged use checks on a previously issued reward.
-Live acceptance pending: use a normal account with unspent rewards to
-inspect the menu without spending a point. At tier three or higher it
-should offer only the catalog above, including exactly the three original
-ethereals.
+On November 11, 2026, Chris supplied a live client screenshot for
+`2c5f3e1` showing exactly the Ethereal Horse, Llama and Ostard statuettes.
+This verifies the ethereal category display; the other categories and
+age thresholds remain covered by the compiled checks.
