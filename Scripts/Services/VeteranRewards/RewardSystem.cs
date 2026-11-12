@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Server.Accounting;
 using Server.Items;
+using Server.Misc;
 using Server.Mobiles;
 
 namespace Server.Engines.VeteranRewards
@@ -348,6 +349,7 @@ namespace Server.Engines.VeteranRewards
             const int GreenForest = 0x4A9;
             const int RoyalBlue = 0x538;
 
+            var horse = new RewardEntry(etherealSteeds, 1006019, typeof(EtherealHorse));
             m_Lists = new RewardList[]
             {
                 new RewardList(RewardInterval, 1, new RewardEntry[]
@@ -385,8 +387,6 @@ namespace Server.Engines.VeteranRewards
                     new RewardEntry(monsterStatues, 1156367, typeof(MonsterStatuette), Expansion.TOL, MonsterStatuetteType.DragonTurtle),
                     new RewardEntry(monsterStatues, 1158875, typeof(MonsterStatuette), Expansion.EJ, MonsterStatuetteType.Krampus),
                     new RewardEntry(monsterStatues, 1159417, typeof(MonsterStatuette), Expansion.EJ, MonsterStatuetteType.Pig),
-
-                    new RewardEntry(etherealSteeds, 1006019, typeof(EtherealHorse)),
 
                     new RewardEntry(houseAddOns,    1062692, typeof(ContestMiniHouseDeed), Expansion.AOS, MiniHouseType.MalasMountainPass),
                     new RewardEntry(houseAddOns,    1072216, typeof(ContestMiniHouseDeed), Expansion.SE, MiniHouseType.ChurchAtNight),                   
@@ -630,6 +630,11 @@ namespace Server.Engines.VeteranRewards
                     new RewardEntry(etherealSteeds, 1157995, typeof(EtherealSerpentineDragon), Expansion.TOL)
                 }),
             };
+
+            // Publish 12 offered the horse with the llama and ostard at tier three.
+            int horseTier = SkillCheck.PrePublish16Rules ? 3 : 1;
+            var horseTierEntries = new List<RewardEntry>(m_Lists[horseTier - 1].Entries) { horse };
+            m_Lists[horseTier - 1] = new RewardList(RewardInterval, horseTier, horseTierEntries.ToArray());
         }
 
         public static void Initialize()

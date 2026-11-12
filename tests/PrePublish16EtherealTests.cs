@@ -2,8 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.IO;
+using System.Linq;
 using Server;
 using Server.Items;
+using Server.Accounting;
+using Server.Engines.VeteranRewards;
 using Server.Misc;
 using Server.Mobiles;
 
@@ -70,6 +73,32 @@ public static class PrePublish16EtherealTests
         }
     }
 
+    private static void VerifyRewardTiers(bool pre16)
+    {
+        RewardSystem.SetupRewardTables();
+        Assert(RewardSystem.RewardInterval == TimeSpan.FromDays(30), "30 calendar days per reward tier");
+        var rider = Player(5);
+        var account = new Account("ethereal-test-" + serial++, "fixture");
+        rider.Account = account;
+
+        foreach (var mount in OriginalMounts())
+        {
+            var entry = RewardSystem.Lists.SelectMany(l => l.Entries).Single(e => e.ItemType == mount.GetType());
+            int days = !pre16 && mount is EtherealHorse ? 30 : 90;
+            Assert(entry.List.Age == TimeSpan.FromDays(days), "exact catalog tier and one choice entry");
+            PutInPack(rider, mount);
+            mount.IsRewardItem = true;
+            account.Created = DateTime.UtcNow.AddDays(1 - days);
+            Assert(!RewardSystem.HasAccess(rider, entry), "claim unavailable below required account age");
+            if (pre16)
+                Assert(!mount.Validate(rider), "ineligible existing reward statuette cannot be used");
+            account.Created = DateTime.UtcNow.AddDays(-days);
+            Assert(RewardSystem.HasAccess(rider, entry), "claim available at required account age");
+            if (pre16)
+                Assert(mount.Validate(rider), "eligible reward statuette ignores full follower budget");
+        }
+    }
+
     public static void Main()
     {
         const BindingFlags worldField = BindingFlags.Static | BindingFlags.NonPublic;
@@ -88,6 +117,7 @@ public static class PrePublish16EtherealTests
         foreach (bool pre16 in new[] { true, false })
         {
             Config.Set("Era.PrePublish16", pre16);
+            VerifyRewardTiers(pre16);
             foreach (int followers in new[] { 4, 5, 9 })
             {
                 foreach (var mount in OriginalMounts())
