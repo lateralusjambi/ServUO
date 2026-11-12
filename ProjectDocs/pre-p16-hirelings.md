@@ -66,5 +66,6 @@ change restores access to the quote; it does not hire the NPC or change pay.
 
 The fixture checks speech dispatch and handling in an unguarded location,
 including the three-tile boundary, unrelated speech, employed hirelings,
-and the era toggle. Live recheck pending: at the Jhelom pit, stand next to
-a fresh fighter on a normal character and say “hire” without GM help.
+and the era toggle. On November 11, 2026, Chris confirmed that saying
+“hire” to a fresh fighter at the Jhelom pit returned a wage quote on his
+normal character without GM help.
