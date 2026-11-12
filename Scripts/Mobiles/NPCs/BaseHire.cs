@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.ContextMenus;
 using Server.Items;
+using Server.Misc;
 
 namespace Server.Mobiles
 {
@@ -191,7 +192,7 @@ namespace Server.Mobiles
                         // Is the payment in gold sufficient
                         if (item.Amount >= m_Pay)
                         { 
-                            if (from.Followers + ControlSlots > from.FollowersMax)
+                            if (!SkillCheck.PrePublish16Rules && from.Followers + ControlSlots > from.FollowersMax)
                             {
                                 this.SayTo(from, 500896, 0x3B2); // I see you already have an escort.
                                 return false;
