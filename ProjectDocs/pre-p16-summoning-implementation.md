@@ -1,6 +1,6 @@
 # Pre-P16 Magery summon admission
 
-Implemented November 8, 2026 (America/New_York). Live client acceptance is pending.
+Implemented November 8, 2026 (America/New_York). Core pre-P16 client checks passed November 11, 2026.
 
 ## Selected rule and confidence
 
@@ -60,29 +60,25 @@ capacity 187, paid stabling/vendor 96, bonding 18. Total: 1,467 assertions.
 These fixtures do not run a network client, full spell sequence, map-data
 placement, natural elapsed timer dispatch or server save/restart. Source
 review confirms opt-in propagation through every creation branch, including
-both AOS and older creature variants. Live tests below cover the remaining
-player-facing path; they do not establish historical truth.
+both AOS and older creature variants. The client checks below exercise the player-facing path and do not
+establish historical truth.
 
-## Bounded live acceptance (pending)
+## Live acceptance: November 11, 2026
 
-Save and stop the server, pull/build, verify build success, then restart.
-Use a normal-access character with sufficient Magery, mana and reagents;
-an administrator can observe or provision the test character.
+Implementation under test: `211b9bc8b3b2c326636951a56703f51c1e3b2517`.
+Results reported by Chris from the normal-character test sequence.
 
-1. In an allowed open location, cast two Summon Daemons before the first
-   expires. Both should remain owned, follow and obey the same character.
-2. With an ordinary pet or golem already following, repeat. Its follower
-   weight should not cause the summon refusal message.
-3. In a clear safe test area, cast at least six BS/EV while earlier ones
-   remain active. The sixth should not be refused for follower count.
-   Record the simultaneous count; do not confuse expiration with refusal.
-4. Exercise Summon Creature and each elemental with pets already following.
-   Normal mana/reagent/placement failure remains possible.
-5. Let summons expire and confirm ordinary pets remain owned and responsive.
-   Confirm normal transfer commands continue to refuse summoned pets.
-6. On a separate test configuration with `Era.PrePublish16=false`, restart
-   and confirm the previous weighted admission limits return. Do not change
-   the live era merely for this check.
+| Check | Observed result |
+|---|---|
+| Repeated Summon Daemon | Two daemons active simultaneously. |
+| Mixed ordinary pet and daemons | A tamed horse and two summoned daemons all followed the same character. |
+| Blade Spirits count | Six active simultaneously. |
+| Mixed Blade Spirits and Energy Vortex | Five Blade Spirits and one Energy Vortex active simultaneously; the horse remained responsive to follow. |
+| Other controlled summons | The horse, a summoned animal and one elemental all followed. Elemental type was not recorded. |
+| Transfer guard | The daemon transfer command returned “You cannot transfer ownership of a summoned creature.” |
 
-Record results, date and deployed commit before marking client acceptance
-complete. No live results are claimed by this implementation document.
+Core admission and control checks passed. Individual live checks for all
+four elementals and a client run with `Era.PrePublish16=false` were not
+reported; all eight spell prechecks and both era settings are covered by
+the automated tests. The horse remained responsive, but no exact expiry
+timing or post-refusal daemon follow result was recorded.
