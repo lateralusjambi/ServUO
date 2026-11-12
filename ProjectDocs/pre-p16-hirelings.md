@@ -53,5 +53,18 @@ configuration, the context menu packet path is disabled with object property
 lists. For an unhired NPC, ordinary player speech delivery through the
 creature AI requires a human NPC in a guarded region within three tiles;
 GM speech bypasses that restriction. The pit spawner center is at Z -21
-and the Jhelom guarded region starts at Z -20, a likely cause that still
-needs an in-game location check. Normal player wage quotes remain open.
+and the Jhelom guarded region starts at Z -20. Chris confirmed that the
+normal character received a wage quote at street level in Jhelom.
+
+## Pit speech follow-up
+
+Pre-P16 unhired hirelings now listen to living players within three tiles
+even outside a guarded region. The existing hiring speech handler still
+decides whether to quote a wage. General NPC speech, hired follower commands,
+context menus and later-era behavior retain their existing rules. The
+change restores access to the quote; it does not hire the NPC or change pay.
+
+The fixture checks speech dispatch and handling in an unguarded location,
+including the three-tile boundary, unrelated speech, employed hirelings,
+and the era toggle. Live recheck pending: at the Jhelom pit, stand next to
+a fresh fighter on a normal character and say “hire” without GM help.

@@ -243,6 +243,14 @@ namespace Server.Mobiles
             this.Say(1043256, string.Format("{0}", m_Pay), 0x3B2);// "I am available for hire for ~1_AMOUNT~ gold coins a day. If thou dost give me gold, I will work for thee."
         }
 
+        public override bool HandlesOnSpeech(Mobile from)
+        {
+            // Unhired NPCs normally hear nearby players only in guarded towns.
+            // Paid hirelings also need to quote wages in places such as the Jhelom pit.
+            return (SkillCheck.PrePublish16Rules && !Controlled && from.Player &&
+                from.Alive && from.InRange(this, 3)) || base.HandlesOnSpeech(from);
+        }
+
         public override void OnSpeech(SpeechEventArgs e) 
         { 
             if (!e.Handled && e.Mobile.InRange(this, 6)) 

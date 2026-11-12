@@ -5,6 +5,7 @@ using Server;
 using Server.Items;
 using Server.Misc;
 using Server.Mobiles;
+using Server.Network;
 
 public static class PrePublish16HirelingTests
 {
@@ -99,6 +100,25 @@ public static class PrePublish16HirelingTests
             var candidate = Hireling();
             Assert(!candidate.OnDragDrop(below, Payment(59)) && candidate.ControlMaster == null, "insufficient gold rejected");
             Assert(candidate.OnDragDrop(below, Payment(60)) && below.Followers == 2, "ordinary paid hire still works");
+
+            var available = Hireling();
+            Assert(!available.IsHumanInTown(), "fixture represents an unguarded location");
+            var speaker = new PlayerMobile { Player = true };
+            speaker.Location = new Point3D(4, 0, 0);
+            Assert(!available.HandlesOnSpeech(speaker), "hireling does not listen at four tiles");
+            speaker.Location = new Point3D(3, 0, 0);
+            Assert(available.HandlesOnSpeech(speaker) == pre16, "nearby normal speech reaches unguarded hireling only in pre-P16 mode");
+            var greeting = new SpeechEventArgs(speaker, "unrelated", MessageType.Regular, 0, new int[0]);
+            var request = new SpeechEventArgs(speaker, "hire", MessageType.Regular, 0, new[] { 0x0162 });
+            if (available.HandlesOnSpeech(speaker))
+            {
+                available.OnSpeech(greeting);
+                available.OnSpeech(request);
+            }
+            Assert(!greeting.Handled, "unrelated speech is not consumed");
+            Assert(request.Handled == pre16, "hire request reaches wage quote handler");
+            Assert(!available.Controlled && available.ControlMaster == null, "quote does not hire NPC");
+            Assert(!candidate.HandlesOnSpeech(speaker), "unrelated player gets no new speech access to an employed hireling");
 
             var first = Escort();
             var second = Escort();
