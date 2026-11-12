@@ -3,6 +3,7 @@ using System;
 
 using Server.Engines.VeteranRewards;
 using Server.Items;
+using Server.Misc;
 using Server.Multis;
 using Server.Network;
 using Server.Spells;
@@ -189,7 +190,16 @@ namespace Server.Mobiles
         public override double DefaultWeight { get { return 1.0; } }
 
         public override bool DisplayLootType { get { return Core.AOS; } }
-        public virtual int FollowerSlots { get { return 1; } }
+        private bool UsesPrePublish16Mounting
+        {
+            get
+            {
+                return SkillCheck.PrePublish16Rules &&
+                    (this is EtherealHorse || this is EtherealLlama || this is EtherealOstard);
+            }
+        }
+
+        public virtual int FollowerSlots { get { return UsesPrePublish16Mounting ? 0 : 1; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Rider
@@ -356,7 +366,7 @@ namespace Server.Mobiles
                 return false;
             }
 
-            if ((from.Followers + FollowerSlots) > from.FollowersMax)
+            if (!UsesPrePublish16Mounting && from.Followers + FollowerSlots > from.FollowersMax)
             {
                 from.SendLocalizedMessage(1049679); // You have too many followers to summon your mount.
                 return false;
@@ -544,6 +554,11 @@ namespace Server.Mobiles
                     return
                             TimeSpan.FromSeconds(Core.AOS ? 3.0 : 2.0);
                 }
+            }
+
+            public override TimeSpan GetCastDelay()
+            {
+                return m_Mount.UsesPrePublish16Mounting ? TimeSpan.Zero : base.GetCastDelay();
             }
 
             public override TimeSpan GetCastRecovery()
