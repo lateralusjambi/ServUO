@@ -102,3 +102,27 @@ with no duplicate owner and orneriness still 1. Invoking untamed-pet
 cleanup after retaming left the bull alone. All 12 fixture assertions
 passed. This verifies the current implementation in isolation; no live
 pet, save/reload, or historical release behavior was tested.
+
+## Open-ground separation: source comparison
+
+Prima's LBR guide (printed p. 65, PDF p. 66) advises staying near pets
+and says that pets left alone too long can revert to wild. Its logout FAQ
+(printed p. 37) recommends stabling. Neither gives a distance or says the
+five-minute rate applies in open terrain. Reena Dae's April 2002 guide
+specifies the fast rate for loss of line of sight but gives no range.
+
+The RunUO Beta 12 and 16 source archives contain no matching loyalty
+handler (searched for LoyaltyTimer, OwnerAbandonTime, CheckFeed and the
+warning text/ID). The installed Beta 2 payload was not verified.
+
+In the local source snapshots, UO Forever, Divinity and the inspected
+Defiance variants decay living pets hourly. Their 12-tile and LOS tests
+are for abandoned pet ghosts, not living pet loyalty. The public
+[Angel Island source](https://github.com/Luke-Tomasello/Angel-Island-Server/blob/main/scripts/Engines/AI/Creature/BaseCreature.cs#L10479)
+likewise uses its 12-tile test for dead pets; living pets lose 7–13 points
+hourly. Rebirth is a counterexample: its 15-minute timer can decrement
+living pet loyalty outside 15 tiles, but uses different steps and timing
+from Reena's account. These are shard implementations, not period OSI evidence.
+
+Decision: retain the verified nearby-wall implementation. An open-ground
+radius and its cadence remain unresolved; no gameplay change from this pass.
