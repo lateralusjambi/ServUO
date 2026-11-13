@@ -87,3 +87,18 @@ With the normal owner behind a nearby solid wall, the bull initially read
 60 after an unmeasured wait, consistent with two checks. A repeat from
 100 captured a single drop to 80. This verifies the nearby wall penalty;
 logout, cross-facet and long-distance cases were not tested live.
+
+## Natural release and retame fixture
+
+A forced five-minute wall tick took a tamed bull from 21 loyalty to 1;
+its owner and one follower slot remained. The next tick reached the
+release threshold: the bull went wild, stayed tamable, cleared the slot,
+and retained its former owner. First-release orneriness became 1 and
+control difficulty rose from 71.1 to 75.9.
+
+The real taming completion handler then restored ownership and the slot
+for the former owner with effectively zero Taming. Retame loyalty was 10,
+with no duplicate owner and orneriness still 1. Invoking untamed-pet
+cleanup after retaming left the bull alone. All 12 fixture assertions
+passed. This verifies the current implementation in isolation; no live
+pet, save/reload, or historical release behavior was tested.
