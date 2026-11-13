@@ -3283,7 +3283,7 @@ namespace Server.Mobiles
                             Stam += stamGain;
                         }
 
-                        if (Core.SE)
+                        if (SkillCheck.PrePublish16Rules || Core.SE)
                         {
                             if (m_Loyalty < MaxLoyalty)
                             {

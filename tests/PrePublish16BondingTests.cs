@@ -38,11 +38,11 @@ public static class PrePublish16BondingTests
         public override void OnAfterResurrect() { Resurrections++; }
         public override int GetDeathSound() { return -1; }
     }
-    private static RawRibs Food()
+    private static RawRibs Food(int amount = 1)
     {
         var food = new RawRibs((Serial)(0x40000000 + serial++));
         // A loaded item needs no TileData lookup just to seed its stack amount.
-        typeof(Item).GetField("m_Amount", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(food, 1);
+        typeof(Item).GetField("m_Amount", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(food, amount);
         return food;
     }
     private static Pet Owned(Mobile owner)
@@ -87,8 +87,17 @@ public static class PrePublish16BondingTests
 
         var owner = new Mobile();
         pet = Owned(owner);
+        pet.Loyalty = 30;
         var food = Food();
+        Assert(!pet.CheckFeed(new Mobile(), food) && !food.Deleted && pet.Loyalty == 30,
+            "stranger cannot feed another player's pet");
         Assert(pet.CheckFeed(owner, food) && food.Deleted, "accepted food consumed under pre-P16");
+        Assert(pet.Loyalty == 100, "one piece restores maximum pre-P16 loyalty");
+        pet.Loyalty = 1;
+        food = Food(4);
+        Assert(pet.CheckFeed(owner, food) && food.Deleted && pet.Loyalty == 100,
+            "accepted stack restores maximum loyalty");
+        Assert(pet.CheckFeed(owner, Food()) && pet.Loyalty == 100, "feeding at maximum stays capped");
         Assert(!pet.IsBonded && pet.BondingBegin == DateTime.MinValue, "feeding cannot start bonding through override");
         Raw(pet, "m_BondingBegin", DateTime.UtcNow.AddDays(-8));
         food = Food();
@@ -106,7 +115,9 @@ public static class PrePublish16BondingTests
         Assert(BaseCreature.BondingEnabled && normal.IsBondable, "later-era base bonding retained");
         pet = Owned(owner);
         food = Food();
+        pet.Loyalty = 30;
         Assert(pet.CheckFeed(owner, food), "later-era feeding works");
+        Assert(pet.Loyalty == 30 || pet.Loyalty == 40, "LBR with pre-P16 off retains existing per-piece behavior");
         Assert(pet.BondingBegin != DateTime.MinValue && !pet.IsBonded, "later-era feeding starts timer");
         pet.BondingBegin = DateTime.UtcNow.AddDays(-8);
         food = Food();
@@ -119,6 +130,10 @@ public static class PrePublish16BondingTests
         pet = new Pet();
         pet.OnDeath(new Container((Serial)(0x40000000 + serial++)));
         Assert(pet.Deleted && !pet.IsDeadPet, "later-era unbonded death remains ordinary");
+        Core.Expansion = Expansion.SE;
+        pet = Owned(owner);
+        pet.Loyalty = 30;
+        Assert(pet.CheckFeed(owner, Food()) && pet.Loyalty == 100, "existing SE maximum-loyalty behavior retained");
         Console.WriteLine("PASS: " + assertions + " bonding, feeding, death and resurrection assertions.");
     }
 }

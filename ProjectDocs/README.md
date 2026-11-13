@@ -24,6 +24,7 @@ Start with:
 * [Prioritized open questions and boundary defects](uncertainties.md)
 * [Magery summon implementation and live validation](pre-p16-summoning-implementation.md)
 * [Summon historical evidence and remaining uncertainty](pre-p16-summon-history.md)
+* [Pet feeding and loyalty evidence](pre-p16-pet-feeding.md)
 * [Pre-P16 veteran reward catalog and evidence](pre-p16-veteran-catalog.md)
 * [Ethereal mounting and reward tiers](pre-p16-ethereal-mounts.md)
 * [Paid hireling admission and historical evidence](pre-p16-hirelings.md)
@@ -43,7 +44,7 @@ Start with:
 | Bonding / bonded death / pet resurrection | Pre-P16 gate implemented; 18 compiled-assembly assertions passed; bounded client acceptance passed October 25 | No existing pet ghosts reported. No save migration; see the bonding boundary record. |
 | Animal Lore | P14 descriptive skill result implemented; 1,758 compiled assertions passed; bounded client checks passed October 25 | Two random facts plus controlled-pet loyalty. Exact bands/odds/weights remain reconstruction; numeric P16 gump and access tiers gated out. |
 | Follower and stable limits | Pre-P16 stable capacity restored to 2–5; ordinary transfer/claim/vendor-animal gates patched; other weighted checks remain | False stabling-release and ordinary-purchase defects patched with 96 assertions; bounded client acceptance passed October 28, 2026. Stable capacity passed 187 assertions and bounded client acceptance October 28, 2026. Ordinary pet acquisition passed 221 assertions and all three bounded client checks October 28, 2026. Magery summon admission now uses a documented pre-P16 exemption; core client checks passed November 11, 2026. Golem production has its own record. Paid hireling admission passed client validation November 11, 2026; the Jhelom pit wage quote fix also passed its client recheck. Original ethereal mounting passed the eight-follower client check. All three are now tier-three pre-P16 rewards. |
-| Feeding | Historical semantics unresolved | Existing quantity/loyalty behavior remains on HOLD; no feeding rule change included. |
+| Feeding | Pre-P16 accepted food restores maximum loyalty; client recheck pending | One piece is supported by Reena Dae’s April 2002 account. Stamina and decay remain separate. |
 | Magery, combat, healing, crafting, notoriety, housing and world content | No completion established by this checkpoint | Repository-era inventories are search aids, not proof that gameplay branches are correctly gated. |
 
 ## Evidence and workflow
