@@ -48,3 +48,10 @@ This verifies the existing pre-P16 control exception for this horse.
 excluded automatically controlled pets from loyalty gains on successful
 commands. This check does not establish command deltas for higher-skill
 pets or the natural decay rate.
+
+## Command loyalty: bull
+
+Chris confirmed that a tamed bull obeyed the normal owner's follow command
+and gained one loyalty point (95 to 96). This verifies the success path
+for a pet that requires taming skill under the current model. The refused
+command penalty was not measured in this trial.
