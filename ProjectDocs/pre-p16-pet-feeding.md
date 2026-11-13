@@ -38,3 +38,13 @@ On November 12, 2026, Chris repeated the single-apple horse test on
 `a367e6f` and reported loyalty rising from 30 to 100. This verifies the
 loyalty result in the live client. Food consumption is covered by the
 compiled fixture; it was not separately reported in the client recheck.
+
+## Command loyalty: ordinary horse
+
+On November 12, 2026, Chris tested a tamed horse at 50 loyalty with the
+normal owner. The successful “all follow me” check left loyalty at 50.
+This verifies the existing pre-P16 control exception for this horse.
+[Publish 3, February 23, 2000](https://uo.com/wiki/ultima-online-wiki/technical/previous-publishes/2000-2/2000-publish-03-23rd-february/)
+excluded automatically controlled pets from loyalty gains on successful
+commands. This check does not establish command deltas for higher-skill
+pets or the natural decay rate.
