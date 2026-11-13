@@ -34,6 +34,7 @@ The feeding/bonding fixture checks single and stacked food, rejection of
 non-owner/non-friend feeding, the maximum clamp, continued absence of
 bonding, and preserved behavior with the pre-P16 switch off.
 
-Live acceptance pending: repeat the single-apple test on a dismounted
-horse at 30 loyalty. The normal owner should see the apple consumed and
-the GM inspection should show 100. Avoid commands between measurements.
+On November 12, 2026, Chris repeated the single-apple horse test on
+`a367e6f` and reported loyalty rising from 30 to 100. This verifies the
+loyalty result in the live client. Food consumption is covered by the
+compiled fixture; it was not separately reported in the client recheck.
