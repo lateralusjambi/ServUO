@@ -7937,14 +7937,14 @@ namespace Server.Mobiles
 
         protected override void OnTick()
         {
-            if (DateTime.UtcNow >= m_NextHourlyCheck)
-            {
-                m_NextHourlyCheck = DateTime.UtcNow + TimeSpan.FromHours(1.0);
-            }
-            else
-            {
+            DateTime now = DateTime.UtcNow;
+            bool hourly = now >= m_NextHourlyCheck;
+            bool pre16 = SkillCheck.PrePublish16Rules;
+
+            if (hourly)
+                m_NextHourlyCheck = now + TimeSpan.FromHours(1.0);
+            else if (!pre16)
                 return;
-            }
 
             var toRelease = new List<BaseCreature>();
 
@@ -7957,11 +7957,16 @@ namespace Server.Mobiles
                 {
                     if (m is BaseMount && ((BaseMount)m).Rider != null)
                     {
-                        ((BaseCreature)m).OwnerAbandonTime = DateTime.MinValue;
+                        if (hourly)
+                            ((BaseCreature)m).OwnerAbandonTime = DateTime.MinValue;
                     }
                     else if (m is BaseCreature)
                     {
                         BaseCreature c = (BaseCreature)m;
+                        bool blocked = pre16 && IsBlockedFromOwner(c);
+
+                        if (!hourly && !blocked)
+                            return;
 
                         if (c.IsDeadPet)
                         {
@@ -7991,9 +7996,10 @@ namespace Server.Mobiles
 
                             if (c.Map != Map.Internal)
                             {
-                                c.Loyalty -= (BaseCreature.MaxLoyalty / 10);
+                                // At a shared tick, the faster rate replaces the hourly loss.
+                                c.Loyalty -= (blocked ? 2 : 1) * (BaseCreature.MaxLoyalty / 10);
 
-                                if (c.Loyalty < (BaseCreature.MaxLoyalty / 10))
+                                if (blocked || c.Loyalty < (BaseCreature.MaxLoyalty / 10))
                                 {
                                     c.Say(1043270, c.Name); // * ~1_NAME~ looks around desperately *
                                     c.PlaySound(c.GetIdleSound());
@@ -8001,12 +8007,16 @@ namespace Server.Mobiles
 
                                 if (c.Loyalty <= 0)
                                 {
-                                    toRelease.Add(c);
+                                    lock (toRelease)
+                                        toRelease.Add(c);
                                 }
                             }
                         }
 
                         // added lines to check if a wild creature in a house region has to be removed or not
+                        if (!hourly)
+                            return;
+
                         if (!c.Controlled && !c.IsStabled &&
                             ((c.Region.IsPartOf<HouseRegion>() && c.CanBeDamaged()) || (c.RemoveIfUntamed && c.Spawner == null)))
                         {
@@ -8058,6 +8068,16 @@ namespace Server.Mobiles
 
             ColUtility.Free(toRelease);
             ColUtility.Free(toRemove);
+        }
+
+        private static bool IsBlockedFromOwner(BaseCreature pet)
+        {
+            Mobile owner = pet.ControlMaster;
+            return pet.Controlled && pet.Commandable && pet.Tamable && !pet.Summoned &&
+                !pet.IsStabled && !pet.IsDeadPet && pet.Map != null && pet.Map != Map.Internal &&
+                !(pet is BaseMount mount && mount.Rider != null) &&
+                owner != null && !owner.Deleted && owner.Alive && owner.NetState != null &&
+                owner.Map == pet.Map && pet.InRange(owner, Map.MaxLOSDistance) && !pet.InLOS(owner);
         }
     }
 

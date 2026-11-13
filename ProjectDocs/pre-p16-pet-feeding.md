@@ -59,3 +59,30 @@ command penalty was not measured in this trial.
 In a second trial starting at 30 loyalty, the bull obeyed once (30 to 31)
 and then refused the next order (31 to 28). This confirms the live +1 and
 -3 deltas under the current control model. Natural decay was not tested.
+
+## Natural decay: nearby owner behind an obstruction
+
+Reena Dae's [Pet Loyalty page](https://web.archive.org/web/20020423192836/http://www.tamingarchive.com/pets/loyalty.php),
+marked April 9, 2002, describes one loyalty level per hour normally and
+two levels at the server's five-minute checks when the owner is out of
+sight. It describes a shared cadence, not a timer started by crossing a wall.
+
+The old timer woke every five minutes but ran pet decay only hourly.
+A forced baseline tick dropped both a nearby pet and one with an owner on
+another facet from 100 to 90, with no change on the next non-hourly tick.
+
+The new pre-P16 branch applies a 20-point loss to a living, controlled,
+tamable pet whose nearby, logged-in owner is on the same map but blocked
+by line of sight. It excludes stabled pets, ridden mounts and summons.
+Logout, cross-facet and long-distance cases retain the existing hourly
+behavior. If the five-minute and hourly checks coincide, an obstructed pet
+loses 20 rather than 30. These boundaries are deliberate implementation
+choices where the period account does not specify the details. Existing
+release processing still applies at zero; the patch does not alter
+command deltas or feeding.
+
+The compiled timer fixture uses an actual map line-of-sight obstruction
+and forces the scheduler deadline without changing system time. Client
+acceptance is pending. For a live check, start at 100 with the owner logged
+in behind a nearby solid wall. The first obstructed timer check should show
+80; no full hour is required.
