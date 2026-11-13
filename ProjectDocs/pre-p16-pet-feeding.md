@@ -82,7 +82,8 @@ release processing still applies at zero; the patch does not alter
 command deltas or feeding.
 
 The compiled timer fixture uses an actual map line-of-sight obstruction
-and forces the scheduler deadline without changing system time. Client
-acceptance is pending. For a live check, start at 100 with the owner logged
-in behind a nearby solid wall. The first obstructed timer check should show
-80; no full hour is required.
+and forces the scheduler deadline without changing system time. On November 12, 2026, Chris verified the live wall check on `5641abf`.
+With the normal owner behind a nearby solid wall, the bull initially read
+60 after an unmeasured wait, consistent with two checks. A repeat from
+100 captured a single drop to 80. This verifies the nearby wall penalty;
+logout, cross-facet and long-distance cases were not tested live.
